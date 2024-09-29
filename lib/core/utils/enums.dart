@@ -1,0 +1,1 @@
+enum AppColorState { warning, success, error,normal }
