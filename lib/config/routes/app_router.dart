@@ -1,18 +1,20 @@
+import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class AppRouter {
-
-static  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
 
   static Route generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      // case AppPage.splashScreen:
-      //   return _pageRoute(
-      //     const SplashView(),
-      //   );
+      case AppPage.splashScreen:
+        return _pageRoute(
+          const SplashView(),
+        );
       // case AppPage.loginScreen:
       //   return _pageRoute(BlocProvider(
       //     create: (context) => LoginCubit(

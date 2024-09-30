@@ -5,7 +5,6 @@ import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:lottie/lottie.dart';
 
 class CustomEmptyWidget extends StatelessWidget {
   final void Function() onRetry;
@@ -19,7 +18,7 @@ class CustomEmptyWidget extends StatelessWidget {
       children: [
         Icon(
           Icons.warning_rounded,
-          color: AppColor.darkPurple,
+          color: AppColor.blue,
           size: 100.r,
         ),
         SizedBox(
@@ -28,7 +27,7 @@ class CustomEmptyWidget extends StatelessWidget {
         CustomText(
           text: AppText.dataNotFound,
           style: AppStyle.textStyle18BoldKufram,
-          color: AppColor.darkPurple,
+          color: AppColor.blue,
         ),
         SizedBox(
           height: 20.h,

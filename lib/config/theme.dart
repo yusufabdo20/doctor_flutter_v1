@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static ThemeData lightTheme() => ThemeData(
-        primaryColor: AppColor.darkPurple,
+        primaryColor: AppColor.blue,
         brightness: Brightness.light,
-        scaffoldBackgroundColor: AppColor.extraLightPurple,
+        scaffoldBackgroundColor: AppColor.white,
       );
 
   static ThemeData darkTheme() => ThemeData(

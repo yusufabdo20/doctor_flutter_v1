@@ -48,10 +48,10 @@ void showFlushBar(
     barBlur: 5,
     textDirection: Directionality.of(context),
     backgroundGradient: const LinearGradient(
-        colors: [AppColor.darkPurple, AppColor.lightPurple]),
+        colors: [AppColor.blue, AppColor.white]),
     boxShadows: const [
       BoxShadow(
-        color: AppColor.lightPurple,
+        color: AppColor.blue,
         blurRadius: 3.0,
       )
     ],

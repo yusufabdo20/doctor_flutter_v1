@@ -1,4 +1,6 @@
 abstract class AppText {
+  //appName
+  static const appName = 'appName';
   static const login = 'login';
   static const email = 'email';
   static const password = 'password';
@@ -169,9 +171,10 @@ abstract class AppText {
   //تهانيتا للفريق الثاني
   static const congratulationsForTheSecondTeam =
       'congratulationsForTheSecondTeam';
-      //"loading"
+  //"loading"
 
   static const loading = 'loading';
+
   ///data not found
   static const dataNotFound = 'dataNotFound';
   //"Try Again"

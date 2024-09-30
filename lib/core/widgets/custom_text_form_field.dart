@@ -59,7 +59,7 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
               CustomText(
                 text: context.tr(widget.text),
                 style: AppStyle.textStyle22RegularCairo,
-                color: AppColor.darkPurple,
+                color: AppColor.blue,
               ),
               SizedBox(
                 height: 8.r,
@@ -76,11 +76,11 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
           controller: widget.controller,
           maxLines: widget.maxLines,
           style: AppStyle.textStyle18BoldCairo
-              .copyWith(color: AppColor.darkPurple),
+              .copyWith(color: AppColor.blue),
           decoration: InputDecoration(
             hintText: context.tr(widget.text),
             filled: true,
-            fillColor: AppColor.extraLightPurple.withOpacity(0.45),
+            fillColor: AppColor.white.withOpacity(0.45),
             contentPadding: EdgeInsets.all(8.r),
             labelStyle: AppStyle.textStyle18RegularCairo,
             hintStyle: AppStyle.textStyle18RegularCairo.copyWith(
@@ -89,14 +89,14 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
             prefixIcon: widget.prefixIcon != null
                 ? Icon(
                     widget.prefixIcon,
-                    color: AppColor.darkPurple,
+                    color: AppColor.blue,
                   )
                 : null,
             suffixIcon: widget.isPassword
                 ? IconButton(
                     icon: Icon(
                       obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: AppColor.darkPurple,
+                      color: AppColor.blue,
                     ),
                     onPressed: () {
                       setState(() {

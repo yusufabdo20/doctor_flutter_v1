@@ -11,8 +11,8 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Opacity(
       opacity: opacity,
-      child: SvgPicture.asset(sd
-        AppImage.logo,
+      child: SvgPicture.asset(
+        AppIcon.logo,
         fit: BoxFit.contain,
         width: size.r,
         height: size.r,

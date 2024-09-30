@@ -1,4 +1,6 @@
+import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/config/routes/app_router.dart';
 import 'package:doctor_flutter_v1/core/services/cache/app_cache_key.dart';
 import 'package:doctor_flutter_v1/core/services/cache/cache_service.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
@@ -23,9 +25,9 @@ class _SplashViewState extends State<SplashView> {
       const Duration(seconds: 2),
       () {
         if (CacheService.getString(key: AppCacheKey.token) != null) {
-          context.pushReplacementNamed(AppPage.homeScreen);
+         AppRouter.navigatorKey.currentState!.pushReplacementNamed(AppPage.homeScreen);
         } else {
-          context.pushReplacementNamed(AppPage.loginScreen);
+         AppRouter.navigatorKey.currentState!.pushReplacementNamed(AppPage.loginScreen);
         }
       },
     );
@@ -48,12 +50,12 @@ class _SplashViewState extends State<SplashView> {
               ),
             ),
             SizedBox(
-              height: 20.r,
+              height: 50.r,
             ),
             CustomText(
-              text: "العباقرة",
-              style: AppStyle.textStyle48BoldKufram,
-              color: AppColor.darkPurple,
+              text: AppText.appName,
+              style: AppStyle.textStyle64BoldKufram,
+              color: AppColor.blue,
             ),
           ],
         ),

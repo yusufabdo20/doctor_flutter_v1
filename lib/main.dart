@@ -18,19 +18,7 @@ void main() async{
   await EasyLocalization.ensureInitialized();
   
 
-  // runApp(
-  //   DevicePreview(
-  //     builder: (context) => EasyLocalization(
-  //         supportedLocales: const [
-  //           Locale('en'),
-  //           Locale('ar'),
-  //         ],
-  //         path:
-  //             'assets/translations', // <-- change the path of the translation files
-  //         fallbackLocale: const Locale('en'),
-  //         child: const MyApp()),
-  //   ),
-  // );
+
 
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('ar')],
