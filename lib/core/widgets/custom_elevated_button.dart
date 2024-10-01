@@ -19,15 +19,15 @@ class CustomElevatedButton extends StatelessWidget {
           ElevatedButton.styleFrom(
             backgroundColor: context.theme.primaryColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(47.r),
+              borderRadius: BorderRadius.circular(10.r),
             ),
-            fixedSize: Size.fromWidth(100.r),
+            // fixedSize: Size.fromWidth(100.r),
           ),
       onPressed: onPressed,
       child: Padding(
-        padding: EdgeInsetsDirectional.symmetric(vertical: 15.r),
+        padding: EdgeInsetsDirectional.symmetric(vertical: 10.r),
         child: Text(context.tr(title),
-            style: AppStyle.textStyle32BoldKufram.copyWith(
+            style: AppStyle.textStyle16BoldKufram.copyWith(
               color: Colors.white,
             )),
       ),

@@ -171,11 +171,7 @@ abstract class AppStyle {
     fontWeight: FontWeight.w700,
     fontFamily: GoogleFonts.kufam().fontFamily,
   );
-  static TextStyle textStyle64BoldKufram = TextStyle(
-    fontSize: 64.sp,
-    fontWeight: FontWeight.w700,
-    fontFamily: GoogleFonts.kufam().fontFamily,
-  );
+
   //textStyle24RegularCairo
   static TextStyle textStyle24RegularCairo = TextStyle(
     fontSize: 24.sp,

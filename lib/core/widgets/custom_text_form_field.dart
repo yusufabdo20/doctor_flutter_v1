@@ -58,7 +58,7 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
             children: [
               CustomText(
                 text: context.tr(widget.text),
-                style: AppStyle.textStyle22RegularCairo,
+                style: AppStyle.textStyle14RegularKufram,
                 color: AppColor.blue,
               ),
               SizedBox(
@@ -75,15 +75,15 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
           onChanged: widget.onChanged,
           controller: widget.controller,
           maxLines: widget.maxLines,
-          style: AppStyle.textStyle18BoldCairo
-              .copyWith(color: AppColor.blue),
+          style:
+              AppStyle.textStyle14RegularKufram.copyWith(color: AppColor.blue),
           decoration: InputDecoration(
             hintText: context.tr(widget.text),
             filled: true,
             fillColor: AppColor.white.withOpacity(0.45),
             contentPadding: EdgeInsets.all(8.r),
-            labelStyle: AppStyle.textStyle18RegularCairo,
-            hintStyle: AppStyle.textStyle18RegularCairo.copyWith(
+            labelStyle: AppStyle.textStyle14RegularKufram,
+            hintStyle: AppStyle.textStyle14RegularKufram.copyWith(
               color: AppColor.grayClr,
             ),
             prefixIcon: widget.prefixIcon != null

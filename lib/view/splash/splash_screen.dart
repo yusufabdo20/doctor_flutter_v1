@@ -9,25 +9,26 @@ import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/core/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gen_extension/gen_extension.dart';
 
-class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SplashView> createState() => _SplashViewState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
       const Duration(seconds: 2),
       () {
         if (CacheService.getString(key: AppCacheKey.token) != null) {
-         AppRouter.navigatorKey.currentState!.pushReplacementNamed(AppPage.homeScreen);
+          AppRouter.navigatorKey.currentState!
+              .pushReplacementNamed(AppPage.homeScreen);
         } else {
-         AppRouter.navigatorKey.currentState!.pushReplacementNamed(AppPage.loginScreen);
+          AppRouter.navigatorKey.currentState!
+              .pushReplacementNamed(AppPage.loginScreen);
         }
       },
     );
@@ -46,7 +47,7 @@ class _SplashViewState extends State<SplashView> {
             const FittedBox(
               fit: BoxFit.scaleDown,
               child: Logo(
-                size: 200,
+                size: 75,
               ),
             ),
             SizedBox(
@@ -54,7 +55,7 @@ class _SplashViewState extends State<SplashView> {
             ),
             CustomText(
               text: AppText.appName,
-              style: AppStyle.textStyle64BoldKufram,
+              style: AppStyle.textStyle32BoldKufram,
               color: AppColor.blue,
             ),
           ],

@@ -1,4 +1,7 @@
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
+import 'package:doctor_flutter_v1/repo/login.dart';
+import 'package:doctor_flutter_v1/view/auth/login/screens/login_screen.dart';
 import 'package:doctor_flutter_v1/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,15 +16,15 @@ abstract class AppRouter {
     switch (settings.name) {
       case AppPage.splashScreen:
         return _pageRoute(
-          const SplashView(),
+          const SplashScreen(),
         );
-      // case AppPage.loginScreen:
-      //   return _pageRoute(BlocProvider(
-      //     create: (context) => LoginCubit(
-      //       LoginRepoImpl(),
-      //     ),
-      //     child: const LoginView(),
-      //   ));
+      case AppPage.loginScreen:
+        return _pageRoute(BlocProvider(
+          create: (context) => LoginCubit(
+            LoginRepoImpl(),
+          ),
+          child: const LoginScreen(),
+        ));
       // case AppPage.registerScreen:
       //   return _pageRoute(BlocProvider(
       //     create: (context) => RegisterCubit(

@@ -4,7 +4,6 @@ import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomTextButton extends StatelessWidget {
   final void Function() onPressed;
   final String text;
@@ -17,7 +16,7 @@ class CustomTextButton extends StatelessWidget {
         onPressed: onPressed,
         child: CustomText(
           text: context.tr(text),
-          style: AppStyle.textStyle22RegularCairo,
+          style: AppStyle.textStyle14RegularKufram,
           color: AppColor.blue,
         ));
   }

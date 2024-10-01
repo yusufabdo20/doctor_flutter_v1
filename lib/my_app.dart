@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       CacheService.setData(key: AppCacheKey.lang, value: "ar");
     }
     return ScreenUtilInit(
-      designSize: const Size(750, 1334),
+      designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
