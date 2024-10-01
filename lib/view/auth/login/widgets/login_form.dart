@@ -31,7 +31,7 @@ class LoginForm extends StatelessWidget {
             height: 24.r,
           ),
           CustomTextFormFeild(
-            prefixIcon: Icons.person,
+            prefixIcon: Icons.lock,
             controller: LoginCubit.get(context).passwordController,
             text: AppText.password,
             isPassword: true,

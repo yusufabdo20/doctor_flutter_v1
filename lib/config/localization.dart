@@ -10,8 +10,11 @@ abstract class AppText {
   static const password = 'password';
   static const forgetPassword = 'forgetPassword';
   static const createAccount = 'createAccount';
+  //A 6-digit code will be sent to your email.
+  static const a6DigitCodeWillBeSentToYourEmail = 'a6DigitCodeWillBeSentToYourEmail';
   static const pleaseEnterEmail = 'pleaseEnterEmail';
   static const pleaseEnterPassword = 'pleaseEnterPassword';
+  static const dontHaveAccount = 'dontHaveAccount';
   static const userName = 'userName';
   static const confirmPassword = 'confirmPassword';
   static const passwordNotMatch = 'passwordNotMatch';
@@ -21,6 +24,7 @@ abstract class AppText {
   static const phone = 'phone';
   static const countryCode = 'countryCode';
   static const pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
+  static const enterYourEmail = 'enterYourEmail';
   static const sendOtpToEmail = 'sendOtpToEmail';
 
   static const verifyCode = 'verifyCode';
@@ -32,7 +36,7 @@ abstract class AppText {
   static const communication = 'communication';
 
   static const confirm = 'confirm';
-
+  
   static const aMessageHasBeenSentToYourEmailEnterThe6DigitCode =
       'aMessageHasBeenSentToYourEmailEnterThe6DigitCode';
   static const changeLanguage = 'changeLanguage';
@@ -43,6 +47,7 @@ abstract class AppText {
   static const title = 'title';
   static const description = 'description';
   static const send = 'send';
+
   static const pleaseEnterTitle = 'pleaseEnterTitle';
 
   static const resetPassword = 'resetPassword';

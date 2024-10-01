@@ -26,10 +26,13 @@ class CustomElevatedButton extends StatelessWidget {
       onPressed: onPressed,
       child: Padding(
         padding: EdgeInsetsDirectional.symmetric(vertical: 10.r),
-        child: Text(context.tr(title),
-            style: AppStyle.textStyle16BoldKufram.copyWith(
-              color: Colors.white,
-            )),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(context.tr(title),
+              style: AppStyle.textStyle16BoldKufram.copyWith(
+                color: Colors.white,
+              )),
+        ),
       ),
     );
   }

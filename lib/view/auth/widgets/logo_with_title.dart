@@ -24,11 +24,14 @@ class LogoWithTitle extends StatelessWidget {
       leading: Logo(
         size: logoSize ?? 35.r,
       ),
-      title: CustomText(
-        textAlign: TextAlign.start,
-        text: title,
-        style: AppStyle.textStyle22BoldKufram,
-        color: AppColor.blue,
+      title: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: CustomText(
+          textAlign: TextAlign.start,
+          text: title,
+          style: AppStyle.textStyle22BoldKufram,
+          color: AppColor.blue,
+        ),
       ),
       trailing: IconButton(
         onPressed: () {
