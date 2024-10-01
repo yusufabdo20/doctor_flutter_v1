@@ -1,6 +1,9 @@
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/controller/forget_password_cubit/forget_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
+import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
+import 'package:doctor_flutter_v1/view/auth/forget_password/view/forget_passwod_view.dart';
 import 'package:doctor_flutter_v1/view/auth/login/screens/login_screen.dart';
 import 'package:doctor_flutter_v1/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +27,13 @@ abstract class AppRouter {
             LoginRepoImpl(),
           ),
           child: const LoginScreen(),
+        ));
+      case AppPage.forgotPasswordScreen:
+        return _pageRoute(BlocProvider(
+          create: (context) => ForgetPasswordCubit(
+            forgetPasswordRepo: ForgetPasswordRepoImpl(),
+          ),
+          child: const ForgetPasswordView(),
         ));
       // case AppPage.registerScreen:
       //   return _pageRoute(BlocProvider(
@@ -50,13 +60,7 @@ abstract class AppRouter {
       //     ],
       //     child: const HomeView(),
       //   ));
-      // case AppPage.forgotPasswordScreen:
-      //   return _pageRoute(BlocProvider(
-      //     create: (context) => ForgetPasswordCubit(
-      //       forgetPasswordRepo: ForgetPasswordRepoImpl(),
-      //     ),
-      //     child: const ForgetPasswordView(),
-      //   ));
+
       // case AppPage.paymentScreen:
       // case AppPage.otpScreen:
       //   return _pageRoute(BlocProvider(

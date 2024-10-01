@@ -9,6 +9,8 @@ abstract class AppAnimation {
 abstract class AppIcon {
   static const String _iconRoot = 'assets/icons';
   static const String logo = '$_iconRoot/logo.svg';
+  //language
+  static const String language = '$_iconRoot/language.svg';
 }
 
 abstract class AppImage {
