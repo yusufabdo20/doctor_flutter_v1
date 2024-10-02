@@ -27,6 +27,7 @@
   "home" : "الرئيسية",
   "profile" : "حسابي",
   "communication" : "تواصل",
+  "otpVerification" : "تحقق من OTP",
   "confirm" : "تأكيد",
   "aMessageHasBeenSentToYourEmailEnterThe6DigitCode": "تم ارسال رسالة لبريدك. \nقم بادخال الكود المكون من 6 ارقام الخاص بك",
   "changeLanguage": "تغيير اللغة",

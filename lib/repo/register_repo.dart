@@ -14,7 +14,7 @@ abstract class RegisterRepo {
   });
 }
 
-class RegisterRepoImpl extends RegisterRepo {
+class RegisterRespoImpl extends RegisterRepo {
   @override
   Future<Either<Failures, String>> registerUser({
     required String email,

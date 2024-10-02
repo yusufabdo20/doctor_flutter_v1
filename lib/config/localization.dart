@@ -10,6 +10,8 @@ abstract class AppText {
   static const password = 'password';
   static const forgetPassword = 'forgetPassword';
   static const createAccount = 'createAccount';
+  //otpVerification
+  static const otpVerification = 'otpVerification';
   //A 6-digit code will be sent to your email.
   static const a6DigitCodeWillBeSentToYourEmail = 'a6DigitCodeWillBeSentToYourEmail';
   static const pleaseEnterEmail = 'pleaseEnterEmail';

@@ -17,6 +17,7 @@
   "enterYourEmail": "Enter your email",
   "countryCode": "Country Code",
   "country": "Country",
+  "otpVerification": "OTP Verification",
   "passwordNotMatch" : "Password not match",
   "pleaseEnterUserName" : "Please enter user name",
   "pleaseEnterCountry" : "Please enter country",

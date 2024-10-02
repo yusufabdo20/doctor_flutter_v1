@@ -32,7 +32,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
     emit(ChangeConfirmPasswordState());
   }
 
-  Future<void> register({required BuildContext context}) async {
+  Future<void> register() async {
  
     if (formKeyRegister.currentState!.validate()) {
       emit(RegisterLoadingState());

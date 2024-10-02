@@ -1,6 +1,7 @@
 abstract class AppAnimation {
   static const String _animationRoot = 'assets/animation';
   static const String loading = '$_animationRoot/loading.json';
+
   static const String error = '$_animationRoot/error.json';
   //empty
   static const String empty = '$_animationRoot/empty.json';
@@ -9,7 +10,6 @@ abstract class AppAnimation {
 abstract class AppIcon {
   static const String _iconRoot = 'assets/icons';
   static const String logo = '$_iconRoot/logo.svg';
-  //language
   static const String language = '$_iconRoot/language.svg';
 }
 
