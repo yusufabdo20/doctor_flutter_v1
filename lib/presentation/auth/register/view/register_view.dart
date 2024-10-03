@@ -6,8 +6,8 @@ import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit
 import 'package:doctor_flutter_v1/core/utils/enums.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_banner.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
-import 'package:doctor_flutter_v1/view/auth/register/widgets/register_body.dart';
-import 'package:doctor_flutter_v1/view/auth/widgets/logo_with_title.dart';
+import 'package:doctor_flutter_v1/presentation/auth/register/widgets/register_body.dart';
+import 'package:doctor_flutter_v1/presentation/auth/widgets/logo_with_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

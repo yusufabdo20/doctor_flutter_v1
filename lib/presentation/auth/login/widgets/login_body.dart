@@ -6,11 +6,11 @@ import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/utils/app_style.dart';
 import 'package:doctor_flutter_v1/main.dart';
 
-import 'package:doctor_flutter_v1/view/auth/login/widgets/forget_passowd_button.dart';
-import 'package:doctor_flutter_v1/view/auth/login/widgets/login_button.dart';
-import 'package:doctor_flutter_v1/view/auth/login/widgets/login_form.dart';
-import 'package:doctor_flutter_v1/view/auth/widgets/logo_with_title.dart';
-import 'package:doctor_flutter_v1/view/auth/widgets/role_widget.dart';
+import 'package:doctor_flutter_v1/presentation/auth/login/widgets/forget_passowd_button.dart';
+import 'package:doctor_flutter_v1/presentation/auth/login/widgets/login_button.dart';
+import 'package:doctor_flutter_v1/presentation/auth/login/widgets/login_form.dart';
+import 'package:doctor_flutter_v1/presentation/auth/widgets/logo_with_title.dart';
+import 'package:doctor_flutter_v1/presentation/auth/widgets/role_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

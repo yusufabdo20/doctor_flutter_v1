@@ -13,7 +13,6 @@ class UserModelData {
     this.emailVerificationToken,
     this.status,
     this.active,
-    this.remainingGame,
     this.deletedAt,
     this.createdAt,
     this.updatedAt,
@@ -33,12 +32,11 @@ class UserModelData {
     status = json['status'];
     active = json['active'];
     isLogOut = json['is_logout'] ?? false;
-    remainingGame = json['remainig_game'];
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  int? id;
+  String? id;
   String? name;
   String? avatar;
   String? email;
@@ -50,13 +48,12 @@ class UserModelData {
   dynamic emailVerificationToken;
   num? status;
   num? active;
-  num? remainingGame;
-  dynamic deletedAt;
+  String? deletedAt;
   String? createdAt;
   String? updatedAt;
   bool? isLogOut;
   UserModelData copyWith({
-    int? id,
+    String? id,
     String? name,
     String? avatar,
     String? email,

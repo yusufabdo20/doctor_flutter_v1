@@ -4,7 +4,7 @@ import 'package:doctor_flutter_v1/config/theme.dart';
 import 'package:doctor_flutter_v1/core/services/cache/app_cache_key.dart';
 import 'package:doctor_flutter_v1/core/services/cache/cache_service.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
-import 'package:doctor_flutter_v1/view/auth/otp/view/otp_view.dart';
+import 'package:doctor_flutter_v1/presentation/auth/otp/view/otp_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

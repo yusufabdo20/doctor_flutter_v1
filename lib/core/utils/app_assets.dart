@@ -11,6 +11,9 @@ abstract class AppIcon {
   static const String _iconRoot = 'assets/icons';
   static const String logo = '$_iconRoot/logo.svg';
   static const String language = '$_iconRoot/language.svg';
+  static const String allPatients = '$_iconRoot/all_patients.svg';
+  static const String allDoctor = '$_iconRoot/all_doctors.svg';
+  static const String profile = '$_iconRoot/profile.svg';
 }
 
 abstract class AppImage {

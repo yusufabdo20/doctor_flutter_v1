@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:doctor_flutter_v1/core/error/error_hander.dart';
@@ -26,17 +28,20 @@ class OtpRepoImpl implements OtpRepo {
       );
       return Right(UserModel.fromJson(response.data));
     } on DioException catch (dioError) {
+      log(dioError.response.toString());
       return Left(ServerFailure.fromDioError(dioError));
     } catch (e) {
       return Left(LocalFailures(errorMessage: e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failures, String>> resendOtp({required String email}) async{
+  Future<Either<Failures, String>> resendOtp({required String email}) async {
     try {
       Response response = await DioHelper.postData(
-        url: EndPoint.resendVerifyEmail(email: email,),
+        url: EndPoint.resendVerifyEmail(
+          email: email,
+        ),
       );
       return Right(response.data["message"]);
     } on DioException catch (dioError) {

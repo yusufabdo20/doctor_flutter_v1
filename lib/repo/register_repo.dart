@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:doctor_flutter_v1/core/error/error_hander.dart';
@@ -33,11 +35,14 @@ class RegisterRespoImpl extends RegisterRepo {
         "lang": 'USER',
         "country_code": countryCode
       });
-
+      log(response.data.toString());
       return Right(response.data["message"]);
     } on DioException catch (dioError) {
+      log(dioError.response.toString());
       return Left(ServerFailure.fromDioError(dioError));
     } catch (e) {
+      log(e.toString());
+
       return Left(LocalFailures(errorMessage: e.toString()));
     }
   }

@@ -11,9 +11,9 @@ import 'package:doctor_flutter_v1/core/widgets/custom_elevated_button.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_loading.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
-import 'package:doctor_flutter_v1/view/auth/otp/widgets/custom_pin_put.dart';
-import 'package:doctor_flutter_v1/view/auth/otp/widgets/otp_timer.dart';
-import 'package:doctor_flutter_v1/view/auth/widgets/logo_with_title.dart';
+import 'package:doctor_flutter_v1/presentation/auth/otp/widgets/custom_pin_put.dart';
+import 'package:doctor_flutter_v1/presentation/auth/otp/widgets/otp_timer.dart';
+import 'package:doctor_flutter_v1/presentation/auth/widgets/logo_with_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +44,7 @@ class OtpView extends StatelessWidget {
             context.pushNamedAndRemoveUntil(AppPage.resetPassword,
                 predicate: (_) => false);
           } else {
-            context.pushNamedAndRemoveUntil(AppPage.homeScreen,
+            context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
                 predicate: (_) => false);
           }
         } else if (state is OtpPasswordErrorState) {
@@ -81,6 +81,7 @@ class OtpBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OtpPasswordCubit.get(context).email = otpModel.email;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30.r, vertical: 50.r),
       child: Column(

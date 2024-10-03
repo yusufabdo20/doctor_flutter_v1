@@ -50,7 +50,9 @@
   "cancel": "الغاء",
   "loading" : "جاري التحميل",
   "dataNotFound" : "لم يتم العثور على البيانات",
-  "tryAgain" : "حاول مرة أخرى"
+  "tryAgain" : "حاول مرة أخرى",
+  "AllDoctors" : "جميع الأطباء",
+  "AllPatients" : "جميع المرضي"
   
   
   

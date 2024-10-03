@@ -4,7 +4,7 @@ import 'package:doctor_flutter_v1/core/services/cache/app_cache_key.dart';
 import 'package:doctor_flutter_v1/core/services/cache/cache_service.dart';
 import 'package:doctor_flutter_v1/core/utils/enums.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_banner.dart';
-import 'package:doctor_flutter_v1/view/auth/login/widgets/login_body.dart';
+import 'package:doctor_flutter_v1/presentation/auth/login/widgets/login_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen_extension/gen_extension.dart';
@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
               key: AppCacheKey.token,
               value: state.loginModel.token,
             );
-            context.pushReplacementNamed(AppPage.homeScreen);
+            context.pushReplacementNamed(AppPage.doctorHomeLayout);
           } else if (state is LoginErrorState) {
             showToast(
               context: context,

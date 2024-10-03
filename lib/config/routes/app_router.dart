@@ -1,19 +1,21 @@
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/controller/doctor_home_layout/doctor_home_layout_cubit.dart';
 import 'package:doctor_flutter_v1/controller/forget_password_cubit/forget_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
 import 'package:doctor_flutter_v1/controller/otp_password/otp_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
+import 'package:doctor_flutter_v1/presentation/roles/doctor/home/view/doctor_home_layout_view.dart';
 import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
 import 'package:doctor_flutter_v1/repo/otp_repo.dart';
 import 'package:doctor_flutter_v1/repo/register_repo.dart';
 import 'package:doctor_flutter_v1/repo/sign_up.dart';
-import 'package:doctor_flutter_v1/view/auth/forget_password/view/forget_passwod_view.dart';
-import 'package:doctor_flutter_v1/view/auth/login/screens/login_screen.dart';
-import 'package:doctor_flutter_v1/view/auth/otp/view/otp_view.dart';
-import 'package:doctor_flutter_v1/view/auth/register/view/register_view.dart';
-import 'package:doctor_flutter_v1/view/splash/splash_screen.dart';
+import 'package:doctor_flutter_v1/presentation/auth/forget_password/view/forget_passwod_view.dart';
+import 'package:doctor_flutter_v1/presentation/auth/login/screens/login_screen.dart';
+import 'package:doctor_flutter_v1/presentation/auth/otp/view/otp_view.dart';
+import 'package:doctor_flutter_v1/presentation/auth/register/view/register_view.dart';
+import 'package:doctor_flutter_v1/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,6 +58,11 @@ abstract class AppRouter {
           child: OtpView(
             otpModel: arguments as OtpModel,
           ),
+        ));
+      case AppPage.doctorHomeLayout:
+        return _pageRoute(BlocProvider(
+          create: (context) => DoctorHomeLayoutCubit(),
+          child: const DoctorHomeLayout(),
         ));
 
       // case AppPage.homeScreen:

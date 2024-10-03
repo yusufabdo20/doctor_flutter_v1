@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         if (CacheService.getString(key: AppCacheKey.token) != null) {
           AppRouter.navigatorKey.currentState!
-              .pushReplacementNamed(AppPage.homeScreen);
+              .pushReplacementNamed(AppPage.doctorHomeLayout);
         } else {
           AppRouter.navigatorKey.currentState!
               .pushReplacementNamed(AppPage.loginScreen);

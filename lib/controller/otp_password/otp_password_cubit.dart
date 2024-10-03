@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -19,6 +21,8 @@ class OtpPasswordCubit extends Cubit<OtpPasswordState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void submitOtp() async {
+    log(email);
+    log(controller.text);
     if (formKey.currentState!.validate()) {
       emit(OtpPasswordLoadingState());
       final response =

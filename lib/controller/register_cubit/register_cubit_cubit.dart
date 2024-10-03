@@ -33,15 +33,14 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
   }
 
   Future<void> register() async {
- 
     if (formKeyRegister.currentState!.validate()) {
       emit(RegisterLoadingState());
       final response = await _repo.registerUser(
         email: emailController.text,
         password: passwordController.text,
         userName: userNameController.text,
-        phone: phoneController.text,
-        countryCode: " ",
+        phone: "sadw",
+        countryCode: " eg",
       );
       response.fold((error) {
         emit(RegisterErrorState(error.errorMessage));
@@ -65,13 +64,12 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
   //     );
   //   }
 
-    @override
-    Future<void> close() {
-      emailController.dispose();
-      passwordController.dispose();
-      userNameController.dispose();
-      phoneController.dispose();
-      return super.close();
-    }
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    userNameController.dispose();
+    phoneController.dispose();
+    return super.close();
   }
-
+}

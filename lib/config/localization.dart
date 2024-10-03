@@ -13,7 +13,8 @@ abstract class AppText {
   //otpVerification
   static const otpVerification = 'otpVerification';
   //A 6-digit code will be sent to your email.
-  static const a6DigitCodeWillBeSentToYourEmail = 'a6DigitCodeWillBeSentToYourEmail';
+  static const a6DigitCodeWillBeSentToYourEmail =
+      'a6DigitCodeWillBeSentToYourEmail';
   static const pleaseEnterEmail = 'pleaseEnterEmail';
   static const pleaseEnterPassword = 'pleaseEnterPassword';
   static const dontHaveAccount = 'dontHaveAccount';
@@ -38,7 +39,7 @@ abstract class AppText {
   static const communication = 'communication';
 
   static const confirm = 'confirm';
-  
+
   static const aMessageHasBeenSentToYourEmailEnterThe6DigitCode =
       'aMessageHasBeenSentToYourEmailEnterThe6DigitCode';
   static const changeLanguage = 'changeLanguage';
@@ -66,4 +67,6 @@ abstract class AppText {
   static const dataNotFound = 'dataNotFound';
 
   static const tryAgain = 'tryAgain';
+  static const AllDoctors = 'AllDoctors';
+  static const AllPaients = "AllPatients";
 }

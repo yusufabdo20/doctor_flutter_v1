@@ -59,7 +59,9 @@
 
   "loading": "Loading",
   "dataNotFound": "Data Not Found",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "AllDoctors": "All Doctors",
+  "AllPatients": "All Patients"
 
   
 }
