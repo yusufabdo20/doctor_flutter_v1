@@ -4,4 +4,4 @@ abstract class DoctorHomeLayoutState {}
 
 final class DoctorHomeLayoutInitial extends DoctorHomeLayoutState {}
 
-final class ChangePageState extends DoctorHomeLayoutState {}
+final class DoctorHomeLayoutChangeIndexState extends DoctorHomeLayoutState {}

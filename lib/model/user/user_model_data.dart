@@ -5,12 +5,10 @@ class UserModelData {
     this.avatar,
     this.email,
     this.phone,
-    this.isLogOut = false,
     this.countryCode,
     this.lang,
     this.emailVerifiedAt,
     this.userType,
-    this.emailVerificationToken,
     this.status,
     this.active,
     this.deletedAt,
@@ -28,15 +26,13 @@ class UserModelData {
     lang = json['lang'];
     emailVerifiedAt = json['email_verified_at'];
     userType = json['user_type'];
-    emailVerificationToken = json['email_verification_token'];
     status = json['status'];
     active = json['active'];
-    isLogOut = json['is_logout'] ?? false;
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-  String? id;
+  int? id;
   String? name;
   String? avatar;
   String? email;
@@ -45,15 +41,13 @@ class UserModelData {
   String? lang;
   String? emailVerifiedAt;
   String? userType;
-  dynamic emailVerificationToken;
   num? status;
   num? active;
   String? deletedAt;
   String? createdAt;
   String? updatedAt;
-  bool? isLogOut;
   UserModelData copyWith({
-    String? id,
+    int? id,
     String? name,
     String? avatar,
     String? email,
@@ -79,8 +73,6 @@ class UserModelData {
         lang: lang ?? this.lang,
         emailVerifiedAt: emailVerifiedAt ?? this.emailVerifiedAt,
         userType: userType ?? this.userType,
-        emailVerificationToken:
-            emailVerificationToken ?? this.emailVerificationToken,
         status: status ?? this.status,
         active: active ?? this.active,
         deletedAt: deletedAt ?? this.deletedAt,
@@ -99,7 +91,6 @@ class UserModelData {
     map['lang'] = lang;
     map['email_verified_at'] = emailVerifiedAt;
     map['user_type'] = userType;
-    map['email_verification_token'] = emailVerificationToken;
     map['status'] = status;
     map['active'] = active;
     map['deleted_at'] = deletedAt;

@@ -27,9 +27,8 @@ class DoctorHomeLayout extends StatelessWidget {
                 );
               },
             ),
-            actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
-            ],
+            actions: DoctorHomeLayoutData.appBarActions(
+                context)[DoctorHomeLayoutCubit.get(context).selectedIndex],
           ),
           body: PageView.builder(
               controller: DoctorHomeLayoutCubit.get(context).pageController,

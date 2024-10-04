@@ -39,7 +39,20 @@ class RegisterForm extends StatelessWidget {
                 }
                 return null;
               }),
-      
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.phone,
+              prefixIcon: Icons.phone,
+              keyboardType: TextInputType.phone,
+              controller: RegisterCubit.get(context).phoneController,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.pleaseEnterEmail);
+                }
+                return null;
+              }),
           SizedBox(
             height: 24.r,
           ),

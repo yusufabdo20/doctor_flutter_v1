@@ -1,5 +1,5 @@
 abstract class EndPoint {
-  static const String baseUrl = "https://family-tree-app.smartleadtech.com/api";
+  static const String baseUrl = "https://health-care-sys.smartleadtech.com/api";
   static const String login = "/login";
   static const String register = "/register";
 

@@ -28,7 +28,8 @@ class RegisterView extends StatelessWidget {
           );
           context.pushNamed(AppPage.otpScreen,
               arguments: OtpModel(
-                  email: RegisterCubit.get(context).emailController.text));
+                  email: RegisterCubit.get(context).emailController.text,
+                  isForgetPassword: false));
         } else if (state is RegisterErrorState) {
           showToast(
             context: context,

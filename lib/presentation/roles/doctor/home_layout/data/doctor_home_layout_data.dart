@@ -1,12 +1,33 @@
 import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/core/utils/app_assets.dart';
+import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/main.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-abstract class BottomNavBarItemData {
+abstract class DoctorHomeLayoutData {
+  static List<String> titles = [
+    AppText.AllPaients,
+    AppText.AllDoctors,
+    AppText.profile
+  ];
+  static List<List<Widget>> appBarActions (BuildContext context)=> [
+    [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+    [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+    [IconButton(
+        onPressed: () {
+          context.setLocale(context.locale == const Locale('ar')
+              ? const Locale('en')
+              : const Locale('ar'));
+        },
+        icon: SvgPicture.asset(
+          AppIcon.language,
+          colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+        ),
+      ),]
+  ];
   static BottomNavigationBarItem customBottomNavBarItem(
       {required String label,
       required String imagePath,
@@ -20,6 +41,8 @@ abstract class BottomNavBarItemData {
       ),
       icon: SvgPicture.asset(
         imagePath,
+        height: 32,
+        width: 32,
         colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
       ),
       label: context.tr(label),

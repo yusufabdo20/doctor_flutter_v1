@@ -6,6 +6,7 @@ abstract class AppPage {
   //DoctorHomeLayout
   static const String doctorHomeLayout = "/doctorHomeLayout";
   static const String otpScreen = "/otpScreen";
+  static const String profileScreen = "/profileScreen";
   //payment
   static const String paymentScreen = "/paymentScreen";
   static const String resetPassword = "/resetPassword";

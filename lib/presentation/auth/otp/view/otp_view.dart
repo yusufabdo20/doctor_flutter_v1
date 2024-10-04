@@ -107,7 +107,10 @@ class OtpBody extends StatelessWidget {
           SizedBox(
             height: 15.r,
           ),
-          CustomPinPut(controller: OtpPasswordCubit.get(context).controller),
+          Form(
+              key: OtpPasswordCubit.get(context).formKey,
+              child: CustomPinPut(
+                  controller: OtpPasswordCubit.get(context).controller)),
           SizedBox(
             height: 15.r,
           ),

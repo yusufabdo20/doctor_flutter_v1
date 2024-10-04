@@ -1,3 +1,4 @@
+import 'package:doctor_flutter_v1/config/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -44,25 +45,23 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> updateProfile({required BuildContext context}) async {
     emit(ProfileLoadingState());
     var response = await profileRepo.updateProfile(
-      name: userName.text,
-      email: email.text,
-      phone: phone.text,
-      countryCode:
-          " "
-    );
+        name: userName.text,
+        email: email.text,
+        phone: phone.text,
+        countryCode: " ");
     response.fold((error) {
       emit(ProfileErrorState(error.errorMessage));
     }, (data) {
-      if (data.isLogOut == true) {
-        CacheService.remove(key: AppCacheKey.token);
-        OtpRepoImpl().resendOtp(email: email.text).then((value) {
-          context.pushNamed(AppPage.otpScreen,
-              arguments: OtpModel(email: email.text, isForgetPassword: false));
-        });
-      } else {
-        getProfile();
-      }
+      getProfile();
     });
+  }
+
+  //logout
+  Future<void> Logout() async {
+    CacheService.remove(key: AppCacheKey.token);
+
+    AppRouter.navigatorKey.currentState!
+        .pushNamedAndRemoveUntil(AppPage.loginScreen, (route) => false);
   }
 
   // Future<void> selectCountry({required Country country}) async {

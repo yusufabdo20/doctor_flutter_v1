@@ -16,12 +16,14 @@ class CustomTextFormFeild extends StatefulWidget {
   final double borderRadius;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   final TextEditingController? controller;
   const CustomTextFormFeild({
     super.key,
     required this.text,
     this.prefixIcon,
+    this.keyboardType,
     this.showTitle = true,
     this.isPassword = false,
     this.validator,
@@ -68,8 +70,9 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
           ),
         ),
         TextFormField(
-          keyboardType:
-              widget.isPassword ? TextInputType.visiblePassword : null,
+          keyboardType: widget.isPassword
+              ? TextInputType.visiblePassword
+              : widget.keyboardType,
           obscureText: widget.isPassword ? obscureText : false,
           validator: widget.validator,
           onChanged: widget.onChanged,

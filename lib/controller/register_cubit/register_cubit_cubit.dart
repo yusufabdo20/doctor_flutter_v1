@@ -39,8 +39,8 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         email: emailController.text,
         password: passwordController.text,
         userName: userNameController.text,
-        phone: "sadw",
-        countryCode: " eg",
+        phone: phoneController.text,
+        countryCode: "+20",
       );
       response.fold((error) {
         emit(RegisterErrorState(error.errorMessage));
