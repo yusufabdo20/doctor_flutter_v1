@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:doctor_flutter_v1/config/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +36,18 @@ class ProfileCubit extends Cubit<ProfileState> {
     response.fold((error) {
       emit(ProfileErrorState(error.errorMessage));
     }, (data) {
-      userModel = data;
-      userName.text = data.name ?? "";
-      email.text = data.email ?? "";
-      phone.text = data.phone ?? "";
-      emit(ProfileSuccessState(userModel: data));
+      if (data.emailVerifiedAt == null) {
+        AppRouter.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+            AppPage.otpScreen,
+            arguments: OtpModel(email: data.email!),
+            (route) => false);
+      } else {
+        userModel = data;
+        userName.text = data.name ?? "";
+        email.text = data.email ?? "";
+        phone.text = data.phone ?? "";
+        emit(ProfileSuccessState(userModel: data));
+      }
     });
   }
 
@@ -48,26 +57,21 @@ class ProfileCubit extends Cubit<ProfileState> {
         name: userName.text,
         email: email.text,
         phone: phone.text,
-        countryCode: " ");
+        countryCode: "+20");
     response.fold((error) {
       emit(ProfileErrorState(error.errorMessage));
     }, (data) {
+      log(data.toJson().toString());
       getProfile();
     });
   }
 
-  //logout
   Future<void> Logout() async {
     CacheService.remove(key: AppCacheKey.token);
 
     AppRouter.navigatorKey.currentState!
         .pushNamedAndRemoveUntil(AppPage.loginScreen, (route) => false);
   }
-
-  // Future<void> selectCountry({required Country country}) async {
-  //   this.country = country;
-  //   emit(SelectCountryState());
-  // }
 
   Future<void> updateAvatar() async {
     final ImagePicker picker = ImagePicker();

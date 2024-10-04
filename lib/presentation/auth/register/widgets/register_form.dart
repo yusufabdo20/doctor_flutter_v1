@@ -49,7 +49,7 @@ class RegisterForm extends StatelessWidget {
               controller: RegisterCubit.get(context).phoneController,
               validator: (p0) {
                 if (p0 == null || p0.isEmpty) {
-                  return context.tr(AppText.pleaseEnterEmail);
+                  return context.tr(AppText.pleaseEnterPhone);
                 }
                 return null;
               }),

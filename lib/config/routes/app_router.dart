@@ -6,6 +6,7 @@ import 'package:doctor_flutter_v1/controller/otp_password/otp_password_cubit.dar
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
+import 'package:doctor_flutter_v1/presentation/auth/reset_password/view/reset_password_view.dart';
 import 'package:doctor_flutter_v1/presentation/roles/doctor/home_layout/view/doctor_home_layout_view.dart';
 import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
@@ -66,7 +67,9 @@ abstract class AppRouter {
           create: (context) => DoctorHomeLayoutCubit(),
           child: const DoctorHomeLayout(),
         ));
-   
+      case AppPage.resetPassword:
+        return _pageRoute(const ResetPasswordView());
+
       // case AppPage.homeScreen:
       //   return _pageRoute(MultiBlocProvider(
       //     providers: [
@@ -85,10 +88,6 @@ abstract class AppRouter {
       //     ],
       //     child: const HomeView(),
       //   ));
-
-      //   //ResetPasswordView
-      // case AppPage.resetPassword:
-      //   return _pageRoute(const ResetPasswordView());
 
       default:
         return _pageRoute(

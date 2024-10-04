@@ -74,15 +74,15 @@ class ForgetPasswordBody extends StatelessWidget {
                   width: double.infinity,
                   child: CustomElevatedButton(
                     onPressed: () {
-                      // ForgetPasswordCubit.get(context)
-                      //     .sendOtpToForgetPassword();
-                      context.pushNamed(
-                        AppPage.otpScreen,
-                        arguments: OtpModel(
-                          email: ForgetPasswordCubit.get(context).emailController.text,
-                          isForgetPassword: true,
-                        ),
-                      );
+                      ForgetPasswordCubit.get(context)
+                          .sendOtpToForgetPassword();
+                      // context.pushNamed(
+                      //   AppPage.otpScreen,
+                      //   arguments: OtpModel(
+                      //     email: ForgetPasswordCubit.get(context).emailController.text,
+                      //     isForgetPassword: true,
+                      //   ),
+                      // );
                     },
                     title: AppText.sendOtpToEmail,
                   ),

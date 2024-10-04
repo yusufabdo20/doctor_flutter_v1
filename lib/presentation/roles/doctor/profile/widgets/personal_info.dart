@@ -41,6 +41,16 @@ class PersonalInfo extends StatelessWidget {
         SizedBox(
           height: 24.r,
         ),
+          CustomTextFormFeild(
+            text: AppText.phone,
+            prefixIcon: Icons.phone,
+            controller: ProfileCubit.get(context).phone,
+            validator: (p0) {
+              if (p0 == null || p0.isEmpty) {
+                return context.tr(AppText.pleaseEnterPhone);
+              }
+              return null;
+            }),
       ],
     );
   }
