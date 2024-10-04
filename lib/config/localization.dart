@@ -1,5 +1,5 @@
 abstract class AppText {
-  static const appName = 'appName';
+  static const appName = 'Reayah';
   static const doctor = 'doctor';
   //Patient
   static const patient = 'patient';

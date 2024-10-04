@@ -16,21 +16,7 @@ class DoctorHomeLayout extends StatelessWidget {
     return BlocListener<DoctorHomeLayoutCubit, DoctorHomeLayoutState>(
         listener: (context, state) {},
         child: Scaffold(
-          appBar: AppBar(
-            title: BlocBuilder<DoctorHomeLayoutCubit, DoctorHomeLayoutState>(
-              builder: (context, state) {
-                return CustomText(
-                  text: DoctorHomeLayoutData
-                      .titles[DoctorHomeLayoutCubit.get(context).selectedIndex],
-                  style: AppStyle.textStyle20BoldKufram,
-                  color: AppColor.white,
-                );
-              },
-            ),
-            actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
-            ],
-          ),
+          appBar: CusomAppBar(),
           body: PageView.builder(
               controller: DoctorHomeLayoutCubit.get(context).pageController,
               itemCount: DoctorHomeLayoutCubit.get(context).screens.length,
@@ -43,4 +29,31 @@ class DoctorHomeLayout extends StatelessWidget {
           bottomNavigationBar: CustomBottomNavBar(),
         ));
   }
+}
+
+class CusomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CusomAppBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<DoctorHomeLayoutCubit, DoctorHomeLayoutState>(
+      builder: (context, state) {
+        return AppBar(
+          title: CustomText(
+            text: DoctorHomeLayoutData
+                .titles[DoctorHomeLayoutCubit.get(context).selectedIndex],
+            style: AppStyle.textStyle20BoldKufram,
+            color: AppColor.white,
+          ),
+          actions: DoctorHomeLayoutData.appBarActions(
+              context)[DoctorHomeLayoutCubit.get(context).selectedIndex],
+        );
+      },
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(50.h);
 }
