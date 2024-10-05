@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     if (context.locale == const Locale("ar")) {
       CacheService.setData(key: AppCacheKey.lang, value: "ar");
     }
+    
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,

@@ -7,7 +7,6 @@ import 'package:doctor_flutter_v1/repo/all_patient_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:meta/meta.dart';
 
 part 'all_pationts_state.dart';
 
@@ -32,7 +31,6 @@ class AllPationtsCubit extends Cubit<AllPationtsState> {
     newItems.fold((error) {
       pagingController.error = error.errorMessage;
     }, (sucess) {
-      log(sucess.meta!.toJson().toString());
       final bool isLastPage =
           sucess.meta!.currentPage! >= sucess.meta!.lastPage!; //1 < 5
       log(isLastPage.toString());

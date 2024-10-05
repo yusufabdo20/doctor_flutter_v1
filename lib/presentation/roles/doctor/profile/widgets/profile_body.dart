@@ -16,39 +16,41 @@ class ProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.r, vertical: 30.r),
-      child: Column(children: [
-        ProfileAvatar(
-          userModelData: ProfileCubit.get(context).userModel,
-        ),
-        SizedBox(
-          height: 12.r,
-        ),
-        PersonalInfo(),
-        SizedBox(
-          height: 12.r,
-        ),
-        CustomElevatedButton(
-          title: AppText.saveChanges,
-          onPressed: () {
-            ProfileCubit.get(context).updateProfile(context: context);
-          },
-        ),
-        SizedBox(
-          height: 12.r,
-        ),
-        CustomElevatedButton(
-          title: AppText.logout,
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            backgroundColor: AppColor.pinkClr,
+      child: SingleChildScrollView(
+        child: Column(children: [
+          ProfileAvatar(
+            userModelData: ProfileCubit.get(context).userModel,
           ),
-          onPressed: () {
-            ProfileCubit.get(context).Logout();
-          },
-        ),
-      ]),
+          SizedBox(
+            height: 12.r,
+          ),
+          const PersonalInfo(),
+          SizedBox(
+            height: 12.r,
+          ),
+          CustomElevatedButton(
+            title: AppText.saveChanges,
+            onPressed: () {
+              ProfileCubit.get(context).updateProfile(context: context);
+            },
+          ),
+          SizedBox(
+            height: 12.r,
+          ),
+          CustomElevatedButton(
+            title: AppText.logout,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              backgroundColor: AppColor.pinkClr,
+            ),
+            onPressed: () {
+              ProfileCubit.get(context).Logout();
+            },
+          ),
+        ]),
+      ),
     );
   }
 }

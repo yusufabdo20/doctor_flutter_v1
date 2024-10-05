@@ -37,6 +37,7 @@ class CountactUsCubit extends Cubit<CountactUsState> {
   }
 
   @override
+
   Future<void> close() {
     titleController.dispose();
     emailController.dispose();

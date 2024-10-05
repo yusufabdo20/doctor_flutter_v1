@@ -1,4 +1,3 @@
-
 import 'package:doctor_flutter_v1/model/user/user_model_data.dart';
 
 class UserModel {
@@ -10,7 +9,7 @@ class UserModel {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        accessToken: json["token"],
+        accessToken: json["access_token"],
         data: UserModelData.fromJson(json["user"]),
       );
 
@@ -29,5 +28,4 @@ class UserModel {
         accessToken: accessToken ?? this.accessToken,
         data: data ?? this.data,
       );
-  
 }

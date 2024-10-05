@@ -21,8 +21,6 @@ class OtpPasswordCubit extends Cubit<OtpPasswordState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void submitOtp() async {
-    log(email);
-    log(controller.text);
     if (formKey.currentState!.validate()) {
       emit(OtpPasswordLoadingState());
       final response =
