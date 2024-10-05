@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class DoctorDataModel extends Equatable {
-
   int? id;
   String? name;
   String? avatar;
@@ -85,37 +84,26 @@ class DoctorDataModel extends Equatable {
     data['location'] = location;
     return data;
   }
-  
+
   @override
   List<Object?> get props => [
-    id,
-    name,
-    avatar,
-    email,
-    phone,
-    country_code,
-    lang,
-    email_verified_at,
-    email_verification_token,
-    status,
-    active,
-    api_token,
-    deleted_at,
-    created_at,
-    updated_at,
-    role,
-    address,
-    location, 
-    ];
-  }
-
-
-
-
-
-
-
-
-
-
-
+        id,
+        name,
+        avatar,
+        email,
+        phone,
+        country_code,
+        lang,
+        email_verified_at,
+        email_verification_token,
+        status,
+        active,
+        api_token,
+        deleted_at,
+        created_at,
+        updated_at,
+        role,
+        address,
+        location,
+      ];
+}

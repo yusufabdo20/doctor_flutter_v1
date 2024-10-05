@@ -22,7 +22,7 @@ class PatientModelData extends Equatable {
   String? deleted_at;
   List<HealthRecordModel>? healthRecord;
   List<MedicalHistoryModel>? medicalHistory;
-  List<DoctorPatients> doctorPatients;
+  List<DoctorPatients>? doctorPatients;
 
   PatientModelData({
     required this.id,

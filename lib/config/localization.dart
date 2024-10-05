@@ -70,4 +70,6 @@ abstract class AppText {
   static const tryAgain = 'tryAgain';
   static const AllDoctors = 'AllDoctors';
   static const AllPaients = "AllPatients";
+  //pleaseEnterDescription
+  static const pleaseEnterDescription = 'pleaseEnterDescription';
 }

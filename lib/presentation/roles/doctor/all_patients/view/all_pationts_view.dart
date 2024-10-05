@@ -25,7 +25,7 @@ class AllPationtsView extends StatelessWidget {
           error:
               AllPationtsCubit.get(context).pagingController.error.toString(),
           onRetry: () {
-            AllPationtsCubit.get(context).getAllPationts();
+            AllPationtsCubit.get(context).pagingController.refresh();
           },
         ),
         noItemsFoundIndicatorBuilder: (context) =>
@@ -36,7 +36,7 @@ class AllPationtsView extends StatelessWidget {
           error:
               AllPationtsCubit.get(context).pagingController.error.toString(),
           onRetry: () {
-            AllPationtsCubit.get(context).getAllPationts();
+            AllPationtsCubit.get(context).pagingController.refresh();
           },
         ),
         itemBuilder: (context, item, index) {
