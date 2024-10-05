@@ -14,6 +14,9 @@ abstract class AppIcon {
   static const String allPatients = '$_iconRoot/all_patients.svg';
   static const String allDoctor = '$_iconRoot/all_doctors.svg';
   static const String profile = '$_iconRoot/profile.svg';
+  static const String contactUs = '$_iconRoot/contact_us.svg';
+  //faqs
+  static const String faqs = '$_iconRoot/faqs.svg';
 }
 
 abstract class AppImage {

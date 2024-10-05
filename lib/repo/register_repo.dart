@@ -12,6 +12,7 @@ abstract class RegisterRepo {
     required String password,
     required String userName,
     required String phone,
+    required String role,
     required String countryCode,
   });
 }
@@ -23,6 +24,7 @@ class RegisterRespoImpl extends RegisterRepo {
     required String password,
     required String userName,
     required String phone,
+    required String role,
     required String countryCode,
   }) async {
     try {
@@ -32,7 +34,8 @@ class RegisterRespoImpl extends RegisterRepo {
         "email": email,
         "password": password,
         "phone": phone,
-        "lang": 'USER',
+        "lang": 'en',
+        "role": role,
         "country_code": countryCode
       });
       log(response.data.toString());

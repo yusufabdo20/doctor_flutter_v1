@@ -35,14 +35,6 @@ class LoginBody extends StatelessWidget {
               title: AppText.login,
             ),
             SizedBox(
-              height: 30.r,
-            ),
-            RoleWidget(
-              onPressed: (p0) {
-                log(p0.toString());
-              },
-            ),
-            SizedBox(
               height: 50.r,
             ),
             const LoginForm(),

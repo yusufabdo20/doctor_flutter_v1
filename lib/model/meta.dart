@@ -20,9 +20,21 @@ class Meta extends Equatable {
       total: json['total'],
     );
   }
+  //tojson
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['per_page'] = perPage;
+    map['current_page'] = currentPage;
+    map['last_page'] = lastPage;
+    map['total'] = total;
+    return map;
+  }
   @override
   List<Object?> get props => [
         total,
+        perPage,
+        currentPage,
+        lastPage,
       ];
 }
 

@@ -10,5 +10,8 @@ abstract class AppPage {
   //payment
   static const String paymentScreen = "/paymentScreen";
   static const String resetPassword = "/resetPassword";
-  
+  //patientHomeLayout
+  static const String patientHomeLayout = "/patientHomeLayout";
+  //family
+  static const String familyHomeLayout = "/familyHomeLayout";
 }

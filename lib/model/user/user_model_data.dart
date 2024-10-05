@@ -1,101 +1,87 @@
 class UserModelData {
+  final int? id;
+  final String? name;
+  final String? avatar;
+  final String? email;
+  final String? phone;
+  final String? countryCode;
+  final String? lang;
+  final String? emailVerifiedAt;
+  final String? emailVerificationToken;
+  final int? status;
+  final int? active;
+  final String? apiToken;
+  final String? deletedAt;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? role;
+  final String? address;
+  final String? location;
+
   UserModelData({
-    this.id,
-    this.name,
-    this.avatar,
-    this.email,
-    this.phone,
-    this.countryCode,
-    this.lang,
-    this.emailVerifiedAt,
-    this.userType,
-    this.status,
-    this.active,
-    this.deletedAt,
-    this.createdAt,
-    this.updatedAt,
+    required this.id,
+    required this.name,
+    required this.avatar,
+    required this.email,
+    required this.phone,
+    required this.countryCode,
+    required this.lang,
+    required this.emailVerifiedAt,
+    required this.emailVerificationToken,
+    required this.status,
+    required this.active,
+    required this.apiToken,
+    required this.deletedAt,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.role,
+    required this.address,
+    required this.location,
   });
 
-  UserModelData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    avatar = json['avatar'];
-    email = json['email'];
-    phone = json['phone'];
-    countryCode = json['country_code'];
-    lang = json['lang'];
-    emailVerifiedAt = json['email_verified_at'];
-    userType = json['user_type'];
-    status = json['status'];
-    active = json['active'];
-    deletedAt = json['deleted_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+  factory UserModelData.fromJson(Map<String?, dynamic> json) {
+    return UserModelData(
+      id: json['id'] ?? 0,
+      name: json['name'] ?? "",
+      avatar: json['avatar'] ?? "",
+      email: json['email'] ?? "",
+      phone: json['phone'] ?? "",
+      countryCode: json['country_code'] ?? "",
+      lang: json['lang'] ?? "",
+      emailVerifiedAt: json['email_verified_at'] ?? "",
+      emailVerificationToken: json['email_verification_token'] ?? "",
+      status: json['status'] ?? 0,
+      active: json['active'] ?? 0,
+      apiToken: json['api_token'] ?? "",
+      deletedAt: json['deleted_at'] ?? "",
+      createdAt: json['created_at'] ?? "",
+      updatedAt: json['updated_at'] ?? "",
+      role: json['role'] ?? "",
+      address: json['address'] ?? "",
+      location: json['location'] ?? "",
+    );
   }
-  int? id;
-  String? name;
-  String? avatar;
-  String? email;
-  String? phone;
-  String? countryCode;
-  String? lang;
-  String? emailVerifiedAt;
-  String? userType;
-  num? status;
-  num? active;
-  String? deletedAt;
-  String? createdAt;
-  String? updatedAt;
-  UserModelData copyWith({
-    int? id,
-    String? name,
-    String? avatar,
-    String? email,
-    String? phone,
-    String? countryCode,
-    String? lang,
-    String? emailVerifiedAt,
-    String? userType,
-    dynamic emailVerificationToken,
-    num? status,
-    num? active,
-    dynamic deletedAt,
-    String? createdAt,
-    String? updatedAt,
-  }) =>
-      UserModelData(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        avatar: avatar ?? this.avatar,
-        email: email ?? this.email,
-        phone: phone ?? this.phone,
-        countryCode: countryCode ?? this.countryCode,
-        lang: lang ?? this.lang,
-        emailVerifiedAt: emailVerifiedAt ?? this.emailVerifiedAt,
-        userType: userType ?? this.userType,
-        status: status ?? this.status,
-        active: active ?? this.active,
-        deletedAt: deletedAt ?? this.deletedAt,
-        createdAt: createdAt ?? this.createdAt,
-        updatedAt: updatedAt ?? this.updatedAt,
-      );
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['avatar'] = avatar;
-    map['email'] = email;
-    map['phone'] = phone;
-    map['country_code'] = countryCode;
-    map['lang'] = lang;
-    map['email_verified_at'] = emailVerifiedAt;
-    map['user_type'] = userType;
-    map['status'] = status;
-    map['active'] = active;
-    map['deleted_at'] = deletedAt;
-    map['created_at'] = createdAt;
-    map['updated_at'] = updatedAt;
-    return map;
+  Map<String?, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'avatar': avatar,
+      'email': email,
+      'phone': phone,
+      'country_code': countryCode,
+      'lang': lang,
+      'email_verified_at': emailVerifiedAt,
+      'email_verification_token': emailVerificationToken,
+      'status': status,
+      'active': active,
+      'api_token': apiToken,
+      'deleted_at': deletedAt,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+      'role': role,
+      'address': address,
+      'location': location,
+    };
   }
 }

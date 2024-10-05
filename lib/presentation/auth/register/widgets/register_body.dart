@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
+import 'package:doctor_flutter_v1/core/utils/enums.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_elevated_button.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_loading.dart';
 import 'package:doctor_flutter_v1/presentation/auth/register/widgets/register_form.dart';
@@ -24,7 +27,9 @@ class RegisterBody extends StatelessWidget {
               height: 20.r,
             ),
             RoleWidget(
-              onPressed: (p0) {},
+              onPressed: (p0) {
+                RegisterCubit.get(context).role = Role.values[p0];
+              },
             ),
             SizedBox(
               height: 10.r,

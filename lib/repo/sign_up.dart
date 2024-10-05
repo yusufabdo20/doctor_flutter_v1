@@ -10,6 +10,7 @@ abstract class RegisterRepo {
     required String password,
     required String userName,
     required String phone,
+    required String role,
     required String countryCode,
   });
 }
@@ -21,6 +22,7 @@ class RegisterRepoImpl extends RegisterRepo {
     required String password,
     required String userName,
     required String phone,
+    required String role,
     required String countryCode,
   }) async {
     try {
@@ -30,7 +32,8 @@ class RegisterRepoImpl extends RegisterRepo {
         "email": email,
         "password": password,
         "phone": "+$phone",
-        "lang": 'USER',
+        "role": role,
+        "lang": 'en',
         "country_code": countryCode
       });
       return const Right(true);

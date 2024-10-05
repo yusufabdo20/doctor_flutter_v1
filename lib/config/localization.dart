@@ -4,7 +4,7 @@ abstract class AppText {
   //Patient
   static const patient = 'patient';
   //Caregiver
-  static const caregiver = 'caregiver';
+  static const family = 'family';
   static const login = 'login';
   static const email = 'email';
   static const password = 'password';
@@ -55,6 +55,7 @@ abstract class AppText {
 
   static const resetPassword = 'resetPassword';
   static const ressetPasswordSuccess = 'ressetPasswordSuccess';
+  static const faqs = 'faqs';
 
   static const exit = 'exit';
 

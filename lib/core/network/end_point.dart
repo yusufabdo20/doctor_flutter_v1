@@ -15,4 +15,7 @@ abstract class EndPoint {
   static String updateProfile = "/profile/update";
   //
   static String uploadAvatar = "/profile/upload-avatar";
+  ///patients
+  ///
+  static String patients = "/patients";
 }

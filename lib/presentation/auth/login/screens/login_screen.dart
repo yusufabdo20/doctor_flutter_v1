@@ -28,7 +28,25 @@ class LoginScreen extends StatelessWidget {
               key: AppCacheKey.token,
               value: state.loginModel.token,
             );
-            context.pushReplacementNamed(AppPage.doctorHomeLayout);
+            CacheService.setData(
+                  key: AppCacheKey.role,
+                  value: state.loginModel.user.role,
+                );
+           switch(state.loginModel.user.role){
+             case "doctor":
+             context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
+                 predicate: (_) => false);
+             break;
+             case "patient":
+             context.pushNamedAndRemoveUntil(AppPage.patientHomeLayout,
+                 predicate: (_) => false);
+             break;
+             case "family":
+             context.pushNamedAndRemoveUntil(AppPage.familyHomeLayout,
+                 predicate: (_) => false);
+             break;
+          }
+          
           } else if (state is LoginErrorState) {
             showToast(
               context: context,

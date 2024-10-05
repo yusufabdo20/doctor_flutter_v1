@@ -19,6 +19,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
   GlobalKey<FormState> formKeyRegister = GlobalKey<FormState>();
   bool isPassword = true;
   bool isConfirmPassword = true;
+  Role role = Role.doctor;
 
   // change password state
   void changePasswordState() {
@@ -39,6 +40,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         email: emailController.text,
         password: passwordController.text,
         userName: userNameController.text,
+        role: role.name,
         phone: phoneController.text,
         countryCode: "+20",
       );

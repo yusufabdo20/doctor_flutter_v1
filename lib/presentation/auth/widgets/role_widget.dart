@@ -21,7 +21,7 @@ class _RoleWidgetState extends State<RoleWidget> {
   final List<String> _options = [
     AppText.doctor,
     AppText.patient,
-    AppText.caregiver,
+    AppText.family,
   ];
 
   @override
@@ -30,7 +30,6 @@ class _RoleWidgetState extends State<RoleWidget> {
       borderRadius: BorderRadius.circular(10.r),
       borderColor: AppColor.blue,
       selectedBorderColor: AppColor.blue,
-      
       isSelected:
           List.generate(_options.length, (index) => index == _selectedIndex),
       onPressed: (int index) {

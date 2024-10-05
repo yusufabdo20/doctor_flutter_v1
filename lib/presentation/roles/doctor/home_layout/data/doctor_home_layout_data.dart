@@ -11,23 +11,53 @@ abstract class DoctorHomeLayoutData {
   static List<String> titles = [
     AppText.AllPaients,
     AppText.AllDoctors,
-    AppText.profile
+    AppText.profile,
+    AppText.faqs,
+    AppText.communication
   ];
-  static List<List<Widget>> appBarActions (BuildContext context)=> [
-    [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
-    [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
-    [IconButton(
-        onPressed: () {
-          context.setLocale(context.locale == const Locale('ar')
-              ? const Locale('en')
-              : const Locale('ar'));
-        },
-        icon: SvgPicture.asset(
-          AppIcon.language,
-          colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-        ),
-      ),]
-  ];
+  static List<List<Widget>> appBarActions(BuildContext context) => [
+        [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+        [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+        [
+          IconButton(
+            onPressed: () {
+              context.setLocale(context.locale == const Locale('ar')
+                  ? const Locale('en')
+                  : const Locale('ar'));
+            },
+            icon: SvgPicture.asset(
+              AppIcon.language,
+              colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+            ),
+          ),
+        ],
+        [
+          IconButton(
+            onPressed: () {
+              context.setLocale(context.locale == const Locale('ar')
+                  ? const Locale('en')
+                  : const Locale('ar'));
+            },
+            icon: SvgPicture.asset(
+              AppIcon.language,
+              colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+            ),
+          ),
+        ],
+        [
+          IconButton(
+            onPressed: () {
+              context.setLocale(context.locale == const Locale('ar')
+                  ? const Locale('en')
+                  : const Locale('ar'));
+            },
+            icon: SvgPicture.asset(
+              AppIcon.language,
+              colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+            ),
+          ),
+        ]
+      ];
   static BottomNavigationBarItem customBottomNavBarItem(
       {required String label,
       required String imagePath,
@@ -66,6 +96,16 @@ abstract class DoctorHomeLayoutData {
           context: context,
           label: AppText.profile,
           imagePath: AppIcon.profile,
+        ),
+        customBottomNavBarItem(
+          context: context,
+          label: AppText.faqs,
+          imagePath: AppIcon.faqs,
+        ),
+        customBottomNavBarItem(
+          context: context,
+          label: AppText.communication,
+          imagePath: AppIcon.contactUs,
         ),
       ];
 }

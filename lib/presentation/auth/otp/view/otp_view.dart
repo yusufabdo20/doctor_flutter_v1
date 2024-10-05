@@ -32,7 +32,7 @@ class OtpView extends StatelessWidget {
         if (state is OtpPasswordSuccessState) {
           showToast(
             context: context,
-            text: state.userModel.message,
+            text: "register success",
             state: AppColorState.success,
           );
 
@@ -44,8 +44,24 @@ class OtpView extends StatelessWidget {
             context.pushNamedAndRemoveUntil(AppPage.resetPassword,
                 predicate: (_) => false);
           } else {
-            context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
-                predicate: (_) => false);
+            CacheService.setData(
+              key: AppCacheKey.role,
+              value: state.userModel.data.role,
+            );
+            switch (state.userModel.data.role) {
+              case "doctor":
+                context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
+                    predicate: (_) => false);
+                break;
+              case "patient":
+                context.pushNamedAndRemoveUntil(AppPage.patientHomeLayout,
+                    predicate: (_) => false);
+                break;
+              case "family":
+                context.pushNamedAndRemoveUntil(AppPage.familyHomeLayout,
+                    predicate: (_) => false);
+                break;
+            }
           }
         } else if (state is OtpPasswordErrorState) {
           showToast(

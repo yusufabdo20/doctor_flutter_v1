@@ -24,8 +24,20 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 2),
       () {
         if (CacheService.getString(key: AppCacheKey.token) != null) {
-          AppRouter.navigatorKey.currentState!
-              .pushReplacementNamed(AppPage.doctorHomeLayout);
+          switch (CacheService.getString(key: AppCacheKey.role)) {
+            case "doctor":
+              AppRouter.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                  AppPage.doctorHomeLayout, (_) => false);
+              break;
+            case "patient":
+              AppRouter.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                  AppPage.patientHomeLayout, (_) => false);
+              break;
+            case "family":
+              AppRouter.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                  AppPage.familyHomeLayout, (_) => false);
+              break;
+          }
         } else {
           AppRouter.navigatorKey.currentState!
               .pushReplacementNamed(AppPage.loginScreen);
