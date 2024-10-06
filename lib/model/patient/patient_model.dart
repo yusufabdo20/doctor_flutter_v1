@@ -3,13 +3,13 @@ import 'package:doctor_flutter_v1/model/patient/patient_model_data.dart';
 import 'package:equatable/equatable.dart';
 
 class PatientModel extends Equatable {
-  int? Status;
+  int? status;
   String? message;
   List<PatientModelData>? data;
   Meta? meta;
 
   PatientModel({
-    required this.Status,
+    required this.status,
     required this.message,
     required this.meta,
     required this.data,
@@ -17,7 +17,7 @@ class PatientModel extends Equatable {
 
   factory PatientModel.fromJson(Map<String, dynamic> json) {
     return PatientModel(
-      Status: json['Status'],
+      status: json['Status'],
       message: json['message'],
       meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
       data: json['data'] != null
@@ -30,7 +30,7 @@ class PatientModel extends Equatable {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['Status'] = Status;
+    map['Status'] = status;
     map['message'] = message;
     if (data != null) {
       map['data'] = data?.map((v) => v.toJson()).toList();
@@ -43,5 +43,5 @@ class PatientModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [Status, message, data];
+  List<Object?> get props => [status, message, data];
 }

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class FrequentlyAskedListView extends StatefulWidget {
   const FrequentlyAskedListView({
     super.key,
@@ -84,9 +83,7 @@ class _FrequentlyAskedListViewState extends State<FrequentlyAskedListView> {
               ));
             } else {
               return const SliverToBoxAdapter(
-                child: CustomLoading(
-          
-                ),
+                child: CustomLoading(),
               );
             }
           },

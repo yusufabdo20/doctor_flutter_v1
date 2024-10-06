@@ -31,7 +31,7 @@ class DoctorHomeLayoutCubit extends Cubit<DoctorHomeLayoutState> {
       create: (context) => AllPationtsCubit(
         repo: AllPatientRepoImpl(),
       )..getAllPationts(),
-      child: AllPationtsView(),
+      child: const AllPationtsView(),
     ),
     Container(
       color: Colors.blue,
@@ -40,19 +40,19 @@ class DoctorHomeLayoutCubit extends Cubit<DoctorHomeLayoutState> {
       create: (context) => ProfileCubit(
         profileRepo: ProfileRepoImpl(),
       )..getProfile(),
-      child: ProfileView(),
+      child: const ProfileView(),
     ),
     BlocProvider(
       create: (context) => FaqsCubit(
         faqsRepo: FaqsRepoImpl(),
       )..getFaqs(),
-      child: FrequentlyAskedQuestions(),
+      child: const FrequentlyAskedQuestions(),
     ),
     BlocProvider(
       create: (context) => CountactUsCubit(
         contactUsRepo: ContactUsRepoImpl(),
       ),
-      child: ContactUsView(),
+      child: const ContactUsView(),
     ),
   ];
   void changeIndex(int index) {

@@ -25,9 +25,9 @@ class ProfileView extends StatelessWidget {
                   ProfileCubit.get(context).getProfile();
                 });
           } else if (state is ProfileSuccessState) {
-            return ProfileBody();
+            return const ProfileBody();
           } else {
-            return Center(child: CustomLoading());
+            return const Center(child: CustomLoading());
           }
         });
   }

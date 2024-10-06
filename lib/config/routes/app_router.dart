@@ -3,14 +3,17 @@ import 'package:doctor_flutter_v1/controller/doctor_home_layout/doctor_home_layo
 import 'package:doctor_flutter_v1/controller/forget_password_cubit/forget_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
 import 'package:doctor_flutter_v1/controller/otp_password/otp_password_cubit.dart';
+import 'package:doctor_flutter_v1/controller/patient_details_cubit/patient_details_cubit.dart';
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
 import 'package:doctor_flutter_v1/presentation/auth/reset_password/view/reset_password_view.dart';
 import 'package:doctor_flutter_v1/presentation/roles/doctor/home_layout/view/doctor_home_layout_view.dart';
+import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/view/patient_details_view.dart';
 import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
 import 'package:doctor_flutter_v1/repo/otp_repo.dart';
+import 'package:doctor_flutter_v1/repo/patient_details_repo.dart';
 import 'package:doctor_flutter_v1/repo/profile_repo.dart';
 import 'package:doctor_flutter_v1/repo/register_repo.dart';
 import 'package:doctor_flutter_v1/repo/sign_up.dart';
@@ -69,6 +72,16 @@ abstract class AppRouter {
         ));
       case AppPage.resetPassword:
         return _pageRoute(const ResetPasswordView());
+
+      case AppPage.patientDetailsView:
+        return _pageRoute(
+          BlocProvider(
+            create: (context) => PatientDetailsCubit(
+              patientDetailsRepo: PatientDetailsRepoImpl(),
+            )..getPatientDetails(arguments),
+            child: PatientDetailsView(patientId: arguments as int),
+          ),
+        );
 
       // case AppPage.homeScreen:
       //   return _pageRoute(MultiBlocProvider(

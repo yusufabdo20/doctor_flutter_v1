@@ -13,11 +13,11 @@ class FrequentlyAskedQuestions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsetsDirectional.only(top: 24.r, end: 24.r),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColor.whiteClr,
       ),
       padding: EdgeInsets.all(24.r),
-      child: FrequentlyAskedListView(),
+      child: const FrequentlyAskedListView(),
     );
   }
 }

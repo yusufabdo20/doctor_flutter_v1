@@ -1,5 +1,6 @@
 import 'package:doctor_flutter_v1/model/doctor/doctor_patients.dart';
 import 'package:doctor_flutter_v1/model/meta.dart';
+import 'package:doctor_flutter_v1/model/patient/appointments.dart';
 import 'package:doctor_flutter_v1/model/patient/health_record_model.dart';
 import 'package:doctor_flutter_v1/model/patient/medical_history_model.dart';
 import 'package:equatable/equatable.dart';
@@ -23,27 +24,28 @@ class PatientModelData extends Equatable {
   List<HealthRecordModel>? healthRecord;
   List<MedicalHistoryModel>? medicalHistory;
   List<DoctorPatients>? doctorPatients;
+  List<Appointments>? appointments;
 
-  PatientModelData({
-    required this.id,
-    required this.name,
-    required this.avatar,
-    required this.email,
-    required this.phone,
-    required this.country_code,
-    required this.lang,
-    required this.status,
-    required this.active,
-    required this.address,
-    required this.medicalHistory,
-    required this.location,
-    required this.role,
-    required this.created_at,
-    required this.updated_at,
-    required this.doctorPatients,
-    required this.deleted_at,
-    required this.healthRecord,
-  });
+  PatientModelData(
+      {required this.id,
+      required this.name,
+      required this.avatar,
+      required this.email,
+      required this.phone,
+      required this.country_code,
+      required this.lang,
+      required this.status,
+      required this.active,
+      required this.address,
+      required this.medicalHistory,
+      required this.location,
+      required this.role,
+      required this.created_at,
+      required this.updated_at,
+      required this.doctorPatients,
+      required this.deleted_at,
+      required this.healthRecord,
+      required this.appointments});
 
   factory PatientModelData.fromJson(Map<String?, dynamic> json) {
     return PatientModelData(
@@ -66,12 +68,16 @@ class PatientModelData extends Equatable {
       created_at: json['created_at'] ?? '',
       updated_at: json['updated_at'] ?? '',
       deleted_at: json['deleted_at'] ?? '',
-      healthRecord: json['healthRecord'] == null
+      appointments: List<Appointments>.from(
+        json['appointments'].map((x) => Appointments.fromJson(x)),
+      ),
+      healthRecord: json['health_records'] == null
           ? []
           : List<HealthRecordModel>.from(
-              json['health_record'].map((x) => HealthRecordModel.fromJson(x))),
+              json['health_records'].map((x) => HealthRecordModel.fromJson(x))),
     );
   }
+
 
   Map<String?, dynamic> toJson() {
     final Map<String?, dynamic> data = <String?, dynamic>{};
@@ -91,6 +97,8 @@ class PatientModelData extends Equatable {
     data['created_at'] = created_at;
     data['updated_at'] = updated_at;
     data['deleted_at'] = deleted_at;
+
+    data['appointments'] = appointments?.map((x) => x.toJson()).toList();
     data['healthRecord'] = healthRecord?.map((x) => x.toJson()).toList();
     data['medicalHistory'] = medicalHistory?.map((x) => x.toJson()).toList();
     return data;
@@ -109,6 +117,7 @@ class PatientModelData extends Equatable {
         status,
         active,
         address,
+        doctorPatients,
         medicalHistory,
         location,
         role,

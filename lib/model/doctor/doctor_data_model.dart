@@ -42,24 +42,24 @@ class DoctorDataModel extends Equatable {
   });
 
   DoctorDataModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    avatar = json['avatar'];
-    email = json['email'];
-    phone = json['phone'];
-    country_code = json['country_code'];
-    lang = json['lang'];
-    email_verified_at = json['email_verified_at'];
-    email_verification_token = json['email_verification_token'];
-    status = json['status'];
-    active = json['active'];
-    api_token = json['api_token'];
-    deleted_at = json['deleted_at'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    role = json['role'];
-    address = json['address'];
-    location = json['location'];
+    id = json['id'] ?? 0;
+    name = json['name'] ?? '';
+    avatar = json['avatar'] ?? '';
+    email = json['email'] ?? '';
+    phone = json['phone'] ?? '';
+    country_code = json['country_code'] ?? '';
+    lang = json['lang'] ?? '';
+    email_verified_at = json['email_verified_at'] ?? '';
+    email_verification_token = json['email_verification_token'] ?? '';
+    status = json['status'] ?? 0;
+    active = json['active'] ?? 0;
+    api_token = json['api_token'] ?? '';
+    deleted_at = json['deleted_at'] ?? '';
+    created_at = json['created_at'] ?? '';
+    updated_at = json['updated_at'] ?? '';
+    role = json['role'] ?? '';
+    address = json['address'] ?? '';
+    location = json['location'] ?? '';
   }
 
   Map<String, dynamic> toJson() {

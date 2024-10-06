@@ -17,7 +17,7 @@ class ContactUsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(24.r),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColor.whiteClr,
       ),
       child: Form(

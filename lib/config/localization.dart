@@ -1,6 +1,23 @@
 abstract class AppText {
   static const appName = 'Reayah';
   static const doctor = 'doctor';
+  static const name = 'name';
+  static const address = 'address';
+  static const location = 'location';
+  //blood_pressure
+  static const bloodPressure = 'bloodPressure';
+  //heart_rate
+  static const heartRate = 'heartRate';
+  //temperature
+  static const temperature = 'temperature';
+  //treatment_plan
+  static const treatmentPlan = 'treatmentPlan';
+  //appointments
+  static const appointments = 'appointments';
+  //health_records
+  static const healthRecord = 'healthRecord';
+  //medical_history
+  static const medicalHistory = 'medicalHistory';
   //Patient
   static const patient = 'patient';
   //Caregiver

@@ -21,7 +21,10 @@ abstract class EndPoint {
   static String patients = "/patients";
 
   static String getFaqs = "/faqs";
+
   ///contact-us
 
   static String contactUs = "/contact-us";
+
+  static String patientDetails({required String id}) => "/patients/$id";
 }

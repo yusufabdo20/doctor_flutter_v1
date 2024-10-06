@@ -14,6 +14,7 @@ import 'package:doctor_flutter_v1/model/otp_model.dart';
 import 'package:doctor_flutter_v1/presentation/auth/otp/widgets/custom_pin_put.dart';
 import 'package:doctor_flutter_v1/presentation/auth/otp/widgets/otp_timer.dart';
 import 'package:doctor_flutter_v1/presentation/auth/widgets/logo_with_title.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -102,7 +103,7 @@ class OtpBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.r, vertical: 50.r),
       child: Column(
         children: [
-          LogoWithTitle(title: AppText.otpVerification),
+          const LogoWithTitle(title: AppText.otpVerification),
           SizedBox(
             height: 50.r,
           ),
@@ -124,13 +125,21 @@ class OtpBody extends StatelessWidget {
             height: 15.r,
           ),
           Form(
-              key: OtpPasswordCubit.get(context).formKey,
-              child: CustomPinPut(
-                  controller: OtpPasswordCubit.get(context).controller)),
+            key: OtpPasswordCubit.get(context).formKey,
+            child: CustomPinPut(
+              controller: OtpPasswordCubit.get(context).controller,
+              validator: (value){
+                if (value == null || value.isEmpty) {
+                  return context.tr(AppText.pleaseEnterCode);
+                }
+                return null;
+              },
+            ),
+          ),
           SizedBox(
             height: 15.r,
           ),
-          OtpTimer(),
+          const OtpTimer(),
           SizedBox(
             height: 15.r,
           ),

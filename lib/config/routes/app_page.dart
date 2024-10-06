@@ -14,4 +14,6 @@ abstract class AppPage {
   static const String patientHomeLayout = "/patientHomeLayout";
   //family
   static const String familyHomeLayout = "/familyHomeLayout";
+  //PatientDetailsView
+  static const String patientDetailsView = "/patientDetailsView";
 }
