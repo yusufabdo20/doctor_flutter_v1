@@ -12,6 +12,12 @@ abstract class HealthRecordRepo {
     required String id,
     required int page,
   });
+  Future<Either<Failures, String>> submitHealthRecords({
+    required String bloodPressure,
+    required String heartRate,
+    required String temperature,
+    required String treatmentPlan,
+  });
 }
 
 class HealthRecordRepoImpl implements HealthRecordRepo {
@@ -26,6 +32,30 @@ class HealthRecordRepoImpl implements HealthRecordRepo {
           queryParameters: {"page": page},
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(HealthRecordModel.fromJson(response.data));
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      return Left(LocalFailures(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> submitHealthRecords(
+      {required String bloodPressure,
+      required String heartRate,
+      required String temperature,
+      required String treatmentPlan}) async {
+    try {
+      Response response = await DioHelper.postData(
+          url: EndPoint.submitHealthRecords,
+          data: {
+            "blood_pressure": bloodPressure,
+            "heart_rate": heartRate,
+            "temperature": temperature,
+            "treatment_plan": treatmentPlan
+          },
+          token: CacheService.getString(key: AppCacheKey.token));
+      return Right(response.data["message"]);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     } catch (e) {

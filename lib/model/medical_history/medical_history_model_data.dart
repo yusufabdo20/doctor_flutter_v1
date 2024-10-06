@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class MedicalHistoryModel extends Equatable {
+class MedicalHistoryModelData extends Equatable {
   num? id;
   num? patient_id;
   String? diagnosis;
@@ -8,7 +8,7 @@ class MedicalHistoryModel extends Equatable {
   String? created_at;
   String? notes;
   String? date_recorded;
-  MedicalHistoryModel({
+  MedicalHistoryModelData({
     required this.id,
     required this.patient_id,
     required this.diagnosis,
@@ -18,8 +18,8 @@ class MedicalHistoryModel extends Equatable {
     required this.date_recorded,
   });
 
-  factory MedicalHistoryModel.fromJson(Map<String?, dynamic> json) {
-    return MedicalHistoryModel(
+  factory MedicalHistoryModelData.fromJson(Map<String?, dynamic> json) {
+    return MedicalHistoryModelData(
       id: json['id'] ?? 0,
       patient_id: json['patient_id'] ?? 0,
       diagnosis: json['diagnosis'] ?? '',

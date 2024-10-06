@@ -2,7 +2,7 @@ import 'package:doctor_flutter_v1/model/doctor/doctor_patients.dart';
 import 'package:doctor_flutter_v1/model/meta.dart';
 import 'package:doctor_flutter_v1/model/patient/appointments.dart';
 import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.dart';
-import 'package:doctor_flutter_v1/model/patient/medical_history_model.dart';
+import 'package:doctor_flutter_v1/model/medical_history/medical_history_model_data.dart';
 import 'package:equatable/equatable.dart';
 
 class PatientModelData extends Equatable {
@@ -22,7 +22,7 @@ class PatientModelData extends Equatable {
   String? updated_at;
   String? deleted_at;
   List<HealthRecordModelData>? healthRecord;
-  List<MedicalHistoryModel>? medicalHistory;
+  List<MedicalHistoryModelData>? medicalHistory;
   List<DoctorPatients>? doctorPatients;
   List<Appointments>? appointments;
 
@@ -58,8 +58,8 @@ class PatientModelData extends Equatable {
       lang: json['lang'] ?? '',
       doctorPatients: List<DoctorPatients>.from(
           json['doctorPatients'].map((x) => DoctorPatients.fromJson(x))),
-      medicalHistory: List<MedicalHistoryModel>.from(
-          json['medical_history'].map((x) => MedicalHistoryModel.fromJson(x))),
+      medicalHistory: List<MedicalHistoryModelData>.from(json['medical_history']
+          .map((x) => MedicalHistoryModelData.fromJson(x))),
       status: json['status'] ?? 0,
       active: json['active'] ?? 0,
       address: json['address'] ?? '',

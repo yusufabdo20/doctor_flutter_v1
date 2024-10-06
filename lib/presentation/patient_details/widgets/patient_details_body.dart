@@ -86,7 +86,7 @@ class PatientDetailsBody extends StatelessWidget {
                 onPressed: () {
                   context.push(
                     MedicalHistoryView(
-                      healthRecordModel: patientModelData.medicalHistory!,
+                      medicalHistoryModel: patientModelData.medicalHistory!,
                     ),
                   );
                 },

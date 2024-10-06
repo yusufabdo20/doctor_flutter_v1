@@ -30,6 +30,7 @@ class PatientHomeLayout extends StatelessWidget {
                 return PatientHomeLayoutCubit.get(context).screens[index];
               }),
           bottomNavigationBar: const PaientCustomBottomNavBar(),
+         
         ));
   }
 }

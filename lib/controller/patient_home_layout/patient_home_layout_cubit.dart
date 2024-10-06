@@ -2,11 +2,13 @@ import 'package:doctor_flutter_v1/controller/all_pationts/all_pationts_cubit.dar
 import 'package:doctor_flutter_v1/controller/countact_us/countact_us_cubit.dart';
 import 'package:doctor_flutter_v1/controller/faqs_cubit/faqs_cubit.dart';
 import 'package:doctor_flutter_v1/controller/health_record/health_record_cubit.dart';
+import 'package:doctor_flutter_v1/controller/medical_history/medical_history_cubit.dart';
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/presentation/contact_us/view/contact_us_view.dart';
 import 'package:doctor_flutter_v1/presentation/frequently_asked_questions/view/frequently_asked_questions_mob_tab.dart';
 import 'package:doctor_flutter_v1/presentation/all_patients/view/all_pationts_view.dart';
 import 'package:doctor_flutter_v1/presentation/health_record_pagination/health_record_pagination.dart';
+import 'package:doctor_flutter_v1/presentation/medical_history_pagination/medical_history_pagination.dart';
 import 'package:doctor_flutter_v1/presentation/patient_details/view/health_record.dart';
 import 'package:doctor_flutter_v1/presentation/profile/view/profile_view.dart';
 import 'package:doctor_flutter_v1/repo/all_patient_repo.dart';
@@ -31,8 +33,9 @@ class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
       create: (context) => HealthRecordCubit()..getAllRecord(),
       child: const HealthRecordPagination(),
     ),
-    Container(
-      color: Colors.blue,
+    BlocProvider(
+      create: (context) => MedicalHistoryCubit()..getAllRecord(),
+      child: const MedicalHistoryPagination(),
     ),
     BlocProvider(
       create: (context) => ProfileCubit(
