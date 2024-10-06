@@ -8,6 +8,14 @@ abstract class AppText {
   static const bloodPressure = 'bloodPressure';
   //heart_rate
   static const heartRate = 'heartRate';
+  //diagnosis
+  static const diagnosis = 'diagnosis';
+  //treatment
+  static const treatment = 'treatment';
+  //notes
+  static const notes = 'notes';
+  //date_recorded
+  static const dateRecorded = 'dateRecorded';
   //temperature
   static const temperature = 'temperature';
   //treatment_plan

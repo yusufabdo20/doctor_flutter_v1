@@ -6,6 +6,7 @@ import 'package:doctor_flutter_v1/core/widgets/custom_elevated_button.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/patient/patient_model_data.dart';
 import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/view/health_record.dart';
+import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/view/medical_history_view.dart';
 import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/widgets/custom_patient_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -82,7 +83,14 @@ class PatientDetailsBody extends StatelessWidget {
               width: 10.r,
             ),
             CustomElevatedButton(
-                onPressed: () {}, title: AppText.medicalHistory),
+                onPressed: () {
+                  context.push(
+                    MedicalHistoryView(
+                      healthRecordModel: patientModelData.medicalHistory!,
+                    ),
+                  );
+                },
+                title: AppText.medicalHistory),
           ])
         ],
       ),
