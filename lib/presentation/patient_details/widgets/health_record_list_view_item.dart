@@ -1,28 +1,18 @@
-import 'package:doctor_flutter_v1/config/localization.dart';
+
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/utils/app_style.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
-import 'package:doctor_flutter_v1/model/patient/health_record_model.dart';
+import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HealthRecord extends StatelessWidget {
-  final List<HealthRecordModel> healthRecordModel;
-  const HealthRecord({super.key, required this.healthRecordModel});
+class HealthRecordListViewItem extends StatelessWidget {
+ final  HealthRecordModelData healthRecordModel;
+  const HealthRecordListViewItem({super.key, required this.healthRecordModel});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-            text: AppText.healthRecord,
-            style: AppStyle.textStyle20BoldKufram,
-            color: AppColor.white),
-      ),
-      body: ListView.builder(
-        itemCount: healthRecordModel.length,
-        itemBuilder: (context, index) {
-          return Card(
+       return Card(
             margin: EdgeInsets.all(16.r),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.r),
@@ -42,7 +32,7 @@ class HealthRecord extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: CustomText(
                             text:
-                                healthRecordModel[index].heart_rate.toString(),
+                                healthRecordModel.heart_rate.toString(),
                             style: AppStyle.textStyle16RegularKufram,
                             color: AppColor.blue,
                           ),
@@ -55,7 +45,7 @@ class HealthRecord extends StatelessWidget {
                         title: FittedBox(
                           fit: BoxFit.scaleDown,
                           child: CustomText(
-                            text: healthRecordModel[index].blood_pressure!,
+                            text: healthRecordModel.blood_pressure!,
                             style: AppStyle.textStyle16RegularKufram,
                             color: AppColor.blue,
                           ),
@@ -69,7 +59,7 @@ class HealthRecord extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: CustomText(
                             text:
-                                healthRecordModel[index].temperature.toString(),
+                                healthRecordModel.temperature.toString(),
                             style: AppStyle.textStyle16RegularKufram,
                             color: AppColor.blue,
                           ),
@@ -79,7 +69,7 @@ class HealthRecord extends StatelessWidget {
                   ],
                 ),
                 CustomText(
-                  text: "${healthRecordModel[index].treatment_plan}",
+                  text: "${healthRecordModel.treatment_plan}",
                   style: AppStyle.textStyle16RegularKufram,
                   textAlign: TextAlign.center,
                   maxLines: 100,
@@ -88,8 +78,7 @@ class HealthRecord extends StatelessWidget {
               ]),
             ),
           );
-        },
-      ),
-    );
+       
+       
   }
 }

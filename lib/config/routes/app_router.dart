@@ -4,12 +4,14 @@ import 'package:doctor_flutter_v1/controller/forget_password_cubit/forget_passwo
 import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
 import 'package:doctor_flutter_v1/controller/otp_password/otp_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/patient_details_cubit/patient_details_cubit.dart';
+import 'package:doctor_flutter_v1/controller/patient_home_layout/patient_home_layout_cubit.dart';
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
 import 'package:doctor_flutter_v1/presentation/auth/reset_password/view/reset_password_view.dart';
-import 'package:doctor_flutter_v1/presentation/roles/doctor/home_layout/view/doctor_home_layout_view.dart';
-import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/view/patient_details_view.dart';
+import 'package:doctor_flutter_v1/presentation/doctor_home_layout/view/doctor_home_layout_view.dart';
+import 'package:doctor_flutter_v1/presentation/paient_home_layout/view/patients_home_layout_view.dart';
+import 'package:doctor_flutter_v1/presentation/patient_details/view/patient_details_view.dart';
 import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
 import 'package:doctor_flutter_v1/repo/otp_repo.dart';
@@ -69,6 +71,11 @@ abstract class AppRouter {
         return _pageRoute(BlocProvider(
           create: (context) => DoctorHomeLayoutCubit(),
           child: const DoctorHomeLayout(),
+        ));
+      case AppPage.patientHomeLayout:
+        return _pageRoute(BlocProvider(
+          create: (context) => PatientHomeLayoutCubit(),
+          child: const PatientHomeLayout(),
         ));
       case AppPage.resetPassword:
         return _pageRoute(const ResetPasswordView());

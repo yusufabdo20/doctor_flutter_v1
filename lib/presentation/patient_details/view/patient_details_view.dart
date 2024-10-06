@@ -5,7 +5,7 @@ import 'package:doctor_flutter_v1/core/widgets/custom_loading.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/core/widgets/error_widget.dart';
 import 'package:doctor_flutter_v1/model/patient/patient_model_data.dart';
-import 'package:doctor_flutter_v1/presentation/roles/doctor/patient_details/widgets/patient_details_body.dart';
+import 'package:doctor_flutter_v1/presentation/patient_details/widgets/patient_details_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -49,6 +49,10 @@ class OtpView extends StatelessWidget {
               key: AppCacheKey.role,
               value: state.userModel.data.role,
             );
+            CacheService.setData(
+              key: AppCacheKey.id,
+              value: state.userModel.data.id,
+            );
             switch (state.userModel.data.role) {
               case "doctor":
                 context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
@@ -128,7 +132,7 @@ class OtpBody extends StatelessWidget {
             key: OtpPasswordCubit.get(context).formKey,
             child: CustomPinPut(
               controller: OtpPasswordCubit.get(context).controller,
-              validator: (value){
+              validator: (value) {
                 if (value == null || value.isEmpty) {
                   return context.tr(AppText.pleaseEnterCode);
                 }

@@ -1,7 +1,7 @@
 import 'package:doctor_flutter_v1/model/doctor/doctor_patients.dart';
 import 'package:doctor_flutter_v1/model/meta.dart';
 import 'package:doctor_flutter_v1/model/patient/appointments.dart';
-import 'package:doctor_flutter_v1/model/patient/health_record_model.dart';
+import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.dart';
 import 'package:doctor_flutter_v1/model/patient/medical_history_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -21,7 +21,7 @@ class PatientModelData extends Equatable {
   String? created_at;
   String? updated_at;
   String? deleted_at;
-  List<HealthRecordModel>? healthRecord;
+  List<HealthRecordModelData>? healthRecord;
   List<MedicalHistoryModel>? medicalHistory;
   List<DoctorPatients>? doctorPatients;
   List<Appointments>? appointments;
@@ -73,11 +73,10 @@ class PatientModelData extends Equatable {
       ),
       healthRecord: json['health_records'] == null
           ? []
-          : List<HealthRecordModel>.from(
-              json['health_records'].map((x) => HealthRecordModel.fromJson(x))),
+          : List<HealthRecordModelData>.from(json['health_records']
+              .map((x) => HealthRecordModelData.fromJson(x))),
     );
   }
-
 
   Map<String?, dynamic> toJson() {
     final Map<String?, dynamic> data = <String?, dynamic>{};

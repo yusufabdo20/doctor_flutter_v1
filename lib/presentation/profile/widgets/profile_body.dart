@@ -2,8 +2,8 @@ import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_elevated_button.dart';
-import 'package:doctor_flutter_v1/presentation/roles/doctor/profile/widgets/personal_info.dart';
-import 'package:doctor_flutter_v1/presentation/roles/doctor/profile/widgets/profile_avatar.dart';
+import 'package:doctor_flutter_v1/presentation/profile/widgets/personal_info.dart';
+import 'package:doctor_flutter_v1/presentation/profile/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

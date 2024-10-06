@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class HealthRecordModel extends Equatable {
+class HealthRecordModelData extends Equatable {
   num? id;
   num? patient_id;
   num? doctor_id;
@@ -12,7 +12,7 @@ class HealthRecordModel extends Equatable {
   String? created_at;
   String? updated_at;
 
-  HealthRecordModel({
+  HealthRecordModelData({
     required this.id,
     required this.patient_id,
     required this.doctor_id,
@@ -25,8 +25,8 @@ class HealthRecordModel extends Equatable {
     required this.updated_at,
   });
 
-  factory HealthRecordModel.fromJson(Map<String?, dynamic> json) {
-    return HealthRecordModel(
+  factory HealthRecordModelData.fromJson(Map<String?, dynamic> json) {
+    return HealthRecordModelData(
       id: json['id'] ?? 0,
       patient_id: json['patient_id'] ?? 0,
       doctor_id: json['doctor_id'] ?? 0,

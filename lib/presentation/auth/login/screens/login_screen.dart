@@ -22,31 +22,33 @@ class LoginScreen extends StatelessWidget {
               text: 'login success',
               state: AppColorState.success,
             );
+            CacheService.setData(
+              key: AppCacheKey.id,
+              value: state.loginModel.user.id,
+            );
 
-      
             CacheService.setData(
               key: AppCacheKey.token,
               value: state.loginModel.token,
             );
             CacheService.setData(
-                  key: AppCacheKey.role,
-                  value: state.loginModel.user.role,
-                );
-           switch(state.loginModel.user.role){
-             case "doctor":
-             context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
-                 predicate: (_) => false);
-             break;
-             case "patient":
-             context.pushNamedAndRemoveUntil(AppPage.patientHomeLayout,
-                 predicate: (_) => false);
-             break;
-             case "family":
-             context.pushNamedAndRemoveUntil(AppPage.familyHomeLayout,
-                 predicate: (_) => false);
-             break;
-          }
-          
+              key: AppCacheKey.role,
+              value: state.loginModel.user.role,
+            );
+            switch (state.loginModel.user.role) {
+              case "doctor":
+                context.pushNamedAndRemoveUntil(AppPage.doctorHomeLayout,
+                    predicate: (_) => false);
+                break;
+              case "patient":
+                context.pushNamedAndRemoveUntil(AppPage.patientHomeLayout,
+                    predicate: (_) => false);
+                break;
+              case "family":
+                context.pushNamedAndRemoveUntil(AppPage.familyHomeLayout,
+                    predicate: (_) => false);
+                break;
+            }
           } else if (state is LoginErrorState) {
             showToast(
               context: context,

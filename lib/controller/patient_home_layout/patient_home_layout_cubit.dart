@@ -1,12 +1,13 @@
-import 'package:bloc/bloc.dart';
 import 'package:doctor_flutter_v1/controller/all_pationts/all_pationts_cubit.dart';
 import 'package:doctor_flutter_v1/controller/countact_us/countact_us_cubit.dart';
 import 'package:doctor_flutter_v1/controller/faqs_cubit/faqs_cubit.dart';
+import 'package:doctor_flutter_v1/controller/health_record/health_record_cubit.dart';
 import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
-import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/presentation/contact_us/view/contact_us_view.dart';
 import 'package:doctor_flutter_v1/presentation/frequently_asked_questions/view/frequently_asked_questions_mob_tab.dart';
 import 'package:doctor_flutter_v1/presentation/all_patients/view/all_pationts_view.dart';
+import 'package:doctor_flutter_v1/presentation/health_record_pagination/health_record_pagination.dart';
+import 'package:doctor_flutter_v1/presentation/patient_details/view/health_record.dart';
 import 'package:doctor_flutter_v1/presentation/profile/view/profile_view.dart';
 import 'package:doctor_flutter_v1/repo/all_patient_repo.dart';
 import 'package:doctor_flutter_v1/repo/contact_us_repo.dart';
@@ -14,24 +15,21 @@ import 'package:doctor_flutter_v1/repo/faqs_repo.dart';
 import 'package:doctor_flutter_v1/repo/profile_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
-part 'doctor_home_layout_state.dart';
+part 'patient_home_layout_state.dart';
 
-class DoctorHomeLayoutCubit extends Cubit<DoctorHomeLayoutState> {
-  DoctorHomeLayoutCubit() : super(DoctorHomeLayoutInitial());
+class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
+  PatientHomeLayoutCubit() : super(PatientHomeLayoutInitial());
 
-  static DoctorHomeLayoutCubit get(BuildContext context) =>
-      BlocProvider.of<DoctorHomeLayoutCubit>(context);
+  static PatientHomeLayoutCubit get(BuildContext context) =>
+      BlocProvider.of<PatientHomeLayoutCubit>(context);
   PageController pageController = PageController();
   int selectedIndex = 0;
 
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => AllPationtsCubit(
-        repo: AllPatientRepoImpl(),
-      )..getAllPationts(),
-      child: const AllPationtsView(),
+      create: (context) => HealthRecordCubit()..getAllRecord(),
+      child: const HealthRecordPagination(),
     ),
     Container(
       color: Colors.blue,
@@ -58,6 +56,6 @@ class DoctorHomeLayoutCubit extends Cubit<DoctorHomeLayoutState> {
   void changeIndex(int index) {
     selectedIndex = index;
     pageController.jumpToPage(index);
-    emit(DoctorHomeLayoutChangeIndexState());
+    emit(PatientHomeLayoutChangeIndexState());
   }
 }
