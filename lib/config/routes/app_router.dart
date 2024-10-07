@@ -72,6 +72,11 @@ abstract class AppRouter {
           create: (context) => DoctorHomeLayoutCubit(),
           child: const DoctorHomeLayout(),
         ));
+      case AppPage.familyHomeLayout:
+        return _pageRoute(BlocProvider(
+          create: (context) => DoctorHomeLayoutCubit(),
+          child: const DoctorHomeLayout(),
+        ));
       case AppPage.patientHomeLayout:
         return _pageRoute(BlocProvider(
           create: (context) => PatientHomeLayoutCubit(),
