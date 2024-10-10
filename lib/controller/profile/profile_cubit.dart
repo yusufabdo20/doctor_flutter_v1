@@ -28,6 +28,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   TextEditingController userName = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   // Country? country;
   void getProfile() async {
@@ -62,6 +63,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ProfileErrorState(error.errorMessage));
     }, (data) {
       log(data.toJson().toString());
+
       getProfile();
     });
   }
@@ -80,8 +82,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (image != null) {
       var result = await profileRepo.updateAvatar(image: image);
       result.fold((error) {
+        log("Error🧨🧨🧨🧨");
+
+        log(error.errorMessage);
         emit(ProfileErrorState(error.errorMessage));
       }, (data) {
+        log("data🧨🧨🧨🧨");
+        log(data);
+
         getProfile();
       });
     }

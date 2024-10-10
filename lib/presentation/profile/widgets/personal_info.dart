@@ -12,46 +12,49 @@ class PersonalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CustomTextFormFeild(
-            text: AppText.userName,
-            prefixIcon: Icons.person,
-            controller: ProfileCubit.get(context).userName,
-            validator: (p0) {
-              if (p0 == null || p0.isEmpty) {
-                return context.tr(AppText.pleaseEnterUserName);
-              }
-              return null;
-            }),
-        SizedBox(
-          height: 24.r,
-        ),
-        CustomTextFormFeild(
-            text: AppText.email,
-            prefixIcon: Icons.email,
-            controller: ProfileCubit.get(context).email,
-            validator: (p0) {
-              if (p0 == null || p0.isEmpty) {
-                return context.tr(AppText.pleaseEnterEmail);
-              }
-              return null;
-            }),
-        SizedBox(
-          height: 24.r,
-        ),
+    return Form(
+      key: ProfileCubit.get(context).formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
           CustomTextFormFeild(
-            text: AppText.phone,
-            prefixIcon: Icons.phone,
-            controller: ProfileCubit.get(context).phone,
-            validator: (p0) {
-              if (p0 == null || p0.isEmpty) {
-                return context.tr(AppText.pleaseEnterPhone);
-              }
-              return null;
-            }),
-      ],
+              text: AppText.userName,
+              prefixIcon: Icons.person,
+              controller: ProfileCubit.get(context).userName,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.pleaseEnterUserName);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.email,
+              prefixIcon: Icons.email,
+              controller: ProfileCubit.get(context).email,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.pleaseEnterEmail);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.phone,
+              prefixIcon: Icons.phone,
+              controller: ProfileCubit.get(context).phone,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.pleaseEnterPhone);
+                }
+                return null;
+              }),
+        ],
+      ),
     );
   }
 }

@@ -31,7 +31,9 @@ class ProfileBody extends StatelessWidget {
           CustomElevatedButton(
             title: AppText.saveChanges,
             onPressed: () {
-              ProfileCubit.get(context).updateProfile(context: context);
+              if (ProfileCubit.get(context).formKey.currentState!.validate()) {
+                ProfileCubit.get(context).updateProfile(context: context);
+              }
             },
           ),
           SizedBox(

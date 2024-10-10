@@ -68,14 +68,14 @@ abstract class PatientHomeLayoutData {
     return BottomNavigationBarItem(
       activeIcon: SvgPicture.asset(
         imagePath,
-        height: 32,
-        width: 32,
+        height: 25.h,
+        width: 25.w,
         colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
       ),
       icon: SvgPicture.asset(
         imagePath,
-        height: 32,
-        width: 32,
+        height: 25.h,
+        width: 25.w,
         colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
       ),
       label: context.tr(label),
