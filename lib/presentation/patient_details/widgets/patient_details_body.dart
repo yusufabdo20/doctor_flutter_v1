@@ -24,75 +24,77 @@ class PatientDetailsBody extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 50.r),
       width: double.infinity,
-      child: Column(
-        children: [
-          Container(
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: AppColor.blue,
-                width: 3.r,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppColor.blue,
+                  width: 3.r,
+                ),
+              ),
+              child: CircleAvatar(
+                radius: 65.r,
+                backgroundColor: AppColor.white,
+                backgroundImage: NetworkImage(
+                  patientModelData.avatar!,
+                ),
               ),
             ),
-            child: CircleAvatar(
-              radius: 65.r,
-              backgroundColor: AppColor.white,
-              backgroundImage: NetworkImage(
-                patientModelData.avatar!,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 12.r,
-          ),
-          CustomPatientData(
-            icon: Icons.person,
-            title: AppText.name,
-            subtitle: patientModelData.name!,
-          ),
-          CustomPatientData(
-            icon: Icons.email,
-            title: AppText.email,
-            subtitle: patientModelData.email!,
-          ),
-          CustomPatientData(
-            icon: Icons.phone,
-            title: AppText.phone,
-            subtitle: patientModelData.phone!,
-          ),
-          CustomPatientData(
-            icon: Icons.location_on,
-            title: AppText.address,
-            subtitle: patientModelData.address!,
-          ),
-          CustomPatientData(
-            icon: Icons.location_city,
-            title: AppText.location,
-            subtitle: patientModelData.location!,
-          ),
-          Row(children: [
-            CustomElevatedButton(
-                onPressed: () {
-                  context.push(HealthRecord(
-                    healthRecordModel: patientModelData.healthRecord!,
-                  ));
-                },
-                title: AppText.healthRecord),
             SizedBox(
-              width: 10.r,
+              height: 12.r,
             ),
-            CustomElevatedButton(
-                onPressed: () {
-                  context.push(
-                    MedicalHistoryView(
-                      medicalHistoryModel: patientModelData.medicalHistory!,
-                    ),
-                  );
-                },
-                title: AppText.medicalHistory),
-          ])
-        ],
+            CustomPatientData(
+              icon: Icons.person,
+              title: AppText.name,
+              subtitle: patientModelData.name!,
+            ),
+            CustomPatientData(
+              icon: Icons.email,
+              title: AppText.email,
+              subtitle: patientModelData.email!,
+            ),
+            CustomPatientData(
+              icon: Icons.phone,
+              title: AppText.phone,
+              subtitle: patientModelData.phone!,
+            ),
+            CustomPatientData(
+              icon: Icons.location_on,
+              title: AppText.address,
+              subtitle: patientModelData.address!,
+            ),
+            CustomPatientData(
+              icon: Icons.location_city,
+              title: AppText.location,
+              subtitle: patientModelData.location!,
+            ),
+            Row(children: [
+              CustomElevatedButton(
+                  onPressed: () {
+                    context.push(HealthRecord(
+                      healthRecordModel: patientModelData.healthRecord!,
+                    ));
+                  },
+                  title: AppText.healthRecord),
+              SizedBox(
+                width: 10.r,
+              ),
+              CustomElevatedButton(
+                  onPressed: () {
+                    context.push(
+                      MedicalHistoryView(
+                        medicalHistoryModel: patientModelData.medicalHistory!,
+                      ),
+                    );
+                  },
+                  title: AppText.medicalHistory),
+            ])
+          ],
+        ),
       ),
     );
   }

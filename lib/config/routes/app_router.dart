@@ -5,7 +5,6 @@ import 'package:doctor_flutter_v1/controller/login_cubit/login_cubit.dart';
 import 'package:doctor_flutter_v1/controller/otp_password/otp_password_cubit.dart';
 import 'package:doctor_flutter_v1/controller/patient_details_cubit/patient_details_cubit.dart';
 import 'package:doctor_flutter_v1/controller/patient_home_layout/patient_home_layout_cubit.dart';
-import 'package:doctor_flutter_v1/controller/profile/profile_cubit.dart';
 import 'package:doctor_flutter_v1/controller/register_cubit/register_cubit_cubit.dart';
 import 'package:doctor_flutter_v1/model/otp_model.dart';
 import 'package:doctor_flutter_v1/presentation/auth/reset_password/view/reset_password_view.dart';
@@ -16,8 +15,6 @@ import 'package:doctor_flutter_v1/repo/forget_password_repo.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
 import 'package:doctor_flutter_v1/repo/otp_repo.dart';
 import 'package:doctor_flutter_v1/repo/patient_details_repo.dart';
-import 'package:doctor_flutter_v1/repo/profile_repo.dart';
-import 'package:doctor_flutter_v1/repo/register_repo.dart';
 import 'package:doctor_flutter_v1/repo/sign_up.dart';
 import 'package:doctor_flutter_v1/presentation/auth/forget_password/view/forget_passwod_view.dart';
 import 'package:doctor_flutter_v1/presentation/auth/login/screens/login_screen.dart';
@@ -26,6 +23,8 @@ import 'package:doctor_flutter_v1/presentation/auth/register/view/register_view.
 import 'package:doctor_flutter_v1/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../presentation/send_appoinments/send_appointment.dart';
 
 abstract class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -94,6 +93,8 @@ abstract class AppRouter {
             child: PatientDetailsView(patientId: arguments as int),
           ),
         );
+      case AppPage.sendAppoinmentView:
+        return _pageRoute(const SendAppointmentView());
 
       // case AppPage.homeScreen:
       //   return _pageRoute(MultiBlocProvider(

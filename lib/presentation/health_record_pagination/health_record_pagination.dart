@@ -1,3 +1,4 @@
+import 'package:doctor_flutter_v1/config/size_config.dart';
 import 'package:doctor_flutter_v1/controller/health_record/health_record_cubit.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_loading.dart';
@@ -7,7 +8,10 @@ import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.d
 import 'package:doctor_flutter_v1/model/patient/patient_model_data.dart';
 import 'package:doctor_flutter_v1/presentation/patient_details/widgets/health_record_list_view_item.dart';
 import 'package:flutter/material.dart';
+import 'package:gen_extension/gen_extension.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
+import '../../config/routes/app_page.dart';
 
 class HealthRecordPagination extends StatelessWidget {
   const HealthRecordPagination({super.key});
@@ -50,7 +54,11 @@ class HealthRecordPagination extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.blue,
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(
+            AppPage.sendAppoinmentView,
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );

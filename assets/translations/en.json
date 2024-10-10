@@ -16,6 +16,7 @@
   "diagnosis": "Diagnosis",
   "treatment": "Treatment",
   "notes": "Notes",
+  "sendAppoinment":"Send Appoinment",
   "dateRecorded": "Date Recorded",
   "treatmentPlan": "Treatment Plan",
   "login": "Login",

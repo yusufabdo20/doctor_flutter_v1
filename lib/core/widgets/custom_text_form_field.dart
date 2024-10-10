@@ -50,72 +50,75 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Visibility(
-          visible: widget.showTitle,
-          replacement: const SizedBox.shrink(),
-          child: Column(
-            children: [
-              CustomText(
-                text: context.tr(widget.text),
-                style: AppStyle.textStyle14RegularKufram,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                height: 8.r,
-              ),
-            ],
-          ),
-        ),
-        TextFormField(
-          keyboardType: widget.isPassword
-              ? TextInputType.visiblePassword
-              : widget.keyboardType,
-          obscureText: widget.isPassword ? obscureText : false,
-          validator: widget.validator,
-          onChanged: widget.onChanged,
-          controller: widget.controller,
-          maxLines: widget.maxLines,
-          style:
-              AppStyle.textStyle14RegularKufram.copyWith(color: AppColor.blue),
-          decoration: InputDecoration(
-            hintText: context.tr(widget.text),
-            filled: true,
-            fillColor: AppColor.white.withOpacity(0.45),
-            contentPadding: EdgeInsets.all(8.r),
-            labelStyle: AppStyle.textStyle14RegularKufram,
-            hintStyle: AppStyle.textStyle14RegularKufram.copyWith(
-              color: AppColor.grayClr,
+    return Container(
+      margin: EdgeInsets.only(bottom: 10.r),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: widget.showTitle,
+            replacement: const SizedBox.shrink(),
+            child: Column(
+              children: [
+                CustomText(
+                  text: context.tr(widget.text),
+                  style: AppStyle.textStyle14RegularKufram,
+                  color: AppColor.blue,
+                ),
+                SizedBox(
+                  height: 8.r,
+                ),
+              ],
             ),
-            prefixIcon: widget.prefixIcon != null
-                ? Icon(
-                    widget.prefixIcon,
-                    color: AppColor.blue,
-                  )
-                : null,
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    icon: Icon(
-                      obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: AppColor.blue,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        obscureText = !obscureText;
-                      });
-                    },
-                  )
-                : null,
-            border: border(context),
-            enabledBorder: border(context),
-            focusedBorder: border(context),
-            errorBorder: border(context),
-            focusedErrorBorder: border(context),
           ),
-        ),
-      ],
+          TextFormField(
+            keyboardType: widget.isPassword
+                ? TextInputType.visiblePassword
+                : widget.keyboardType,
+            obscureText: widget.isPassword ? obscureText : false,
+            validator: widget.validator,
+            onChanged: widget.onChanged,
+            controller: widget.controller,
+            maxLines: widget.maxLines,
+            style: AppStyle.textStyle14RegularKufram
+                .copyWith(color: AppColor.blue),
+            decoration: InputDecoration(
+              hintText: context.tr(widget.text),
+              filled: true,
+              fillColor: AppColor.white.withOpacity(0.45),
+              contentPadding: EdgeInsets.all(8.r),
+              labelStyle: AppStyle.textStyle14RegularKufram,
+              hintStyle: AppStyle.textStyle14RegularKufram.copyWith(
+                color: AppColor.grayClr,
+              ),
+              prefixIcon: widget.prefixIcon != null
+                  ? Icon(
+                      widget.prefixIcon,
+                      color: AppColor.blue,
+                    )
+                  : null,
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      icon: Icon(
+                        obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: AppColor.blue,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                    )
+                  : null,
+              border: border(context),
+              enabledBorder: border(context),
+              focusedBorder: border(context),
+              errorBorder: border(context),
+              focusedErrorBorder: border(context),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -83,6 +83,10 @@ abstract class AppText {
   static const faqs = 'faqs';
 
   static const exit = 'exit';
+  static const blood_pressure = 'blood_pressure';
+  static const heart_rate = 'heart_rate';
+  // static const temperature = 'temperature';
+  static const treatment_plan = 'treatment_plan';
 
   static const ok = 'ok';
 
@@ -97,4 +101,5 @@ abstract class AppText {
   static const AllPaients = "AllPatients";
   //pleaseEnterDescription
   static const pleaseEnterDescription = 'pleaseEnterDescription';
+  static const sendAppoinment = 'send Appoinment';
 }
