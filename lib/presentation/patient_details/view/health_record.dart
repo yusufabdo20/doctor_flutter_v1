@@ -23,7 +23,8 @@ class HealthRecord extends StatelessWidget {
       body: ListView.builder(
         itemCount: healthRecordModel.length,
         itemBuilder: (context, index) {
-            return HealthRecordListViewItem(healthRecordModel: healthRecordModel[index]);
+          return HealthRecordListViewItem(
+              healthRecordModel: healthRecordModel[index]);
         },
       ),
     );

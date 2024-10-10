@@ -19,11 +19,11 @@ class DoctorPatients extends Equatable {
   });
 
   factory DoctorPatients.fromJson(Map<String, dynamic> json) => DoctorPatients(
-        id: json["id"]??0,
-        doctor_id: json["doctor_id"]??0,
-        patient_id: json["patient_id"]??0,
-        created_at: json["created_at"]??"" ,
-        updated_at: json["updated_at"]??"",
+        id: json["id"] ?? 0,
+        doctor_id: json["doctor_id"] ?? 0,
+        patient_id: json["patient_id"] ?? 0,
+        created_at: json["created_at"] ?? "",
+        updated_at: json["updated_at"] ?? "",
         doctorData: DoctorDataModel.fromJson(json["doctor"]),
       );
 

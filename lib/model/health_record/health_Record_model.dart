@@ -19,7 +19,9 @@ class HealthRecordModel {
       status: json['status'],
       message: json['message'],
       data: json['data'] != null
-          ? (json['data'] as List).map((e) => HealthRecordModelData.fromJson(e)).toList()
+          ? (json['data'] as List)
+              .map((e) => HealthRecordModelData.fromJson(e))
+              .toList()
           : null,
       meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
     );

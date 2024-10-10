@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 void showToast(
     {BuildContext? context,
     required AppColorState state,
@@ -47,8 +46,8 @@ void showFlushBar(
     reverseAnimationCurve: Curves.linear,
     barBlur: 5,
     textDirection: Directionality.of(context),
-    backgroundGradient: const LinearGradient(
-        colors: [AppColor.blue, AppColor.white]),
+    backgroundGradient:
+        const LinearGradient(colors: [AppColor.blue, AppColor.white]),
     boxShadows: const [
       BoxShadow(
         color: AppColor.blue,

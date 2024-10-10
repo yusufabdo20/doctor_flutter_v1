@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 class FaqsModelData extends Equatable {
@@ -13,10 +12,10 @@ class FaqsModelData extends Equatable {
         question: json["question"],
         answer: json["answer"],
       );
-  
+
   @override
   List<Object?> get props => [
         question,
         answer,
-  ];
+      ];
 }

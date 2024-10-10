@@ -17,11 +17,11 @@ class FaqsModel extends Equatable {
         data: List<FaqsModelData>.from(
             json["data"].map((x) => FaqsModelData.fromJson(x))),
       );
-  
+
   @override
   List<Object?> get props => [
         status,
         message,
         data,
-  ];
+      ];
 }

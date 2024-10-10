@@ -1,3 +1,1 @@
-class ResetPasswordRepo{
-  
-}
+class ResetPasswordRepo {}

@@ -29,6 +29,7 @@ class Meta extends Equatable {
     map['total'] = total;
     return map;
   }
+
   @override
   List<Object?> get props => [
         total,
@@ -37,6 +38,3 @@ class Meta extends Equatable {
         lastPage,
       ];
 }
-
-
-

@@ -7,12 +7,14 @@ part 'countact_us_state.dart';
 
 class CountactUsCubit extends Cubit<CountactUsState> {
   ContactUsRepo contactUsRepo;
-  CountactUsCubit({required this.contactUsRepo,}) : super(CountactUsInitial());
+  CountactUsCubit({
+    required this.contactUsRepo,
+  }) : super(CountactUsInitial());
 
   TextEditingController titleController = TextEditingController();
   //email
-    TextEditingController emailController = TextEditingController();
-    TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   TextEditingController messageController = TextEditingController();
   //formkey
@@ -37,7 +39,6 @@ class CountactUsCubit extends Cubit<CountactUsState> {
   }
 
   @override
-
   Future<void> close() {
     titleController.dispose();
     emailController.dispose();

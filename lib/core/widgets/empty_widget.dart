@@ -5,7 +5,6 @@ import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class CustomEmptyWidget extends StatelessWidget {
   final void Function() onRetry;
   const CustomEmptyWidget({super.key, required this.onRetry});
@@ -32,7 +31,6 @@ class CustomEmptyWidget extends StatelessWidget {
         SizedBox(
           height: 20.h,
         ),
-     
       ],
     );
   }

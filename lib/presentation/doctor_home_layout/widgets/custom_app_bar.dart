@@ -1,4 +1,3 @@
-
 import 'package:doctor_flutter_v1/controller/doctor_home_layout/doctor_home_layout_cubit.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/utils/app_style.dart';
@@ -14,7 +13,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-
   Widget build(BuildContext context) {
     return BlocBuilder<DoctorHomeLayoutCubit, DoctorHomeLayoutState>(
       builder: (context, state) {

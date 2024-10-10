@@ -25,7 +25,7 @@ class OtpRepoImpl implements OtpRepo {
     try {
       Response response = await DioHelper.postData(
         url: EndPoint.verifyUser(email: email, otp: otp),
-      ); 
+      );
       log(response.data.toString());
       return Right(UserModel.fromJson(response.data));
     } on DioException catch (dioError) {

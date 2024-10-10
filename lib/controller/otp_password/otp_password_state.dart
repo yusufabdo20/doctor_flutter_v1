@@ -18,11 +18,13 @@ final class OtpPasswordSuccessState extends OtpPasswordState {
   final UserModel userModel;
   OtpPasswordSuccessState(this.userModel);
 }
+
 //resendOtpSucessState
 final class ResendOtpSuccessState extends OtpPasswordState {
   final String message;
   ResendOtpSuccessState(this.message);
 }
+
 final class ResendOtpErrorState extends OtpPasswordState {
   final String errorMessage;
   ResendOtpErrorState(this.errorMessage);

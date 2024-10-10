@@ -50,9 +50,7 @@ class HealthRecordPagination extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.blue,
-        onPressed: () {
-          
-        },
+        onPressed: () {},
         child: const Icon(Icons.add),
       ),
     );

@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() async{
-    WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
   await ScreenUtil.ensureScreenSize();
 
@@ -16,9 +16,6 @@ void main() async{
   DioHelper.init();
   Bloc.observer = MyBlocObserver();
   await EasyLocalization.ensureInitialized();
-  
-
-
 
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('ar')],

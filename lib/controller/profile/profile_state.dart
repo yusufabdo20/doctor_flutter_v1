@@ -7,7 +7,7 @@ final class ProfileInitial extends ProfileState {}
 class ProfileLoadingState extends ProfileState {}
 
 class ProfileSuccessState extends ProfileState {
-    final UserModelData userModel;
+  final UserModelData userModel;
 
   ProfileSuccessState({required this.userModel});
 }
@@ -23,10 +23,8 @@ class SelectCountryState extends ProfileState {
 }
 //update profile
 
+class UpdateProfileLoadingState extends ProfileState {}
 
-class UpdateProfileLoadingState extends ProfileState {
-  
-}
 class UpdateProfileState extends ProfileState {
   UserModelData userModelData;
   UpdateProfileState({required this.userModelData});

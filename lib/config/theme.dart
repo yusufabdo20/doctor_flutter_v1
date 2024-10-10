@@ -11,7 +11,6 @@ abstract class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColor.blue,
         iconTheme: IconThemeData(color: Colors.white),
-        
         centerTitle: true,
         elevation: 0,
         shape: RoundedRectangleBorder(

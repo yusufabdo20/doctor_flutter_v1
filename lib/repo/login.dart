@@ -23,7 +23,6 @@ class LoginRepoImpl extends LoginRepo {
           "password": password,
         },
       );
-  
 
       return Right(LoginModel.fromJson(response.data));
     } on DioException catch (dioError) {

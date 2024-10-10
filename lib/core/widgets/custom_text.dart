@@ -23,11 +23,9 @@ class CustomText extends StatelessWidget {
     return DefaultTextStyle(
       textAlign: textAlign,
       maxLines: maxLines,
-      
       style: TextStyle(
         color: context.isDarkMode ? Colors.white : Colors.black,
         overflow: textOverflow,
-  
       ),
       child: Text(
         context.tr(text),

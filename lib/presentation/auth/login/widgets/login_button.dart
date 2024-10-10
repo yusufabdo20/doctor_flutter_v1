@@ -5,7 +5,6 @@ import 'package:doctor_flutter_v1/core/widgets/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,

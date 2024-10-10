@@ -7,22 +7,23 @@ abstract class CacheService {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static Future<void> setData({required String key, required dynamic value})async {
+  static Future<void> setData(
+      {required String key, required dynamic value}) async {
     if (value is String) {
-     await _sharedPreferences.setString(key, value);
+      await _sharedPreferences.setString(key, value);
     } else if (value is int) {
-     await _sharedPreferences.setInt(key, value);
+      await _sharedPreferences.setInt(key, value);
     } else if (value is bool) {
-     await _sharedPreferences.setBool(key, value);
+      await _sharedPreferences.setBool(key, value);
     } else if (value is double) {
-     await _sharedPreferences.setDouble(key, value);
+      await _sharedPreferences.setDouble(key, value);
     } else {
-     await _sharedPreferences.setStringList(key, value);
+      await _sharedPreferences.setStringList(key, value);
     }
   }
 
   static String? getString({required String key}) {
-    return _sharedPreferences.getString(key) ;
+    return _sharedPreferences.getString(key);
   }
 
   static int getInt({required String key}) {
