@@ -7,9 +7,11 @@ import '../core/network/end_point.dart';
 import '../core/services/cache/app_cache_key.dart';
 import '../core/services/cache/cache_service.dart';
 import '../model/appoinment_model.dart';
+import '../model/send_appointment_response_model.dart';
+import '../model/submit_health_record_response_model/submit_health_record_response_model.dart';
 
-abstract class AppoinmentRepo {
-  Future<Either<Failures, AppoinmentModel>> sendAppoinment({
+abstract class SubmitHealthRecordRepo {
+  Future<Either<Failures, SubmitHealthRecordResponseModel>> submitHealthRecord({
     required String bloodPressure,
     required num temperature,
     required num heartRate,
@@ -17,9 +19,9 @@ abstract class AppoinmentRepo {
   });
 }
 
-class AppoinmentRepoImp extends AppoinmentRepo {
+class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
   @override
-  Future<Either<Failures, AppoinmentModel>> sendAppoinment({
+  Future<Either<Failures, SubmitHealthRecordResponseModel>> submitHealthRecord({
     required String bloodPressure,
     required num temperature,
     required num heartRate,
@@ -35,7 +37,7 @@ class AppoinmentRepoImp extends AppoinmentRepo {
             "treatment_plan": treatmentPlan
           },
           token: CacheService.getString(key: AppCacheKey.token));
-      return Right(AppoinmentModel.fromJson(response.data["data"]));
+      return Right(SubmitHealthRecordResponseModel.fromJson(response.data));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     }

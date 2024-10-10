@@ -24,7 +24,7 @@ import 'package:doctor_flutter_v1/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../presentation/send_appoinments/send_appointment.dart';
+import '../../presentation/submit_health_record/submit_health_record_view.dart';
 
 abstract class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -94,7 +94,7 @@ abstract class AppRouter {
           ),
         );
       case AppPage.sendAppoinmentView:
-        return _pageRoute(const SendAppointmentView());
+        return _pageRoute(SubmitHealthRecordView());
 
       // case AppPage.homeScreen:
       //   return _pageRoute(MultiBlocProvider(
