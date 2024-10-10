@@ -9,7 +9,7 @@ import '../core/services/cache/cache_service.dart';
 import '../model/appoinment_model.dart';
 
 abstract class AppoinmentRepo {
-  Future<Either<Failures, AppoinmentModel>> getAppoinment({
+  Future<Either<Failures, AppoinmentModel>> sendAppoinment({
     required String bloodPressure,
     required num temperature,
     required num heartRate,
@@ -19,7 +19,7 @@ abstract class AppoinmentRepo {
 
 class AppoinmentRepoImp extends AppoinmentRepo {
   @override
-  Future<Either<Failures, AppoinmentModel>> getAppoinment({
+  Future<Either<Failures, AppoinmentModel>> sendAppoinment({
     required String bloodPressure,
     required num temperature,
     required num heartRate,
@@ -35,7 +35,7 @@ class AppoinmentRepoImp extends AppoinmentRepo {
             "treatment_plan": treatmentPlan
           },
           token: CacheService.getString(key: AppCacheKey.token));
-      return Right(AppoinmentModel.fromJson(response.data));
+      return Right(AppoinmentModel.fromJson(response.data["data"]));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     }
