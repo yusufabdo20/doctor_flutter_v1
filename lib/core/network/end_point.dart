@@ -41,4 +41,7 @@ abstract class EndPoint {
 
   ///appointments
   static String appointments = "/appointments";
+
+  ///doctors
+  static String doctors = "/doctors";
 }

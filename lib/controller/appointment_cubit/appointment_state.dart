@@ -40,3 +40,19 @@ final class SubmitAppointmentErrorState extends AppointmentState {
   @override
   List<Object> get props => [errorMessage];
 }
+
+final class GetDoctorsLoadingState extends AppointmentState {}
+
+final class GetDoctorsSuccessState extends AppointmentState {
+  final DoctorsResponseModel doctorsResponseModel;
+  const GetDoctorsSuccessState(this.doctorsResponseModel);
+  @override
+  List<Object> get props => [doctorsResponseModel];
+}
+
+final class GetDoctorsErrorState extends AppointmentState {
+  final String errorMessage;
+  const GetDoctorsErrorState(this.errorMessage);
+  @override
+  List<Object> get props => [errorMessage];
+}

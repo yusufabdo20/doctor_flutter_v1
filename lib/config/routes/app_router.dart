@@ -24,6 +24,7 @@ import 'package:doctor_flutter_v1/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../presentation/appointments/submit_appointments/submit_appointment_view.dart';
 import '../../presentation/submit_health_record/submit_health_record_view.dart';
 
 abstract class AppRouter {
@@ -93,8 +94,10 @@ abstract class AppRouter {
             child: PatientDetailsView(patientId: arguments as int),
           ),
         );
-      case AppPage.sendAppoinmentView:
+      case AppPage.submitHealthRecordView:
         return _pageRoute(SubmitHealthRecordView());
+      case AppPage.sendAppoinmentView:
+        return _pageRoute(SubmitAppointmentView());
 
       // case AppPage.homeScreen:
       //   return _pageRoute(MultiBlocProvider(

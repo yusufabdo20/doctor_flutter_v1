@@ -1,10 +1,14 @@
 import 'dart:math';
 
+import 'package:doctor_flutter_v1/config/routes/app_page.dart';
+import 'package:doctor_flutter_v1/config/routes/app_router.dart';
 import 'package:doctor_flutter_v1/controller/appointment_cubit/appointment_cubit.dart';
+import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/appoinment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gen_extension/gen_extension.dart';
 
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/app_style.dart';
@@ -19,7 +23,10 @@ class GetAppointmentsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        backgroundColor: AppColor.blue,
+        onPressed: () {
+          context.pushNamed(AppPage.sendAppoinmentView);
+        },
         child: const Icon(Icons.add),
       ),
       body: SafeArea(

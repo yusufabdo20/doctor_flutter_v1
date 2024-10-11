@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:doctor_flutter_v1/model/doctors_response_model/doctors_response_model.dart';
 
 import '../core/error/error_hander.dart';
 import '../core/network/dio_helper.dart';
@@ -10,6 +11,7 @@ import '../model/appoinment_model.dart';
 
 abstract class AppointmentRepo {
   Future<Either<Failures, List<AppointmentResponseModel>>> getAppointment();
+  Future<Either<Failures, DoctorsResponseModel>> getDoctors();
   Future<Either<Failures, AppointmentResponseModel>> submitAppointment({
     required String doctorId,
     required String appointmentDate,
@@ -51,6 +53,18 @@ class AppointmentRepoImp extends AppointmentRepo {
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(AppointmentResponseModel.fromJson(response.data));
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, DoctorsResponseModel>> getDoctors() async {
+    try {
+      Response response = await DioHelper.getData(
+          url: EndPoint.doctors,
+          token: CacheService.getString(key: AppCacheKey.token));
+      return Right(DoctorsResponseModel.fromJson(response.data));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     }
