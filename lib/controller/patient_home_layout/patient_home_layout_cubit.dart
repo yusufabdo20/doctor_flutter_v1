@@ -1,4 +1,5 @@
 import 'package:doctor_flutter_v1/controller/all_pationts/all_pationts_cubit.dart';
+import 'package:doctor_flutter_v1/controller/appointment_cubit/appointment_cubit.dart';
 import 'package:doctor_flutter_v1/controller/countact_us/countact_us_cubit.dart';
 import 'package:doctor_flutter_v1/controller/faqs_cubit/faqs_cubit.dart';
 import 'package:doctor_flutter_v1/controller/health_record/health_record_cubit.dart';
@@ -19,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../presentation/appointments/get_appointments/get_appointments_view.dart';
+import '../../repo/appointment_repo.dart';
 
 part 'patient_home_layout_state.dart';
 
@@ -57,7 +59,12 @@ class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
       ),
       child: const ContactUsView(),
     ),
-    const GetAppointmentsView(),
+    BlocProvider(
+      create: (context) =>
+          AppointmentCubit(appointmentRepo: AppointmentRepoImp())
+            ..getAppointment(),
+      child: const GetAppointmentsView(),
+    ),
   ];
   void changeIndex(int index) {
     selectedIndex = index;

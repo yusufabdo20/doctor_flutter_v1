@@ -7,11 +7,9 @@ import '../core/network/end_point.dart';
 import '../core/services/cache/app_cache_key.dart';
 import '../core/services/cache/cache_service.dart';
 import '../model/appoinment_model.dart';
-import '../model/send_appointment_response_model.dart';
-import '../model/submit_health_record_response_model/submit_health_record_response_model.dart';
 
 abstract class AppointmentRepo {
-  Future<Either<Failures, AppointmentResponseModel>> getAppointment();
+  Future<Either<Failures, List<AppointmentResponseModel>>> getAppointment();
   Future<Either<Failures, AppointmentResponseModel>> submitAppointment({
     required String doctorId,
     required String appointmentDate,
@@ -21,12 +19,17 @@ abstract class AppointmentRepo {
 
 class AppointmentRepoImp extends AppointmentRepo {
   @override
-  Future<Either<Failures, AppointmentResponseModel>> getAppointment() async {
+  Future<Either<Failures, List<AppointmentResponseModel>>>
+      getAppointment() async {
     try {
       Response response = await DioHelper.getData(
           url: EndPoint.appointments,
           token: CacheService.getString(key: AppCacheKey.token));
-      return Right(AppointmentResponseModel.fromJson(response.data));
+      List<AppointmentResponseModel> appointments = [];
+      for (var item in response.data['data']) {
+        appointments.add(AppointmentResponseModel.fromJson(item));
+      }
+      return Right(appointments);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     }
