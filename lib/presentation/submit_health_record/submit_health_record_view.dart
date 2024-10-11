@@ -23,7 +23,7 @@ class SubmitHealthRecordView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
-          text: AppText.sendAppoinment,
+          text: AppText.submitNewRecord,
           style: AppStyle.textStyle20BoldKufram,
           color: AppColor.white,
         ),

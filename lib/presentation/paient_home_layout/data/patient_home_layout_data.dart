@@ -13,11 +13,26 @@ abstract class PatientHomeLayoutData {
     AppText.medicalHistory,
     AppText.profile,
     AppText.faqs,
-    AppText.communication
+    AppText.communication,
+    AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
         [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
         [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
+        [
+          IconButton(
+            onPressed: () {
+              context.setLocale(context.locale == const Locale('ar')
+                  ? const Locale('en')
+                  : const Locale('ar'));
+            },
+            icon: SvgPicture.asset(
+              AppIcon.language,
+              colorFilter:
+                  const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+            ),
+          ),
+        ],
         [
           IconButton(
             onPressed: () {
@@ -109,6 +124,11 @@ abstract class PatientHomeLayoutData {
           context: context,
           label: AppText.communication,
           imagePath: AppIcon.contactUs,
+        ),
+        customBottomNavBarItem(
+          context: context,
+          label: AppText.appointments,
+          imagePath: AppIcon.calendar,
         ),
       ];
 }

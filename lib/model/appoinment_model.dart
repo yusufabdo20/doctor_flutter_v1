@@ -1,14 +1,14 @@
-class AppoinmentModel {
-  int? id;
-  int? patientId;
-  int? doctorId;
+class AppointmentResponseModel {
+  num? id;
+  num? patientId;
+  num? doctorId;
   String? appointmentDate;
   String? status;
   String? notes;
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  AppoinmentModel({
+  AppointmentResponseModel({
     this.id,
     this.patientId,
     this.doctorId,
@@ -19,11 +19,11 @@ class AppoinmentModel {
     this.updatedAt,
   });
 
-  factory AppoinmentModel.fromJson(Map<String, dynamic> json) {
-    return AppoinmentModel(
-      id: json['id'] as int?,
-      patientId: json['patient_id'] as int?,
-      doctorId: json['doctor_id'] as int?,
+  factory AppointmentResponseModel.fromJson(Map<String, dynamic> json) {
+    return AppointmentResponseModel(
+      id: json['id'],
+      patientId: json['patient_id'],
+      doctorId: json['doctor_id'],
       appointmentDate: json['appointment_date'] as String?,
       status: json['status'] as String?,
       notes: json['notes'] as String?,

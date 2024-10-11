@@ -95,11 +95,13 @@ abstract class AppText {
   static const loading = 'loading';
 
   static const dataNotFound = 'dataNotFound';
+  static const submitNewRecord = 'submitNewRecord';
 
   static const tryAgain = 'tryAgain';
   static const AllDoctors = 'AllDoctors';
   static const AllPaients = "AllPatients";
   //pleaseEnterDescription
   static const pleaseEnterDescription = 'pleaseEnterDescription';
-  static const sendAppoinment = 'send Appoinment';
+  // static const appointments = 'appointments';
+  // static const communication = 'communication';
 }

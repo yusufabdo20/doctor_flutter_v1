@@ -38,4 +38,7 @@ abstract class EndPoint {
 
   ///patients/health-records
   static String submitHealthRecords = "/patients/health-records";
+
+  ///appointments
+  static String appointments = "/appointments";
 }

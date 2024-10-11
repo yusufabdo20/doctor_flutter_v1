@@ -13,6 +13,7 @@
   "bloodPressure": "Blood Pressure",
   "temperature": "Temperature",
   "heartRate": "Heart Rate",
+  "submitNewRecord": "Submit New Record",
   "diagnosis": "Diagnosis",
   "treatment": "Treatment",
   "notes": "Notes",

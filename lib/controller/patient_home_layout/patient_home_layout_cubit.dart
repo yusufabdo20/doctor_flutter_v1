@@ -18,6 +18,8 @@ import 'package:doctor_flutter_v1/repo/profile_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../presentation/appointments/get_appointments/get_appointments_view.dart';
+
 part 'patient_home_layout_state.dart';
 
 class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
@@ -55,6 +57,7 @@ class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
       ),
       child: const ContactUsView(),
     ),
+    const GetAppointmentsView(),
   ];
   void changeIndex(int index) {
     selectedIndex = index;

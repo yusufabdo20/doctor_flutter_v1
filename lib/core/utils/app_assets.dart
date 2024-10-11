@@ -13,6 +13,7 @@ abstract class AppIcon {
   static const String language = '$_iconRoot/language.svg';
   static const String allPatients = '$_iconRoot/all_patients.svg';
   static const String allDoctor = '$_iconRoot/all_doctors.svg';
+  static const String calendar = '$_iconRoot/calendar.svg';
   static const String profile = '$_iconRoot/profile.svg';
   static const String contactUs = '$_iconRoot/contact_us.svg';
   //faqs
