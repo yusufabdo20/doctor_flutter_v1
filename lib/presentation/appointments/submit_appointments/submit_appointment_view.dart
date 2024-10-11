@@ -11,6 +11,7 @@ import '../../../core/widgets/custom_loading.dart';
 import '../../../core/widgets/custom_text.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../repo/appointment_repo.dart';
+import '../widgets/doctors_drop_down.dart';
 
 class SubmitAppointmentView extends StatelessWidget {
   SubmitAppointmentView({super.key});
@@ -28,7 +29,8 @@ class SubmitAppointmentView extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) =>
-            AppointmentCubit(appointmentRepo: AppointmentRepoImp()),
+            AppointmentCubit(appointmentRepo: AppointmentRepoImp())
+              ..getDoctors(),
         child: BlocConsumer<AppointmentCubit, AppointmentState>(
           listener: (context, state) {
             if (state is SubmitAppointmentSuccessState) {
@@ -42,7 +44,7 @@ class SubmitAppointmentView extends StatelessWidget {
                 child: ListView(
                   padding: const EdgeInsets.all(16.0),
                   children: [
-                    // const DoctorNamesDropDown(),
+                    const DoctorNamesDropDown(),
                     CustomTextFormFeild(
                       text: AppText.appointmentDate,
                       controller: AppointmentCubit.get(context)
