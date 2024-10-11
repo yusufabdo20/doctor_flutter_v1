@@ -71,9 +71,6 @@ class SubmitAppointmentView extends StatelessWidget {
                               .validateForm(_formKey)) {
                             AppointmentCubit.get(context)
                                 .submitAppointment(doctorId: '1');
-                            // HealthRecordCubit.get(context).getAllRecord();
-
-                            // AppointmentCubit.get(context).clearControllers();
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
