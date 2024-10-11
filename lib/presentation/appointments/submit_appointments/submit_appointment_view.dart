@@ -1,6 +1,5 @@
 import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/controller/appointment_cubit/appointment_cubit.dart';
-import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,6 @@ import '../../../core/widgets/custom_loading.dart';
 import '../../../core/widgets/custom_text.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../repo/appointment_repo.dart';
-import '../widgets/doctors_drop_down.dart';
 
 class SubmitAppointmentView extends StatelessWidget {
   SubmitAppointmentView({super.key});
