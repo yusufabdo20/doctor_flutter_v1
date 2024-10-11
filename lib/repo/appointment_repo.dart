@@ -41,6 +41,11 @@ class AppointmentRepoImp extends AppointmentRepo {
     try {
       Response response = await DioHelper.postData(
           url: EndPoint.appointments,
+          data: {
+            "doctor_id": doctorId,
+            "appointment_date": appointmentDate,
+            "notes": notes
+          },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(AppointmentResponseModel.fromJson(response.data));
     } on DioException catch (e) {
