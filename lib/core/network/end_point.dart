@@ -45,4 +45,8 @@ abstract class EndPoint {
 
   ///doctors
   static String doctors = "/doctors";
+
+  ///doctors
+  static String notificationsMarkAsSeen = "/notifications/markAsSeen";
+  static String notifications = "/notifications/markAsSeen";
 }
