@@ -1,7 +1,7 @@
 class AppointmentResponseModel {
-  num? id;
-  num? patientId;
-  num? doctorId;
+  var id;
+  var patientId;
+  var doctorId;
   String? appointmentDate;
   String? status;
   String? notes;
@@ -24,9 +24,9 @@ class AppointmentResponseModel {
       id: json['id'],
       patientId: json['patient_id'],
       doctorId: json['doctor_id'],
-      appointmentDate: json['appointment_date'] as String?,
-      status: json['status'] as String?,
-      notes: json['notes'] as String?,
+      appointmentDate: json['appointment_date'],
+      status: json['status'],
+      notes: json['notes'],
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

@@ -56,7 +56,7 @@ class HealthRecordPagination extends StatelessWidget {
         backgroundColor: AppColor.blue,
         onPressed: () {
           context.pushNamed(
-            AppPage.sendAppoinmentView,
+            AppPage.submitHealthRecordView,
           );
         },
         child: const Icon(Icons.add),

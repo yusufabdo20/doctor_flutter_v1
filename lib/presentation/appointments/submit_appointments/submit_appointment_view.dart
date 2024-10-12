@@ -46,12 +46,47 @@ class SubmitAppointmentView extends StatelessWidget {
                   children: [
                     const DoctorNamesDropDown(),
                     CustomTextFormFeild(
+                      readOnly: true,
+                      prefixIcon: Icons.calendar_month,
+                      onTap: () async {
+                        // Show date picker dialog
+                        DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate:
+                              DateTime.now(), // Set the initial date to today
+                          firstDate: DateTime(
+                              2000), // Set the first date for the picker
+                          lastDate: DateTime(
+                              2101), // Set the last date for the picker
+                        );
+
+                        // If a date is picked, format it and update the controller
+                        if (pickedDate != null) {
+                          // Format the picked date (e.g., 'yyyy-MM-dd')
+                          String formattedDate =
+                              "${pickedDate.toLocal()}".split(' ')[
+                                  0]; // Adjust this to your preferred format
+                          AppointmentCubit.get(context)
+                              .appointmentDateController
+                              .text = formattedDate;
+                        }
+                      },
                       text: AppText.appointmentDate,
                       controller: AppointmentCubit.get(context)
                           .appointmentDateController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Appointment Date is required';
+                        }
+                        return null;
+                      },
+                    ),
+                    CustomTextFormFeild(
+                      text: AppText.notes,
+                      controller: AppointmentCubit.get(context).notesController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Notes is required';
                         }
                         return null;
                       },
@@ -69,8 +104,7 @@ class SubmitAppointmentView extends StatelessWidget {
                         onPressed: () {
                           if (AppointmentCubit.get(context)
                               .validateForm(_formKey)) {
-                            AppointmentCubit.get(context)
-                                .submitAppointment(doctorId: '1');
+                            AppointmentCubit.get(context).submitAppointment();
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

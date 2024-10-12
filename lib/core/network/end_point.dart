@@ -6,6 +6,7 @@ abstract class EndPoint {
   // verifyEmail
   static String verifyUser({required String email, required String otp}) =>
       "/auth/verifyToken/$otp/$email";
+
   static String resendVerifyEmail({required String email}) =>
       "/auth/resend-otp/$email";
 

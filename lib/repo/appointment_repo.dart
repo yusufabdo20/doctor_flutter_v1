@@ -52,7 +52,7 @@ class AppointmentRepoImp extends AppointmentRepo {
             "notes": notes
           },
           token: CacheService.getString(key: AppCacheKey.token));
-      return Right(AppointmentResponseModel.fromJson(response.data));
+      return Right(AppointmentResponseModel.fromJson(response.data['data']));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     }

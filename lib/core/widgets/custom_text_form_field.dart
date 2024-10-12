@@ -17,18 +17,21 @@ class CustomTextFormFeild extends StatefulWidget {
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-
+  final Function()? onTap;
+  final bool readOnly;
   final TextEditingController? controller;
   const CustomTextFormFeild({
     super.key,
     required this.text,
     this.prefixIcon,
+    this.readOnly = false,
     this.keyboardType,
     this.showTitle = true,
     this.isPassword = false,
     this.validator,
     this.controller,
     this.onChanged,
+    this.onTap,
     this.maxLines = 1,
     this.borderRadius = 16,
   });
@@ -72,6 +75,8 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
             ),
           ),
           TextFormField(
+            readOnly: widget.readOnly,
+            onTap: widget.onTap,
             keyboardType: widget.isPassword
                 ? TextInputType.visiblePassword
                 : widget.keyboardType,

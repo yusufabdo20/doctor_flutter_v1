@@ -13,7 +13,8 @@ class FaqsRepoImpl implements FaqsRepo {
   @override
   Future<Either<Failures, FaqsModel>> getFaqs() async {
     try {
-      Response response = await DioHelper.getData(url: EndPoint.getFaqs);
+      Response response =
+          await DioHelper.getData(url: EndPoint.getFaqs, options: Options());
       return Future.value(right(FaqsModel.fromJson(response.data)));
     } on DioException catch (dioError) {
       return Future.value(left(ServerFailure.fromDioError(dioError)));

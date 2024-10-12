@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:doctor_flutter_v1/model/appoinment_model.dart';
+import 'package:doctor_flutter_v1/model/doctors_response_model/datum.dart';
 import 'package:doctor_flutter_v1/model/doctors_response_model/doctors_response_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,13 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   static AppointmentCubit get(BuildContext context) =>
       BlocProvider.of<AppointmentCubit>(context);
   AppointmentRepo appointmentRepo;
+  final TextEditingController appointmentDateController =
+      TextEditingController();
+  final TextEditingController notesController = TextEditingController();
+  late DoctorsResponseModel doctorsResponseModel;
+  String? doctorId;
+  List<Doctor> doctors = [];
+
   Future<void> getAppointment() async {
     emit(GetAppointmentLoadingState());
     final result = await appointmentRepo.getAppointment();
@@ -29,16 +37,12 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     });
   }
 
-  final TextEditingController appointmentDateController =
-      TextEditingController();
-  final TextEditingController notesController = TextEditingController();
-  late DoctorsResponseModel doctorsResponseModel;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  submitAppointment({required String doctorId}) async {
+  submitAppointment() async {
     emit(SubmitAppointmentLoadingState());
     final result = await appointmentRepo.submitAppointment(
       appointmentDate: appointmentDateController.text,
-      doctorId: doctorId,
+      doctorId: doctorId ?? "0",
       notes: notesController.text,
     );
 
@@ -48,6 +52,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }, (r) {
       showToast(state: AppColorState.success, text: "Submit Success");
       log(r.notes.toString());
+
       emit(SubmitAppointmentSuccessState(r));
     });
   }
@@ -63,6 +68,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
       emit(GetDoctorsErrorState(l.errorMessage));
     }, (r) {
       doctorsResponseModel = r;
+      doctors = r.doctors ?? [];
       emit(GetDoctorsSuccessState(r));
     });
   }

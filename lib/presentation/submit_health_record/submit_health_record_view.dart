@@ -70,24 +70,7 @@ class SubmitHealthRecordView extends StatelessWidget {
                         return null;
                       },
                     ),
-                    CustomTextFormFeild(
-                      text: AppText.heartRate,
-                      controller: SubmitHealthRecordCubit.get(context)
-                          .heartRateController,
-                      keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Heart rate is required';
-                        }
-                        final heartRate = int.tryParse(value);
-                        if (heartRate == null ||
-                            heartRate < 20 ||
-                            heartRate > 300) {
-                          return 'Please enter a valid heart rate';
-                        }
-                        return null;
-                      },
-                    ),
+                    CustomDatePickerTextField(),
                     CustomTextFormFeild(
                       text: AppText.treatmentPlan,
                       controller: SubmitHealthRecordCubit.get(context)
@@ -132,6 +115,31 @@ class SubmitHealthRecordView extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class CustomDatePickerTextField extends StatelessWidget {
+  const CustomDatePickerTextField({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormFeild(
+      text: AppText.heartRate,
+      controller: SubmitHealthRecordCubit.get(context).heartRateController,
+      keyboardType: TextInputType.number,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Heart rate is required';
+        }
+        final heartRate = int.tryParse(value);
+        if (heartRate == null || heartRate < 20 || heartRate > 300) {
+          return 'Please enter a valid heart rate';
+        }
+        return null;
+      },
     );
   }
 }
