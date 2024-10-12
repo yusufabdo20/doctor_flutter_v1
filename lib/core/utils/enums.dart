@@ -9,5 +9,5 @@ dynamic selectdRole;
 Locale currentLocale = const Locale('en');
 
 getLang(BuildContext context) {
-  currentLocale = context.locale; // Get the current language
+  currentLocale = context.locale;
 }

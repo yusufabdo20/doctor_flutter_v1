@@ -11,6 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen_extension/gen_extension.dart';
 
 import '../../../controller/register_cubit/register_cubit_cubit.dart';
+import '../../../core/services/cache/app_cache_key.dart';
+import '../../../core/services/cache/cache_service.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/enums.dart';
@@ -24,7 +26,7 @@ class GetAppointmentsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton:
-          selectdRole == Role.patient || selectdRole == 'patient'
+          CacheService.getString(key: AppCacheKey.role) == 'patient'
               ? FloatingActionButton(
                   backgroundColor: AppColor.blue,
                   onPressed: () {
