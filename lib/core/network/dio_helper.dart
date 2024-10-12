@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
 import 'package:doctor_flutter_v1/config/routes/app_router.dart';
@@ -56,10 +58,13 @@ class DioHelper {
     String? token,
     Options? options,
   }) async {
+    log(CacheService.getString(key: AppCacheKey.lang).toString());
+
     dio.options.headers = {
       'Authorization': 'Bearer ${token ?? ''}',
       'lang': CacheService.getString(key: AppCacheKey.lang) ?? 'en',
     };
+
     // dio.options.headers = {
     //   'x-auth-token': token ?? '',
     //   'Content-Type': 'application/json',

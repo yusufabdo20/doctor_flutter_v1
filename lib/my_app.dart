@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (context.locale == const Locale("ar")) {
-      CacheService.setData(key: AppCacheKey.lang, value: "ar");
+      CacheService.setData(key: AppCacheKey.lang, value: context.locale);
     }
 
     return ScreenUtilInit(

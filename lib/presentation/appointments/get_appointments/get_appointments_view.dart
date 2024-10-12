@@ -31,7 +31,7 @@ class GetAppointmentsView extends StatelessWidget {
               },
               child: const Icon(Icons.add),
             )
-          : SizedBox(),
+          : const SizedBox(),
       body: SafeArea(
         child: Center(
           child: RefreshIndicator(
