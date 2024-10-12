@@ -10,10 +10,11 @@ import 'package:flutter_svg/svg.dart';
 abstract class DoctorHomeLayoutData {
   static List<String> titles = [
     AppText.AllPaients,
-    AppText.AllDoctors,
+    // AppText.AllDoctors,
     AppText.profile,
     AppText.faqs,
-    AppText.communication
+    AppText.communication,
+    AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
         [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
@@ -87,11 +88,11 @@ abstract class DoctorHomeLayoutData {
           label: AppText.AllPaients,
           imagePath: AppIcon.allPatients,
         ),
-        customBottomNavBarItem(
-          context: context,
-          label: AppText.AllDoctors,
-          imagePath: AppIcon.allDoctor,
-        ),
+        // customBottomNavBarItem(
+        //   context: context,
+        //   label: AppText.AllDoctors,
+        //   imagePath: AppIcon.allDoctor,
+        // ),
         customBottomNavBarItem(
           context: context,
           label: AppText.profile,
@@ -106,6 +107,11 @@ abstract class DoctorHomeLayoutData {
           context: context,
           label: AppText.communication,
           imagePath: AppIcon.contactUs,
+        ),
+        customBottomNavBarItem(
+          context: context,
+          label: AppText.appointments,
+          imagePath: AppIcon.calendar,
         ),
       ];
 }

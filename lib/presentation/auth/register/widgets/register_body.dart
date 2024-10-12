@@ -29,6 +29,7 @@ class RegisterBody extends StatelessWidget {
             RoleWidget(
               onPressed: (p0) {
                 RegisterCubit.get(context).role = Role.values[p0];
+                selectdRole = Role.values[p0];
               },
             ),
             SizedBox(
