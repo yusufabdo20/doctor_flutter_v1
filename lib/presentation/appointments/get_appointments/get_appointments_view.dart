@@ -23,15 +23,16 @@ class GetAppointmentsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: selectdRole == Role.patient
-          ? FloatingActionButton(
-              backgroundColor: AppColor.blue,
-              onPressed: () {
-                context.pushNamed(AppPage.sendAppoinmentView);
-              },
-              child: const Icon(Icons.add),
-            )
-          : const SizedBox(),
+      floatingActionButton:
+          selectdRole == Role.patient || selectdRole == 'patient'
+              ? FloatingActionButton(
+                  backgroundColor: AppColor.blue,
+                  onPressed: () {
+                    context.pushNamed(AppPage.sendAppoinmentView);
+                  },
+                  child: const Icon(Icons.add),
+                )
+              : const SizedBox(),
       body: SafeArea(
         child: Center(
           child: RefreshIndicator(

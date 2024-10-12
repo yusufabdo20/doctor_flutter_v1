@@ -5,8 +5,9 @@ enum AppColorState { warning, success, error, normal }
 
 enum Role { doctor, patient, family }
 
-var selectdRole;
+dynamic selectdRole;
 Locale currentLocale = const Locale('en');
+
 getLang(BuildContext context) {
   currentLocale = context.locale; // Get the current language
 }
