@@ -6,6 +6,7 @@ import 'package:doctor_flutter_v1/core/error/error_hander.dart';
 import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/network/end_point.dart';
 import 'package:doctor_flutter_v1/model/login_model.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 abstract class LoginRepo {
   Future<Either<Failures, LoginModel>> loginUser(String email, String password);
@@ -21,6 +22,7 @@ class LoginRepoImpl extends LoginRepo {
         data: {
           "emailOrPhone": email,
           "password": password,
+          "fcm_token": await FirebaseMessaging.instance.getToken()
         },
       );
 

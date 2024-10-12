@@ -40,12 +40,12 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json['id'] as String?,
+        id: json['id'].toString(),
         userId: json['user_id'] as String?,
-        type: json['type'] as String?,
-        data: json['data'] == null
-            ? null
-            : NotificationInfo.fromJson(json['data'] as Map<String, dynamic>),
+        // type: json['type'] as String?,
+        // data: json['data'] == null
+        //     ? null
+        //     : NotificationInfo.fromJson(json['data'] as Map<String, dynamic>),
         notification: json['notification'] == null
             ? null
             : Notification.fromJson(

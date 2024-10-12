@@ -17,6 +17,8 @@ abstract class HealthRecordRepo {
     required String heartRate,
     required String temperature,
     required String treatmentPlan,
+    required double lat,
+    required double long,
   });
 }
 
@@ -44,7 +46,10 @@ class HealthRecordRepoImpl implements HealthRecordRepo {
       {required String bloodPressure,
       required String heartRate,
       required String temperature,
-      required String treatmentPlan}) async {
+      required String treatmentPlan,
+      required double lat,
+      required double long,
+      }) async {
     try {
       Response response = await DioHelper.postData(
           url: EndPoint.submitHealthRecords,
@@ -52,7 +57,9 @@ class HealthRecordRepoImpl implements HealthRecordRepo {
             "blood_pressure": bloodPressure,
             "heart_rate": heartRate,
             "temperature": temperature,
-            "treatment_plan": treatmentPlan
+            "treatment_plan": treatmentPlan,
+            "lat" :  lat, 
+            "long": long,
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(response.data["message"]);

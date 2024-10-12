@@ -25,13 +25,15 @@ class SubmitHealthRecordCubit extends Cubit<SubmitHealthRecordState> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final SubmitHealthRecordRepo _repo = SubmitHealthRecordRepoImp();
-  submitHealthRecord() async {
+  submitHealthRecord(double lat, double long) async {
     emit(SubmitHealthRecordLoadingState());
     final result = await _repo.submitHealthRecord(
       bloodPressure: bloodPressureController.text,
       temperature: double.parse(temperatureController.text),
       heartRate: double.parse(heartRateController.text),
       treatmentPlan: treatmentPlanController.text,
+      lat: lat,
+      long: long,
     );
 
     result.fold((l) {

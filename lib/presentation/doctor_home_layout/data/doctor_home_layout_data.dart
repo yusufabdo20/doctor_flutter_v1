@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../core/services/cache/app_cache_key.dart';
 import '../../../core/services/cache/cache_service.dart';
+import '../../../notification_module/notification_module/notification_screen.dart';
 
 abstract class DoctorHomeLayoutData {
   static List<String> titles = [
@@ -20,7 +21,14 @@ abstract class DoctorHomeLayoutData {
     AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
-        [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+        [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications))
+        ],
         [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
         [
           LocalizationButton(),
