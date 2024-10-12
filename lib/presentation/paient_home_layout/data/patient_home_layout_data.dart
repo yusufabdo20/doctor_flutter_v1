@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../notification_module/notification_module/notification_screen.dart';
+
 abstract class PatientHomeLayoutData {
   static List<String> titles = [
     AppText.healthRecord,
@@ -17,7 +19,14 @@ abstract class PatientHomeLayoutData {
     AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
-        [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
+        [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications))
+        ],
         [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
         [
           IconButton(

@@ -4,6 +4,7 @@ import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen_extension/gen_extension.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../../controller/health_record/health_record_cubit.dart';
 import '../../controller/send_appoinment_cubit/submit_health_record_cubit.dart';
@@ -14,9 +15,60 @@ import '../../core/widgets/custom_text.dart';
 import '../../core/widgets/custom_text_form_field.dart';
 import '../paient_home_layout/widgets/custom_app_bar.dart';
 
-class SubmitHealthRecordView extends StatelessWidget {
+class SubmitHealthRecordView extends StatefulWidget {
   SubmitHealthRecordView({super.key});
+
+  @override
+  State<SubmitHealthRecordView> createState() => _SubmitHealthRecordViewState();
+}
+
+class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+    return await Geolocator.getCurrentPosition();
+  }
+
+  Position? position;
+
+  @override
+  void initState() {
+    super.initState();
+    _determinePosition().then((value) => position = value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +147,10 @@ class SubmitHealthRecordView extends StatelessWidget {
                           if (SubmitHealthRecordCubit.get(context)
                               .validateForm(_formKey)) {
                             SubmitHealthRecordCubit.get(context)
-                                .submitHealthRecord();
+                                .submitHealthRecord(
+                              position?.latitude ?? 0.0,
+                              position?.longitude ?? 0.0,
+                            );
                             // HealthRecordCubit.get(context).getAllRecord();
 
                             // SubmitHealthRecordCubit.get(context).clearControllers();

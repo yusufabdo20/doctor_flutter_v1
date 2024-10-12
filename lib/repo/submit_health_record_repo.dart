@@ -16,6 +16,8 @@ abstract class SubmitHealthRecordRepo {
     required num temperature,
     required num heartRate,
     required String treatmentPlan,
+    required double lat,
+    required double long,
   });
 }
 
@@ -26,15 +28,20 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
     required num temperature,
     required num heartRate,
     required String treatmentPlan,
+    required double lat,
+    required double long,
   }) async {
     try {
       Response response = await DioHelper.postData(
-          url: EndPoint.submitHealthRecords,
+          url:
+              "https://health-care-sys.smartleadtech.com/api/patients/health-records",
           data: {
             "blood_pressure": bloodPressure,
             "heart_rate": heartRate,
             "temperature": temperature,
-            "treatment_plan": treatmentPlan
+            "treatment_plan": treatmentPlan,
+            "lat": lat,
+            "long": long,
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(SubmitHealthRecordResponseModel.fromJson(response.data));

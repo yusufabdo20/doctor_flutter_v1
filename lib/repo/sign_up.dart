@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:doctor_flutter_v1/core/error/error_hander.dart';
 import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/network/end_point.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 abstract class RegisterRepo {
   Future<Either<Failures, bool>> registerUser({
@@ -34,7 +35,8 @@ class RegisterRepoImpl extends RegisterRepo {
         "phone": "+$phone",
         "role": role,
         "lang": 'en',
-        "country_code": countryCode
+        "country_code": countryCode,
+        "fcm_token": await FirebaseMessaging.instance.getToken(),
       });
       return const Right(true);
     } on DioException catch (dioError) {
