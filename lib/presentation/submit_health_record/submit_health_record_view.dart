@@ -1,6 +1,7 @@
 import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
+import 'package:doctor_flutter_v1/presentation/submit_health_record/select_media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen_extension/gen_extension.dart';
@@ -85,7 +86,16 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
         child: BlocConsumer<SubmitHealthRecordCubit, SubmitHealthRecordState>(
           listener: (context, state) {
             if (state is SubmitHealthRecordSuccessState) {
-              context.pop();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                            value: context.read<HealthRecordCubit>(),
+                            child: SelectMedia(
+                              id: state
+                                  .submitHealthRecordResponseModel.data!.id!,
+                            ),
+                          )));
             }
           },
           builder: (context, state) {
@@ -107,6 +117,17 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                       },
                     ),
                     CustomTextFormFeild(
+                      text: 'breath rate',
+                      controller:
+                          SubmitHealthRecordCubit.get(context).breathRate,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Blood breath  rate  is required';
+                        }
+                        return null;
+                      },
+                    ),
+                    CustomTextFormFeild(
                       text: AppText.temperature,
                       controller: SubmitHealthRecordCubit.get(context)
                           .temperatureController,
@@ -122,7 +143,20 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                         return null;
                       },
                     ),
-                    CustomDatePickerTextField(),
+                    CustomTextFormFeild(
+                      text: 'note',
+                      controller:
+                          SubmitHealthRecordCubit.get(context).notesController,
+                      keyboardType: TextInputType.text,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'note is required';
+                        }
+
+                        return null;
+                      },
+                    ),
+                    const CustomDatePickerTextField(),
                     CustomTextFormFeild(
                       text: AppText.treatmentPlan,
                       controller: SubmitHealthRecordCubit.get(context)
@@ -134,6 +168,20 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                         return null;
                       },
                     ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => BlocProvider.value(
+                                        value: SubmitHealthRecordCubit.get(
+                                            context),
+                                        child: SelectMedia(
+                                          id: 2,
+                                        ),
+                                      )));
+                        },
+                        child: Text("media")),
                     if (state is SubmitHealthRecordLoadingState)
                       const Center(
                           child: CustomLoading(

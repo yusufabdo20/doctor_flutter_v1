@@ -81,7 +81,8 @@
   "dataNotFound": "Data Not Found",
   "tryAgain": "Try Again",
   "AllDoctors": "All Doctors",
-  "AllPatients": "All Patients"
+  "AllPatients": "All Patients",
+  "thisFieldIsRequired": "This field is required"
 
   
 }

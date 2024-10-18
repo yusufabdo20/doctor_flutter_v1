@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -18,7 +20,11 @@ abstract class SubmitHealthRecordRepo {
     required String treatmentPlan,
     required double lat,
     required double long,
+    required String breathRate,
+    required String note,
   });
+
+  Future<Either<Failures, String>> uploadFile(List<File> file, int id);
 }
 
 class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
@@ -30,6 +36,8 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
     required String treatmentPlan,
     required double lat,
     required double long,
+    required String breathRate,
+    required String note,
   }) async {
     try {
       Response response = await DioHelper.postData(
@@ -42,11 +50,36 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
             "treatment_plan": treatmentPlan,
             "lat": lat,
             "long": long,
+            "breath_rate": breathRate,
+            "note": note
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(SubmitHealthRecordResponseModel.fromJson(response.data));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> uploadFile(List<File> file, int id) async {
+    try {
+      FormData formData = FormData.fromMap(
+          {"mediaable_id": 25, 'mediaable_type': 'App\\Models\\HealthRecord'});
+      for (int i = 0; i < file.length; i++) {
+        formData.files.add(MapEntry(
+            "files[$i]",
+            await MultipartFile.fromFile(file[i].path,
+                filename: file[i].path.split("/").last)));
+      }
+      Response response = await DioHelper.postData(
+          url: "/media/upload-multiple",
+          data: formData,
+          token: CacheService.getString(key: AppCacheKey.token));
+      return Right(response.data["message"]);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      return Left(LocalFailures(errorMessage: e.toString()));
     }
   }
 }

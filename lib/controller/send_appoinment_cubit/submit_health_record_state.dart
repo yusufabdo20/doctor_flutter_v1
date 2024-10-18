@@ -1,10 +1,7 @@
 part of 'submit_health_record_cubit.dart';
 
-sealed class SubmitHealthRecordState extends Equatable {
+sealed class SubmitHealthRecordState {
   const SubmitHealthRecordState();
-
-  @override
-  List<Object> get props => [];
 }
 
 final class SubmitHealthRecordInitial extends SubmitHealthRecordState {}
@@ -21,3 +18,20 @@ final class SubmitHealthRecordErrorState extends SubmitHealthRecordState {
 }
 
 final class SubmitHealthRecordLoadingState extends SubmitHealthRecordState {}
+
+final class PickFile extends SubmitHealthRecordState {
+  final List<File> file;
+  const PickFile({required this.file});
+}
+
+final class UploadFileLoading extends SubmitHealthRecordState {}
+
+final class UploadFileSuccess extends SubmitHealthRecordState {
+  final String message;
+  const UploadFileSuccess({required this.message});
+}
+
+final class UploadFileError extends SubmitHealthRecordState {
+  final String errorMessage;
+  const UploadFileError({required this.errorMessage});
+}

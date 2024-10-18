@@ -69,6 +69,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }, (r) {
       doctorsResponseModel = r;
       doctors = r.doctors ?? [];
+      doctorId = doctors[0].id.toString();
       emit(GetDoctorsSuccessState(r));
     });
   }

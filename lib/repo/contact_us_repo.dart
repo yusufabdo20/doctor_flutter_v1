@@ -14,6 +14,7 @@ abstract class ContactUsRepo {
     required String message,
     required String name,
     required String email,
+    required String userId,
   });
 }
 
@@ -24,12 +25,14 @@ class ContactUsRepoImpl implements ContactUsRepo {
     required String message,
     required String name,
     required String email,
+    required String userId,
   }) async {
     try {
       Response response = await DioHelper.postData(
         token: CacheService.getString(key: AppCacheKey.token),
         url: EndPoint.contactUs,
         data: {
+          "user_id" :  userId,
           "name": name,
           "email": email,
           "subject": title,

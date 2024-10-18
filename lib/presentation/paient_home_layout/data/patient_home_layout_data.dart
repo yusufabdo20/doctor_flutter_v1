@@ -14,9 +14,11 @@ abstract class PatientHomeLayoutData {
   static List<String> titles = [
     AppText.healthRecord,
     AppText.medicalHistory,
+    "Medicine",
     AppText.profile,
     AppText.faqs,
     AppText.communication,
+    AppText.appointments,
     AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
@@ -66,6 +68,11 @@ abstract class PatientHomeLayoutData {
         customBottomNavBarItem(
           context: context,
           label: AppText.medicalHistory,
+          imagePath: AppIcon.logo,
+        ),
+        customBottomNavBarItem(
+          context: context,
+          label: AppText.medicine,
           imagePath: AppIcon.logo,
         ),
         customBottomNavBarItem(

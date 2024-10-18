@@ -10,6 +10,7 @@ import 'package:doctor_flutter_v1/presentation/frequently_asked_questions/view/f
 import 'package:doctor_flutter_v1/presentation/all_patients/view/all_pationts_view.dart';
 import 'package:doctor_flutter_v1/presentation/health_record_pagination/health_record_pagination.dart';
 import 'package:doctor_flutter_v1/presentation/medical_history_pagination/medical_history_pagination.dart';
+import 'package:doctor_flutter_v1/presentation/medicin_screen.dart';
 import 'package:doctor_flutter_v1/presentation/patient_details/view/health_record.dart';
 import 'package:doctor_flutter_v1/presentation/profile/view/profile_view.dart';
 import 'package:doctor_flutter_v1/repo/all_patient_repo.dart';
@@ -41,6 +42,7 @@ class PatientHomeLayoutCubit extends Cubit<PatientHomeLayoutState> {
       create: (context) => MedicalHistoryCubit()..getAllRecord(),
       child: const MedicalHistoryPagination(),
     ),
+    const MedicinScreen(),
     BlocProvider(
       create: (context) => ProfileCubit(
         profileRepo: ProfileRepoImpl(),

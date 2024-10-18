@@ -26,6 +26,8 @@ abstract class AppText {
   static const healthRecord = 'healthRecord';
   //medical_history
   static const medicalHistory = 'medicalHistory';
+    static const medicine = 'medicin';
+
   //Patient
   static const patient = 'patient';
   //Caregiver
@@ -49,7 +51,16 @@ abstract class AppText {
   static const pleaseEnterUserName = 'pleaseEnterUserName';
   static const pleaseEnterPhone = 'pleaseEnterPhone';
   static const pleaseEnterCountryCode = 'pleaseEnterCountryCode';
+  static const pleaseEnterTall = 'pleaseEnterTall';
+  static const String thisFieldIsRequired = 'thisFieldIsRequired';
   static const phone = 'phone';
+  static const birthDay = 'birthDay';
+  static const tall = 'tall';
+  static const String blod_type = 'blod type';
+  static const String walk_plan = 'walk plan';
+  static const String bmi = 'bmi';
+  static const String weight = 'weight';
+
   static const countryCode = 'countryCode';
   static const pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
   static const enterYourEmail = 'enterYourEmail';

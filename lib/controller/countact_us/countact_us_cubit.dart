@@ -23,7 +23,7 @@ class CountactUsCubit extends Cubit<CountactUsState> {
   static CountactUsCubit get(BuildContext context) =>
       BlocProvider.of<CountactUsCubit>(context);
 
-  void sendMessage() async {
+  void sendMessage(String userId) async {
     if (formKey.currentState!.validate()) {
       emit(CountactUsLoadingState());
       var result = await contactUsRepo.contactUs(
@@ -31,6 +31,7 @@ class CountactUsCubit extends Cubit<CountactUsState> {
         email: emailController.text,
         name: nameController.text,
         message: messageController.text,
+        userId: userId,
       );
 
       result.fold((l) => emit(CountactUsErrorState(l.errorMessage)),

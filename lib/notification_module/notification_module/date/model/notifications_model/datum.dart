@@ -12,7 +12,7 @@ class NotificationInfo {
       );
 }
 
-class Datum {
+class BaseNotificationModel {
   String? id;
   String? userId;
   String? type;
@@ -25,7 +25,7 @@ class Datum {
   DateTime? updatedAt;
   dynamic deletedAt;
 
-  Datum({
+  BaseNotificationModel({
     this.id,
     this.userId,
     this.type,
@@ -39,7 +39,8 @@ class Datum {
     this.deletedAt,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory BaseNotificationModel.fromJson(Map<String, dynamic> json) =>
+      BaseNotificationModel(
         id: json['id'].toString(),
         userId: json['user_id'] as String?,
         // type: json['type'] as String?,

@@ -10,7 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CountactUsSendButton extends StatelessWidget {
   const CountactUsSendButton({
     super.key,
+    required this.doctorId,
   });
+  final String doctorId;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,9 @@ class CountactUsSendButton extends StatelessWidget {
           return CustomElevatedButton(
             title: AppText.send,
             onPressed: () {
-              CountactUsCubit.get(context).sendMessage();
+              CountactUsCubit.get(context).sendMessage(
+                doctorId,
+              );
             },
           );
         }

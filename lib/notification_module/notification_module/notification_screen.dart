@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'date/model/notifications_model/datum.dart';
 import 'notification_bloc/notification_bloc.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -21,6 +22,23 @@ class _NotificationScreenState extends State<NotificationScreen> {
       .toIso8601String()
       .split('T')[0];
   String finalDate = DateTime.now().toIso8601String().split('T')[0];
+
+  Color showNotification(BaseNotificationModel notification) {
+    switch (notification.notification!.body!.status_color) {
+      case 'red':
+        return Colors.red; // For abnormal notifications
+      case 'yellow':
+        return Colors.yellow; // For warning notifications
+      case 'green':
+        return Colors.green; // For normal notifications
+      default:
+        return Colors.blue; // For default notifications
+    }
+
+    // Use this color to display the notification in your UI
+    // For example, in a ListTile or AlertDialog
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -266,27 +284,35 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                     ),
                                   ),
                                   const Spacer(),
-                                  state.notificationModel.notifications!
-                                              .data![index].seen ==
-                                          1
-                                      ? const SizedBox.shrink()
-                                      : Container(
-                                          width: 8,
-                                          height: 8,
-                                          decoration: const ShapeDecoration(
-                                            gradient: LinearGradient(
-                                              begin: Alignment(0.80, 0.60),
-                                              end: Alignment(-0.8, -0.6),
-                                              colors: [
-                                                Color(0xFF2D53DA),
-                                                Color(0xAB8700FF),
-                                                Color(0xFF1CCEF4),
-                                                Color(0x008700FF)
-                                              ],
-                                            ),
-                                            shape: OvalBorder(),
-                                          ),
-                                        )
+                                  // state.notificationModel.notifications!
+                                  //             .data![index].seen ==
+                                  //         1
+                                  //     ? const SizedBox.shrink()
+                                  //     : Container(
+                                  //         width: 8,
+                                  //         height: 8,
+                                  //         decoration: const ShapeDecoration(
+                                  //           gradient: LinearGradient(
+                                  //             begin: Alignment(0.80, 0.60),
+                                  //             end: Alignment(-0.8, -0.6),
+                                  //             colors: [
+                                  //               Color(0xFF2D53DA),
+                                  //               Color(0xAB8700FF),
+                                  //               Color(0xFF1CCEF4),
+                                  //               Color(0x008700FF)
+                                  //             ],
+                                  //           ),
+                                  //           shape: OvalBorder(),
+                                  //         ),
+                                  //       ),
+
+                                  CircleAvatar(
+                                    radius: 8,
+                                    backgroundColor: showNotification(state
+                                        .notificationModel
+                                        .notifications!
+                                        .data![index]),
+                                  ),
                                 ]),
                           ),
                         );

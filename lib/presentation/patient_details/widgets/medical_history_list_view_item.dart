@@ -3,6 +3,7 @@ import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/utils/app_style.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/medical_history/medical_history_model_data.dart';
+import 'package:doctor_flutter_v1/presentation/show_media_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -74,6 +75,14 @@ class MedicalHistoryListViewItem extends StatelessWidget {
               color: AppColor.blue,
             ),
           ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ShowMediaScreen(
+                          media: medicalHistoryModel.media,
+                        )));
+              },
+              child: const Text("Show Medical History"))
         ]),
       ),
     );

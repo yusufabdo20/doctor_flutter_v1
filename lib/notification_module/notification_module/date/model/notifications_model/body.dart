@@ -1,13 +1,14 @@
 class Body {
-	String? message;
+  String? message;
+  String? status_color;
+  Body({this.message, this.status_color});
 
-	Body({this.message});
+  factory Body.fromJson(Map<String, dynamic> json) => Body(
+        message: json['message'] as String?,
+        status_color: json['status_color'] ?? "red",
+      );
 
-	factory Body.fromJson(Map<String, dynamic> json) => Body(
-				message: json['message'] as String?,
-			);
-
-	Map<String, dynamic> toJson() => {
-				'message': message,
-			};
+  Map<String, dynamic> toJson() => {
+        'message': message,
+      };
 }

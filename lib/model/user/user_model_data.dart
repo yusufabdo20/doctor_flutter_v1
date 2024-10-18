@@ -17,7 +17,7 @@ class UserModelData {
   final String? role;
   final String? address;
   final String? location;
-  final String? tall;
+  final num? tall;
   final String? birthDate;
   final String? nationalID;
   final String? blodType;
@@ -76,7 +76,7 @@ class UserModelData {
       tall: json['tall'] ?? "",
       birthDate: json['birth_date'] ?? "",
       nationalID: json['national_id'] ?? "",
-      blodType: json['blod_type'] ?? "",
+      blodType: json['blood_type'] ?? "",
       walkPlan: json['walk_plan'] ?? 0,
       weight: json['weight'] ?? "",
       bmi: json['bmi'] ?? "",

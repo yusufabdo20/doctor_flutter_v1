@@ -1,3 +1,4 @@
+import 'package:doctor_flutter_v1/model/media_model.dart';
 import 'package:equatable/equatable.dart';
 
 class HealthRecordModelData extends Equatable {
@@ -11,6 +12,7 @@ class HealthRecordModelData extends Equatable {
   String? treatment_plan;
   String? created_at;
   String? updated_at;
+  List<MediaModel> media;
 
   HealthRecordModelData({
     required this.id,
@@ -23,6 +25,7 @@ class HealthRecordModelData extends Equatable {
     required this.treatment_plan,
     required this.created_at,
     required this.updated_at,
+    required this.media,
   });
 
   factory HealthRecordModelData.fromJson(Map<String?, dynamic> json) {
@@ -37,6 +40,9 @@ class HealthRecordModelData extends Equatable {
       treatment_plan: json['treatment_plan'] ?? '',
       created_at: json['created_at'] ?? '',
       updated_at: json['updated_at'] ?? '',
+      media: json['media'] != null
+          ? (json['media'] as List).map((i) => MediaModel.fromJson(i)).toList()
+          : [],
     );
   }
 

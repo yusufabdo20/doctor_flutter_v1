@@ -5,12 +5,16 @@ import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.d
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/localization.dart';
+import '../../show_media_screen.dart';
+
 class HealthRecordListViewItem extends StatelessWidget {
   final HealthRecordModelData healthRecordModel;
   const HealthRecordListViewItem({super.key, required this.healthRecordModel});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Card(
       margin: EdgeInsets.all(16.r),
       shape: RoundedRectangleBorder(
@@ -72,6 +76,20 @@ class HealthRecordListViewItem extends StatelessWidget {
             maxLines: 100,
             color: AppColor.blue,
           ),
+
+          ElevatedButton(onPressed: ()
+          {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ShowMediaScreen(
+                  media: healthRecordModel.media,
+                )));
+          }, child:  CustomText(
+            text: "Media",
+            style: AppStyle.textStyle16RegularKufram,
+            textAlign: TextAlign.center,
+            maxLines: 100,
+            color: AppColor.blue,
+          ),)
         ]),
       ),
     );

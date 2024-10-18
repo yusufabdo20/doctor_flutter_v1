@@ -53,6 +53,84 @@ class PersonalInfo extends StatelessWidget {
                 }
                 return null;
               }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.tall,
+              prefixIcon: Icons.height,
+              controller: ProfileCubit.get(context).tall,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.birthDay,
+              prefixIcon: Icons.date_range,
+              controller: ProfileCubit.get(context).birth_date,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.blod_type,
+              prefixIcon: Icons.bloodtype,
+              controller: ProfileCubit.get(context).bloodType,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.walk_plan,
+              prefixIcon: Icons.assist_walker,
+              controller: ProfileCubit.get(context).walk_plan,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.weight,
+              prefixIcon: Icons.boy_outlined,
+              controller: ProfileCubit.get(context).weight,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
+          SizedBox(
+            height: 24.r,
+          ),
+          CustomTextFormFeild(
+              text: AppText.bmi,
+              prefixIcon: Icons.boy_rounded,
+              controller: ProfileCubit.get(context).bmi,
+              validator: (p0) {
+                if (p0 == null || p0.isEmpty) {
+                  return context.tr(AppText.thisFieldIsRequired);
+                }
+                return null;
+              }),
         ],
       ),
     );

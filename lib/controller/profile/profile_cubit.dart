@@ -28,6 +28,12 @@ class ProfileCubit extends Cubit<ProfileState> {
   TextEditingController userName = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
+  TextEditingController tall = TextEditingController();
+  TextEditingController weight = TextEditingController();
+  TextEditingController birth_date = TextEditingController();
+  TextEditingController bloodType = TextEditingController();
+  TextEditingController walk_plan = TextEditingController();
+  TextEditingController bmi = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   // Country? country;
@@ -47,6 +53,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         userName.text = data.name ?? "";
         email.text = data.email ?? "";
         phone.text = data.phone ?? "";
+        tall.text = data.tall.toString();
+        weight.text = data.weight.toString();
+        birth_date.text = data.birthDate ?? "";
+        bloodType.text = data.blodType ?? "";
+        walk_plan.text = data.walkPlan.toString() ?? "";
+        bmi.text = data.bmi.toString() ?? "";
+
         emit(ProfileSuccessState(userModel: data));
       }
     });
