@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gen_extension/gen_extension.dart';
 
 import 'notification_bloc/notification_bloc.dart';
 
@@ -72,7 +71,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 children: [
                   SizedBox(height: 20.h),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       TextButton(
                           onPressed: () {
@@ -93,72 +91,72 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       SizedBox(
                         width: 10.w,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          showDateRangePicker(
-                              context: context,
-                              firstDate: DateTime.now()
-                                  .subtract(const Duration(days: 30)),
-                              lastDate: DateTime.now(),
-                              builder: (context, child) {
-                                return Theme(
-                                  data: ThemeData.light().copyWith(
-                                    colorScheme: const ColorScheme.light(
-                                      primary: Color(0xFF0B264E),
-                                      onPrimary: Colors.white,
-                                    ),
-                                  ),
-                                  child: child!,
-                                );
-                              }).then((value) {
-                            if (value != null) {
-                              notificationBloc.page = 1;
-                              initalDate =
-                                  value.start.toIso8601String().split('T')[0];
-                              finalDate =
-                                  value.end.toIso8601String().split('T')[0];
-                              notificationBloc.add(GetNotificationEvent(
-                                from: initalDate,
-                                to: finalDate,
-                              ));
-                            }
-                          });
-                        },
-                        child: Container(
-                          height: 40.h,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.37.w, vertical: 5.08.h),
-                          clipBehavior: Clip.antiAlias,
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 1, color: Color(0xFFD0D1D2)),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '$initalDate - $finalDate',
-                                style: TextStyle(
-                                  color: const Color(0xFF0B264E),
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(width: 10.37.w),
-                              Icon(
-                                Icons.calendar_month,
-                                color: const Color(0xFF0B264E),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     showDateRangePicker(
+                      //         context: context,
+                      //         firstDate: DateTime.now()
+                      //             .subtract(const Duration(days: 30)),
+                      //         lastDate: DateTime.now(),
+                      //         builder: (context, child) {
+                      //           return Theme(
+                      //             data: ThemeData.light().copyWith(
+                      //               colorScheme: const ColorScheme.light(
+                      //                 primary: Color(0xFF0B264E),
+                      //                 onPrimary: Colors.white,
+                      //               ),
+                      //             ),
+                      //             child: child!,
+                      //           );
+                      //         }).then((value) {
+                      //       if (value != null) {
+                      //         notificationBloc.page = 1;
+                      //         initalDate =
+                      //             value.start.toIso8601String().split('T')[0];
+                      //         finalDate =
+                      //             value.end.toIso8601String().split('T')[0];
+                      //         notificationBloc.add(GetNotificationEvent(
+                      //           from: initalDate,
+                      //           to: finalDate,
+                      //         ));
+                      //       }
+                      //     });
+                      //   },
+                      //   child: Container(
+                      //     height: 40.h,
+                      //     padding: EdgeInsets.symmetric(
+                      //         horizontal: 10.37.w, vertical: 5.08.h),
+                      //     clipBehavior: Clip.antiAlias,
+                      //     decoration: ShapeDecoration(
+                      //       color: Colors.white,
+                      //       shape: RoundedRectangleBorder(
+                      //         side: const BorderSide(
+                      //             width: 1, color: Color(0xFFD0D1D2)),
+                      //         borderRadius: BorderRadius.circular(4),
+                      //       ),
+                      //     ),
+                      //     child: Row(
+                      //       mainAxisSize: MainAxisSize.min,
+                      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //       crossAxisAlignment: CrossAxisAlignment.center,
+                      //       children: [
+                      //         Text(
+                      //           '$initalDate - $finalDate',
+                      //           style: TextStyle(
+                      //             color: const Color(0xFF0B264E),
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //           ),
+                      //         ),
+                      //         SizedBox(width: 10.37.w),
+                      //         Icon(
+                      //           Icons.calendar_month,
+                      //           color: const Color(0xFF0B264E),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                   Expanded(
@@ -188,19 +186,19 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             // String generalID = data['general_id'];
                             print(data['generalId']);
 
-                            // if (type == 'order') {
-                            //   Navigator.of(context).push(
-                            //     MaterialPageRoute(
-                            //       builder: (context) => OrderDetails(
-                            //         orderID: data['generalId'].toString(),
-                            //       ),
-                            //     ),
-                            //   );
-                            // } else if (type == 'store') {
-                            //   context.pushNamed(PageName.storeProductScreen,
-                            //       extra: StoreProductScreenParams(
-                            //           id: data['generalId'].toString()));
-                            // }
+                            if (type == 'order') {
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //     builder: (context) => OrderDetiles(
+                              //       orderID: data['generalId'].toString(),
+                              //     ),
+                              //   ),
+                              // );
+                            } else if (type == 'store') {
+                              // context.pushNamed(PageName.storeProductScreen,
+                              //     extra: StoreProductScreenParams(
+                              //         id: data['generalId'].toString()));
+                            }
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -209,26 +207,28 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                      width: 24.w,
-                                      height: 24.h,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: ShapeDecoration(
-                                        gradient: const LinearGradient(
-                                          begin: Alignment(-1.00, 0.00),
-                                          end: Alignment(1, 0),
-                                          colors: [
-                                            Color(0xFF2B61DC),
-                                            Color(0xFF33D3F5)
-                                          ],
-                                        ),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(13.45),
-                                        ),
+                                    width: 24.w,
+                                    height: 24.h,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: ShapeDecoration(
+                                      gradient: const LinearGradient(
+                                        begin: Alignment(-1.00, 0.00),
+                                        end: Alignment(1, 0),
+                                        colors: [
+                                          Color(0xFF2B61DC),
+                                          Color(0xFF33D3F5)
+                                        ],
                                       ),
-                                      child: Icon(
-                                        Icons.notifications,
-                                      )),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(13.45),
+                                      ),
+                                    ),
+                                    child: const Icon(
+                                      Icons.notifications,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
                                   SizedBox(
                                     width: 10.w,
                                   ),

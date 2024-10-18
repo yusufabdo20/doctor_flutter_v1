@@ -1,12 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
+import 'package:flutter_svg/svg.dart';
 
-// import '../../../../../res/constatnts/end_points/end_points.dart';
-// import '../../../../../utils/error/failure.dart';
-// import '../../../../../utils/helpers/dio_helper/dio_helper.dart';
 import '../../../../core/error/error_hander.dart';
-import '../../../../core/network/end_point.dart';
+import '../../../../core/network/dio_helper.dart';
+import '../../../../core/services/cache/app_cache_key.dart';
+import '../../../../core/services/cache/cache_service.dart';
 import '../../notification_bloc/notification_bloc.dart';
 import '../model/notifications_model/notifications_model.dart';
 
@@ -23,13 +22,15 @@ class NotificationRepoImpl extends NotificationRepo {
       GetNotificationEvent getNotificationEvent) async {
     try {
       Response response = await DioHelper.getData(
-        url: EndPoint.notifications,
+        url: '/notifications',
+        queryParameters: getNotificationEvent.toJson(),
+        token: CacheService.getString(key: AppCacheKey.token),
       );
       return Right(NotificationModel.fromJson(response.data));
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     } catch (e) {
-      return Left(ServerFailure(errorMessage: e.toString()));
+      return Left(LocalFailures(errorMessage: e.toString()));
     }
   }
 
@@ -38,15 +39,17 @@ class NotificationRepoImpl extends NotificationRepo {
       NotificationSeenEvent notificationSeenEvent) async {
     try {
       Response response = await DioHelper.postData(
-          url: EndPoint.notificationsMarkAsSeen,
-          data: {
-            'notification_ids': [notificationSeenEvent.id]
-          });
+        url: '/notifications/markAsSeen',
+        data: {
+          'id': [notificationSeenEvent.id]
+        },
+        token: CacheService.getString(key: AppCacheKey.token),
+      );
       return Right(response.data['message']);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioError(e));
     } catch (e) {
-      return Left(ServerFailure(errorMessage: e.toString()));
+      return Left(LocalFailures(errorMessage: e.toString()));
     }
   }
 }

@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/widgets/localization_button.dart';
+import '../../../notification_module/notification_module/notification_screen.dart';
+
 abstract class PatientHomeLayoutData {
   static List<String> titles = [
     AppText.healthRecord,
@@ -17,64 +20,19 @@ abstract class PatientHomeLayoutData {
     AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
+        [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications))
+        ],
         [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
-        [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
-        [
-          IconButton(
-            onPressed: () {
-              context.setLocale(context.locale == const Locale('ar')
-                  ? const Locale('en')
-                  : const Locale('ar'));
-            },
-            icon: SvgPicture.asset(
-              AppIcon.language,
-              colorFilter:
-                  const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-            ),
-          ),
-        ],
-        [
-          IconButton(
-            onPressed: () {
-              context.setLocale(context.locale == const Locale('ar')
-                  ? const Locale('en')
-                  : const Locale('ar'));
-            },
-            icon: SvgPicture.asset(
-              AppIcon.language,
-              colorFilter:
-                  const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-            ),
-          ),
-        ],
-        [
-          IconButton(
-            onPressed: () {
-              context.setLocale(context.locale == const Locale('ar')
-                  ? const Locale('en')
-                  : const Locale('ar'));
-            },
-            icon: SvgPicture.asset(
-              AppIcon.language,
-              colorFilter:
-                  const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-            ),
-          ),
-        ],
-        [
-          IconButton(
-            onPressed: () {
-              context.setLocale(context.locale == const Locale('ar')
-                  ? const Locale('en')
-                  : const Locale('ar'));
-            },
-            icon: SvgPicture.asset(
-              AppIcon.language,
-              colorFilter:
-                  const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-            ),
-          ),
-        ]
+        [LocalizationButton()],
+        [LocalizationButton()],
+        [LocalizationButton()],
+        [LocalizationButton()],
       ];
   static BottomNavigationBarItem customBottomNavBarItem(
       {required String label,
