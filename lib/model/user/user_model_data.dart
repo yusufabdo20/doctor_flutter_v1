@@ -17,6 +17,13 @@ class UserModelData {
   final String? role;
   final String? address;
   final String? location;
+  final String? tall;
+  final String? birthDate;
+  final String? nationalID;
+  final String? blodType;
+  final num? walkPlan;
+  final String weight;
+  final String bmi;
 
   UserModelData({
     required this.id,
@@ -37,6 +44,13 @@ class UserModelData {
     required this.role,
     required this.address,
     required this.location,
+    required this.tall,
+    required this.birthDate,
+    required this.nationalID,
+    required this.blodType,
+    required this.walkPlan,
+    required this.weight,
+    required this.bmi,
   });
 
   factory UserModelData.fromJson(Map<String?, dynamic> json) {
@@ -59,6 +73,13 @@ class UserModelData {
       role: json['role'] ?? "",
       address: json['address'] ?? "",
       location: json['location'] ?? "",
+      tall: json['tall'] ?? "",
+      birthDate: json['birth_date'] ?? "",
+      nationalID: json['national_id'] ?? "",
+      blodType: json['blod_type'] ?? "",
+      walkPlan: json['walk_plan'] ?? 0,
+      weight: json['weight'] ?? "",
+      bmi: json['bmi'] ?? "",
     );
   }
 

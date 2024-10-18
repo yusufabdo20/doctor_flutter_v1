@@ -8,6 +8,7 @@ import 'package:doctor_flutter_v1/core/services/cache/app_cache_key.dart';
 import 'package:doctor_flutter_v1/core/services/cache/cache_service.dart';
 
 import 'package:gen_extension/gen_extension.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 //Dio Helper That's Connect and Talk to API.
 class DioHelper {
@@ -48,6 +49,7 @@ class DioHelper {
         ),
       ]);
     //
+    dio.interceptors.add(PrettyDioLogger());
   }
 
   //This Function to call API and get Some Data based on url(End Points) and Headers needed in API to get the Specific Data.

@@ -31,7 +31,7 @@ abstract class AppText {
   //Caregiver
   static const family = 'family';
   static const login = 'login';
-  static const email = 'email';
+  static const email = 'email or phone';
   static const password = 'password';
   static const forgetPassword = 'forgetPassword';
   static const createAccount = 'createAccount';
