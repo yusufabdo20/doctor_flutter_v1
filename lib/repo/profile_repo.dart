@@ -15,6 +15,13 @@ abstract class ProfileRepo {
     required String email,
     required String phone,
     required String countryCode,
+    required String tall,
+    required String weight,
+    required String birthDate,
+    required String bloodType,
+    required String walkPlan,
+    required String bmi,
+    required String weightUnit,
   });
 
   Future<Either<Failures, String>> updateAvatar({
@@ -43,6 +50,13 @@ class ProfileRepoImpl implements ProfileRepo {
     required String email,
     required String phone,
     required String countryCode,
+    required String tall,
+    required String weight,
+    required String birthDate,
+    required String bloodType,
+    required String walkPlan,
+    required String bmi,
+    required String weightUnit,
   }) async {
     try {
       Response response = await DioHelper.putData(
@@ -54,6 +68,13 @@ class ProfileRepoImpl implements ProfileRepo {
             "phone": phone,
             "country_code": countryCode,
             "lang": "en",
+            "tall": tall,
+            "weight": weight,
+            "bmi": bmi,
+            "walk_plan": walkPlan,
+            "birth_date": birthDate,
+            "blood_type": bloodType,
+            "weight_unit": weightUnit,
           });
 
       return Right(UserModelData.fromJson(response.data));

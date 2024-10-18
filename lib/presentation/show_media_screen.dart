@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:chewie/chewie.dart';
+import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -44,7 +45,10 @@ class ShowMediaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Media Files'),
+        title: CustomText(
+          text: 'Media',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
@@ -119,13 +123,13 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
     // Initialize the video player with the URL passed from the widget
     _videoPlayerController =
         VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl));
-
     // Initialize the ChewieController
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       autoPlay: true,
       looping: false,
     );
+    _videoPlayerController.initialize().then((_) => setState(() {}));
   }
 
   @override

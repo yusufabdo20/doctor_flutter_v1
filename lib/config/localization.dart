@@ -16,6 +16,7 @@ abstract class AppText {
   static const notes = 'notes';
   //date_recorded
   static const dateRecorded = 'dateRecorded';
+  static const createdAt = 'createdAt';
   //temperature
   static const temperature = 'temperature';
   //treatment_plan
@@ -26,14 +27,14 @@ abstract class AppText {
   static const healthRecord = 'healthRecord';
   //medical_history
   static const medicalHistory = 'medicalHistory';
-    static const medicine = 'medicin';
+  static const medicine = 'medicine';
 
   //Patient
   static const patient = 'patient';
   //Caregiver
   static const family = 'family';
   static const login = 'login';
-  static const email = 'email or phone';
+  static const email = 'emailorphone';
   static const password = 'password';
   static const forgetPassword = 'forgetPassword';
   static const createAccount = 'createAccount';
@@ -56,8 +57,9 @@ abstract class AppText {
   static const phone = 'phone';
   static const birthDay = 'birthDay';
   static const tall = 'tall';
-  static const String blod_type = 'blod type';
-  static const String walk_plan = 'walk plan';
+  static const String blod_type = 'blodtype';
+  static const String walk_plan = 'walkplan';
+  static const String bearthRate = "breathRate";
   static const String bmi = 'bmi';
   static const String weight = 'weight';
 

@@ -16,6 +16,7 @@ abstract class AppIcon {
   static const String calendar = '$_iconRoot/calendar.svg';
   static const String profile = '$_iconRoot/profile.svg';
   static const String contactUs = '$_iconRoot/contact_us.svg';
+  static const String medicin = '$_iconRoot/medicin.svg';
   //faqs
   static const String faqs = '$_iconRoot/faqs.svg';
 }

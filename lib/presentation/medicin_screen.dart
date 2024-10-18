@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/services/cache/cache_service.dart';
+import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/medicin_model.dart';
 import 'package:flutter/material.dart';
 
@@ -24,37 +25,76 @@ class _MedicinScreenState extends State<MedicinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<UserMedicinModel>(
-        future: getUserMdedicin(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data!.data!.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                      "${snapshot.data!.data![index].repeatedPerDay} repated per day"),
-                  subtitle: Text(
-                      "start date: ${snapshot.data!.data![index].startDate} - end date: ${snapshot.data!.data![index].endDate}"),
-                  leading: SizedBox(
-                    width: 90,
-                    child: Text(
-                      " ${snapshot.data!.data![index].name} ",
-                      style: const TextStyle(
-                          color: Colors.red,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FutureBuilder<UserMedicinModel>(
+          future: getUserMdedicin(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return Table(
+                border: TableBorder.all(),
+                children: [
+                  const TableRow(children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: CustomText(
+                        text: 'name',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
-          }
-        },
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: CustomText(
+                        text: 'repeatedPerDay',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: CustomText(
+                        text: 'startDate',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: CustomText(
+                          text: 'endDate',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                    ),
+                  ]),
+                  ...snapshot.data!.data!.map((e) {
+                    return TableRow(children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(e.name!)),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(e.repeatedPerDay.toString()),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(e.startDate.toString()),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(e.endDate.toString()),
+                      ),
+                    ]);
+                  }).toList()
+                ],
+              );
+            }
+          },
+        ),
       ),
     );
   }

@@ -21,7 +21,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   await EasyLocalization.ensureInitialized();
   await FireBaseMessagingSystem.getPermissionStatus();
   FireBaseMessagingSystem.setMessagingInBackGround();

@@ -84,17 +84,13 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
       body: BlocProvider(
         create: (context) => SubmitHealthRecordCubit(),
         child: BlocConsumer<SubmitHealthRecordCubit, SubmitHealthRecordState>(
-          listener: (context, state) {
+          listener: (_, state) {
             if (state is SubmitHealthRecordSuccessState) {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlocProvider.value(
-                            value: context.read<HealthRecordCubit>(),
-                            child: SelectMedia(
-                              id: state
-                                  .submitHealthRecordResponseModel.data!.id!,
-                            ),
+                      builder: (_) => SelectMedia(
+                            id: state.submitHealthRecordResponseModel.data!.id!,
                           )));
             }
           },
@@ -168,20 +164,6 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                         return null;
                       },
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => BlocProvider.value(
-                                        value: SubmitHealthRecordCubit.get(
-                                            context),
-                                        child: SelectMedia(
-                                          id: 2,
-                                        ),
-                                      )));
-                        },
-                        child: Text("media")),
                     if (state is SubmitHealthRecordLoadingState)
                       const Center(
                           child: CustomLoading(

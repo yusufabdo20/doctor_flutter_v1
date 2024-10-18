@@ -17,13 +17,13 @@ class UserModelData {
   final String? role;
   final String? address;
   final String? location;
-  final num? tall;
+  final dynamic? tall;
   final String? birthDate;
   final String? nationalID;
-  final String? blodType;
-  final num? walkPlan;
-  final String weight;
-  final String bmi;
+  final dynamic? blodType;
+  final dynamic? walkPlan;
+  final dynamic weight;
+  final dynamic bmi;
 
   UserModelData({
     required this.id,

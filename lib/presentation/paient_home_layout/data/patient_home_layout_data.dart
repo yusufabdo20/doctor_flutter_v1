@@ -9,12 +9,13 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../core/widgets/localization_button.dart';
 import '../../../notification_module/notification_module/notification_screen.dart';
+import '../../message_screen.dart';
 
 abstract class PatientHomeLayoutData {
   static List<String> titles = [
     AppText.healthRecord,
     AppText.medicalHistory,
-    "Medicine",
+    "medicine",
     AppText.profile,
     AppText.faqs,
     AppText.communication,
@@ -23,12 +24,22 @@ abstract class PatientHomeLayoutData {
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
         [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const NotificationScreen()));
-              },
-              icon: const Icon(Icons.notifications))
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const MessageScreen()));
+                  },
+                  icon: const Icon(Icons.message)),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
+                  },
+                  icon: const Icon(Icons.notifications)),
+            ],
+          )
         ],
         [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
         [LocalizationButton()],
@@ -74,7 +85,7 @@ abstract class PatientHomeLayoutData {
         customBottomNavBarItem(
           context: context,
           label: AppText.medicine,
-          imagePath: AppIcon.logo,
+          imagePath: AppIcon.medicin,
         ),
         customBottomNavBarItem(
           context: context,

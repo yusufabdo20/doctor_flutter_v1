@@ -65,13 +65,21 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<void> updateProfile({required BuildContext context}) async {
+  Future<void> updateProfile({required BuildContext context}) async 
+  {
     emit(ProfileLoadingState());
     var response = await profileRepo.updateProfile(
         name: userName.text,
         email: email.text,
         phone: phone.text,
-        countryCode: "+20");
+        countryCode: "+20",
+        tall: tall.text,
+        weight: weight.text,
+        birthDate: birth_date.text,
+        bloodType: bloodType.text,
+        walkPlan: walk_plan.text,
+        bmi: bmi.text,
+        weightUnit: weight.text);
     response.fold((error) {
       emit(ProfileErrorState(error.errorMessage));
     }, (data) {
