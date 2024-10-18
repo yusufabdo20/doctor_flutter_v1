@@ -35,6 +35,7 @@ abstract class PatientHomeLayoutData {
         [LocalizationButton()],
         [LocalizationButton()],
         [LocalizationButton()],
+        [LocalizationButton()],
       ];
   static BottomNavigationBarItem customBottomNavBarItem(
       {required String label,
