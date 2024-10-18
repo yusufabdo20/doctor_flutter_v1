@@ -9,6 +9,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../core/services/cache/app_cache_key.dart';
 import '../../../core/services/cache/cache_service.dart';
+import '../../../core/widgets/localization_button.dart';
+import '../../../notification_module/notification_module/notification_screen.dart';
 
 abstract class DoctorHomeLayoutData {
   static List<String> titles = [
@@ -20,7 +22,14 @@ abstract class DoctorHomeLayoutData {
     AppText.appointments,
   ];
   static List<List<Widget>> appBarActions(BuildContext context) => [
-        [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
+        [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications))
+        ],
         [IconButton(onPressed: () {}, icon: Icon(Icons.notifications))],
         [
           LocalizationButton(),
@@ -87,30 +96,4 @@ abstract class DoctorHomeLayoutData {
           imagePath: AppIcon.calendar,
         ),
       ];
-}
-
-class LocalizationButton extends StatelessWidget {
-  const LocalizationButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        context.setLocale(context.locale == const Locale('ar')
-            ? const Locale('en')
-            : const Locale('ar'));
-        CacheService.setData(
-          key: AppCacheKey.lang,
-          value: context.locale.languageCode.toString(),
-        );
-        // CacheHelper.saveData(key: 'lang', value: context.locale.toString());
-      },
-      icon: SvgPicture.asset(
-        AppIcon.language,
-        colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-      ),
-    );
-  }
 }

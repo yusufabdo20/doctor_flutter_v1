@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:doctor_flutter_v1/model/login_model.dart';
 import 'package:doctor_flutter_v1/repo/login.dart';
 
+import '../../core/services/cache/app_cache_key.dart';
+import '../../core/services/cache/cache_service.dart';
+import '../../core/utils/enums.dart';
+
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -35,6 +39,11 @@ class LoginCubit extends Cubit<LoginState> {
       response.fold((error) {
         emit(LoginErrorState(error.errorMessage));
       }, (data) {
+        selectdRole = data.user.role;
+        CacheService.setData(
+          key: AppCacheKey.role,
+          value: data.user.role,
+        );
         emit(LoginSuccessState(data));
       });
     }
