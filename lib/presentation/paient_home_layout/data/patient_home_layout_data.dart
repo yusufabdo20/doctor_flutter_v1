@@ -80,7 +80,7 @@ abstract class PatientHomeLayoutData {
         customBottomNavBarItem(
           context: context,
           label: AppText.medicalHistory,
-          imagePath: AppIcon.logo,
+          imagePath: AppIcon.dateMedicin,
         ),
         customBottomNavBarItem(
           context: context,
