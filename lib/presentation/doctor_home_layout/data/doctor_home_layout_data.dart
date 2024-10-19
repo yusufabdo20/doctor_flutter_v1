@@ -2,6 +2,7 @@ import 'package:doctor_flutter_v1/config/localization.dart';
 import 'package:doctor_flutter_v1/core/utils/app_assets.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/main.dart';
+import 'package:doctor_flutter_v1/presentation/message_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,6 +37,12 @@ abstract class DoctorHomeLayoutData {
         ],
         [
           LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: Icon(Icons.message_outlined))
         ],
         [
           LocalizationButton(),

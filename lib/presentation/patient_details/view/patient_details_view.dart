@@ -27,8 +27,13 @@ class PatientDetailsView extends StatelessWidget {
       body: BlocBuilder<PatientDetailsCubit, PatientDetailsState>(
           builder: (context, state) {
         if (state is PatientDetailsLoaded) {
-          return PatientDetailsBody(
-            patientModelData: state.patientModelData,
+          return RefreshIndicator(
+            onRefresh: () async {
+              PatientDetailsCubit.get(context).getPatientDetails(patientId);
+            },
+            child: PatientDetailsBody(
+              patientModelData: state.patientModelData,
+            ),
           );
         } else if (state is PatientDetailsError) {
           return Center(

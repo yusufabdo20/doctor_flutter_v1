@@ -26,16 +26,19 @@ class _MessageScreenState extends State<MessageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(
+        title: const CustomText(
           text: "message",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: 
+      Padding(
+        padding: 
+        const EdgeInsets.all(8.0),
         child: FutureBuilder<ListContactUs>(
           future: getUserMdedicin(),
-          builder: (context, snapshot) {
+          builder: (context, snapshot) 
+          {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
@@ -49,12 +52,12 @@ class _MessageScreenState extends State<MessageScreen> {
                       children: [
                         Row(
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: "name",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             CustomText(
@@ -64,17 +67,17 @@ class _MessageScreenState extends State<MessageScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: "email",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             CustomText(
@@ -84,27 +87,53 @@ class _MessageScreenState extends State<MessageScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: "subject",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            CustomText(
-                              text: snapshot.data!.data![index].subject!,
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: Text(
+                                snapshot.data!.data![index].subject!,
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            const CustomText(
+                              text: "Messaeges",
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: Text(
+                                snapshot.data!.data![index].message!,
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
                       ],

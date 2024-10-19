@@ -1,7 +1,9 @@
+import 'package:doctor_flutter_v1/controller/send_appoinment_cubit/submit_health_record_cubit.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/core/utils/app_style.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:doctor_flutter_v1/model/health_record/health_record_model_data.dart';
+import 'package:doctor_flutter_v1/presentation/submit_health_record/select_media.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -129,12 +131,15 @@ class HealthRecordListViewItem extends StatelessWidget {
               SizedBox(
                 width: 10.r,
               ),
-              CustomText(
-                text: "${healthRecordModel.treatment_plan}",
-                style: AppStyle.textStyle16RegularKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
+              SizedBox(
+                width: 150.r,
+                child: CustomText(
+                  text: "${healthRecordModel.treatment_plan}",
+                  style: AppStyle.textStyle16RegularKufram,
+                  textAlign: TextAlign.center,
+                  maxLines: 100,
+                  color: AppColor.blue,
+                ),
               ),
             ],
           ),
@@ -172,6 +177,24 @@ class HealthRecordListViewItem extends StatelessWidget {
             },
             child: CustomText(
               text: "Media",
+              style: AppStyle.textStyle16RegularKufram,
+              textAlign: TextAlign.center,
+              maxLines: 100,
+              color: AppColor.blue,
+            ),
+          ),
+          SizedBox(
+            height: 10.r,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SelectMedia(
+                        id: healthRecordModel.id!.toInt(),
+                      )));
+            },
+            child: CustomText(
+              text: "uploadmedia",
               style: AppStyle.textStyle16RegularKufram,
               textAlign: TextAlign.center,
               maxLines: 100,

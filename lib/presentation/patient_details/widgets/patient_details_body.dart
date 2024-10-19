@@ -72,6 +72,36 @@ class PatientDetailsBody extends StatelessWidget {
               title: AppText.location,
               subtitle: patientModelData.location!,
             ),
+            CustomPatientData(
+              icon: Icons.height,
+              title: AppText.tall,
+              subtitle: patientModelData.tall!.toString(),
+            ),
+            CustomPatientData(
+              icon: Icons.date_range,
+              title: AppText.birthDay,
+              subtitle: patientModelData.birth_date!.toString(),
+            ),
+            CustomPatientData(
+              icon: Icons.bloodtype,
+              title: AppText.blod_type,
+              subtitle: patientModelData.blood_type!.toString(),
+            ),
+            CustomPatientData(
+              icon: Icons.boy_rounded,
+              title: AppText.weight,
+              subtitle: patientModelData.weight!.toString(),
+            ),
+            CustomPatientData(
+              icon: Icons.location_city,
+              title: AppText.walk_plan,
+              subtitle: patientModelData.walk_plan!.toString(),
+            ),
+            CustomPatientData(
+              icon: Icons.boy_rounded,
+              title: AppText.bmi,
+              subtitle: patientModelData.bmi!.toString(),
+            ),
             Row(children: [
               CustomElevatedButton(
                   onPressed: () {

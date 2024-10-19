@@ -93,5 +93,6 @@
   "breathRate": "معدل التنفس",
   "message": "الرسالة",
   "createdAt": "تاريخ الإنشاء",
-  "subject": "الموضوع"
+  "subject": "الموضوع",
+  "uploadmedia" : "رفع الوسائط"
 }

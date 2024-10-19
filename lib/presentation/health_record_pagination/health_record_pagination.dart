@@ -19,37 +19,43 @@ class HealthRecordPagination extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PagedListView<int, HealthRecordModelData>(
-        physics: const BouncingScrollPhysics(),
-        pagingController: HealthRecordCubit.get(context).pagingController,
-        builderDelegate: PagedChildBuilderDelegate<HealthRecordModelData>(
-          animateTransitions: true,
-          firstPageProgressIndicatorBuilder: (context) => const CustomLoading(),
-          newPageErrorIndicatorBuilder: (context) => CustomErrorWidget(
-            error: HealthRecordCubit.get(context)
-                .pagingController
-                .error
-                .toString(),
-            onRetry: () {
-              HealthRecordCubit.get(context).pagingController.refresh();
+      body: RefreshIndicator(
+        onRefresh: () async {
+          HealthRecordCubit.get(context).pagingController.refresh();
+        },
+        child: PagedListView<int, HealthRecordModelData>(
+          physics: const BouncingScrollPhysics(),
+          pagingController: HealthRecordCubit.get(context).pagingController,
+          builderDelegate: PagedChildBuilderDelegate<HealthRecordModelData>(
+            animateTransitions: true,
+            firstPageProgressIndicatorBuilder: (context) =>
+                const CustomLoading(),
+            newPageErrorIndicatorBuilder: (context) => CustomErrorWidget(
+              error: HealthRecordCubit.get(context)
+                  .pagingController
+                  .error
+                  .toString(),
+              onRetry: () {
+                HealthRecordCubit.get(context).pagingController.refresh();
+              },
+            ),
+            noItemsFoundIndicatorBuilder: (context) =>
+                CustomEmptyWidget(onRetry: () {
+              HealthRecordCubit.get(context).getAllRecord();
+            }),
+            firstPageErrorIndicatorBuilder: (context) => CustomErrorWidget(
+              error: HealthRecordCubit.get(context)
+                  .pagingController
+                  .error
+                  .toString(),
+              onRetry: () {
+                HealthRecordCubit.get(context).pagingController.refresh();
+              },
+            ),
+            itemBuilder: (context, item, index) {
+              return HealthRecordListViewItem(healthRecordModel: item);
             },
           ),
-          noItemsFoundIndicatorBuilder: (context) =>
-              CustomEmptyWidget(onRetry: () {
-            HealthRecordCubit.get(context).getAllRecord();
-          }),
-          firstPageErrorIndicatorBuilder: (context) => CustomErrorWidget(
-            error: HealthRecordCubit.get(context)
-                .pagingController
-                .error
-                .toString(),
-            onRetry: () {
-              HealthRecordCubit.get(context).pagingController.refresh();
-            },
-          ),
-          itemBuilder: (context, item, index) {
-            return HealthRecordListViewItem(healthRecordModel: item);
-          },
         ),
       ),
       floatingActionButton: FloatingActionButton(

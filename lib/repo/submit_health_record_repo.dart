@@ -64,7 +64,7 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
   Future<Either<Failures, String>> uploadFile(List<File> file, int id) async {
     try {
       FormData formData = FormData.fromMap(
-          {"mediaable_id": 25, 'mediaable_type': 'App\\Models\\HealthRecord'});
+          {"mediaable_id": id, 'mediaable_type': 'App\\Models\\HealthRecord'});
       for (int i = 0; i < file.length; i++) {
         formData.files.add(MapEntry(
             "files[$i]",

@@ -25,7 +25,12 @@ class PatientModelData extends Equatable {
   List<MedicalHistoryModelData>? medicalHistory;
   List<DoctorPatients>? doctorPatients;
   List<Appointments>? appointments;
-
+  dynamic tall;
+  dynamic birth_date;
+  dynamic blood_type;
+  dynamic walk_plan;
+    dynamic weight;
+  dynamic bmi;
   PatientModelData(
       {required this.id,
       required this.name,
@@ -45,7 +50,14 @@ class PatientModelData extends Equatable {
       required this.doctorPatients,
       required this.deleted_at,
       required this.healthRecord,
-      required this.appointments});
+      required this.appointments,
+      required this.tall,
+      required this.birth_date,
+      required this.blood_type,
+      required this.walk_plan,
+      required this.weight,
+      required this.bmi
+    });
 
   factory PatientModelData.fromJson(Map<String?, dynamic> json) {
     return PatientModelData(
@@ -75,6 +87,13 @@ class PatientModelData extends Equatable {
           ? []
           : List<HealthRecordModelData>.from(json['health_records']
               .map((x) => HealthRecordModelData.fromJson(x))),
+      tall: json['tall'] ?? 0,
+      birth_date: json['birth_date'] ?? 0,
+      blood_type: json['blood_type'] ?? 0,
+      walk_plan: json['walk_plan'] ?? 0,
+      weight: json['weight'] ?? 0,
+      bmi: json['bmi'] ?? 0,
+      
     );
   }
 
