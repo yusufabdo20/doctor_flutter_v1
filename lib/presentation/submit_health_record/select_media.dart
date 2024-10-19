@@ -1,4 +1,5 @@
 import 'package:doctor_flutter_v1/controller/send_appoinment_cubit/submit_health_record_cubit.dart';
+import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,15 +43,19 @@ class _SelectMediaState extends State<SelectMedia> {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Select Media'),
-            ),
+                title: CustomText(
+                    text: 'selectMedia',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
             body: Column(
               children: [
                 ElevatedButton(
                   onPressed: () {
                     SubmitHealthRecordCubit.get(context).addFile();
                   },
-                  child: const Text('add File'),
+                  child:  CustomText(text: 'AddMedia', style:  TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -86,7 +91,7 @@ class _SelectMediaState extends State<SelectMedia> {
                             widget.id,
                           );
                         },
-                        child: const Text('Submit'),
+                        child:  CustomText(text: 'submit', style:  TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
                       ),
               ],
             ),

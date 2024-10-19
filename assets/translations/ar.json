@@ -94,5 +94,8 @@
   "message": "الرسالة",
   "createdAt": "تاريخ الإنشاء",
   "subject": "الموضوع",
-  "uploadmedia" : "رفع الوسائط"
+  "uploadmedia" : "رفع الوسائط",
+  "selectMedia" : "اختر الوسائط",
+  "AddMedia" : "اضافة وسائط",
+  "submit" : "ارسال"
 }

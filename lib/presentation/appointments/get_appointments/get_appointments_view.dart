@@ -1,21 +1,14 @@
-import 'dart:math';
-
 import 'package:doctor_flutter_v1/config/routes/app_page.dart';
-import 'package:doctor_flutter_v1/config/routes/app_router.dart';
 import 'package:doctor_flutter_v1/controller/appointment_cubit/appointment_cubit.dart';
-import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/widgets/custom_text.dart';
-import 'package:doctor_flutter_v1/model/appoinment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen_extension/gen_extension.dart';
 
-import '../../../controller/register_cubit/register_cubit_cubit.dart';
 import '../../../core/services/cache/app_cache_key.dart';
 import '../../../core/services/cache/cache_service.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/app_style.dart';
-import '../../../core/utils/enums.dart';
 import '../widgets/get_appointment_widget.dart';
 
 enum Status { pending, completed, canceled }

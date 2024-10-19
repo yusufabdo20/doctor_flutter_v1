@@ -87,5 +87,8 @@
   "message": "Message",
   "createdAt": "Created At",
   "subject": "Subject",
-  "uploadmedia": "Upload Media"
+  "uploadmedia": "Upload Media",
+  "selectMedia": "Select Media",
+  "AddMedia": "Add Media",
+  "submit": "Submit"
 }

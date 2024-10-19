@@ -41,12 +41,95 @@ abstract class PatientHomeLayoutData {
             ],
           )
         ],
-        [IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))],
-        [LocalizationButton()],
-        [LocalizationButton()],
-        [LocalizationButton()],
-        [LocalizationButton()],
-        [LocalizationButton()],
+        [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
+        [
+          LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
+        [
+          LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
+        [
+          LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
+        [
+          LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
+        [
+          LocalizationButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessageScreen()));
+              },
+              icon: const Icon(Icons.message)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+              icon: const Icon(Icons.notifications)),
+        ],
       ];
   static BottomNavigationBarItem customBottomNavBarItem(
       {required String label,
