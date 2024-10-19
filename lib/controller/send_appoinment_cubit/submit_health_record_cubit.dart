@@ -27,6 +27,7 @@ class SubmitHealthRecordCubit extends Cubit<SubmitHealthRecordState> {
   final TextEditingController heartRateController = TextEditingController();
   final TextEditingController treatmentPlanController = TextEditingController();
   final TextEditingController notesController = TextEditingController();
+  final TextEditingController workPlan = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -42,6 +43,7 @@ class SubmitHealthRecordCubit extends Cubit<SubmitHealthRecordState> {
       note: notesController.text,
       lat: lat < 0 ? lat * -1 : lat,
       long: long < 0 ? long * -1 : long,
+      walkPlan: workPlan.text,
     );
 
     result.fold((l) {

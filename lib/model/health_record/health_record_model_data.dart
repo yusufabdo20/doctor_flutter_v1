@@ -8,14 +8,14 @@ class HealthRecordModelData extends Equatable {
   num? family_member_id;
   String? blood_pressure;
   num? heart_rate;
-  num ? breath_rate;
-  num ? walkplan;
+  num? breath_rate;
+  num? walkplan;
   String? temperature;
   String? treatment_plan;
   String? created_at;
   String? updated_at;
   List<MediaModel> media;
-
+  dynamic notes;
   HealthRecordModelData({
     required this.id,
     required this.patient_id,
@@ -30,6 +30,7 @@ class HealthRecordModelData extends Equatable {
     required this.media,
     required this.breath_rate,
     required this.walkplan,
+    required this.notes,
   });
 
   factory HealthRecordModelData.fromJson(Map<String?, dynamic> json) {
@@ -49,6 +50,7 @@ class HealthRecordModelData extends Equatable {
           : [],
       breath_rate: json['breath_rate'] ?? 0,
       walkplan: json['walk_plan'] ?? 0,
+      notes: json['notes'] ?? '',
     );
   }
 

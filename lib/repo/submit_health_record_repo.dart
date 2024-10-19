@@ -22,6 +22,7 @@ abstract class SubmitHealthRecordRepo {
     required double long,
     required String breathRate,
     required String note,
+    required String walkPlan,
   });
 
   Future<Either<Failures, String>> uploadFile(List<File> file, int id);
@@ -38,12 +39,15 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
     required double long,
     required String breathRate,
     required String note,
+    required String walkPlan,
   }) async {
     try {
-      Response response = await DioHelper.postData(
+      Response response = await DioHelper.postData
+      (
           url:
               "https://health-care-sys.smartleadtech.com/api/patients/health-records",
-          data: {
+          data: 
+          {
             "blood_pressure": bloodPressure,
             "heart_rate": heartRate,
             "temperature": temperature,
@@ -51,7 +55,8 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
             "lat": lat,
             "long": long,
             "breath_rate": breathRate,
-            "note": note
+            "note": note,
+            "walk_plan": walkPlan,
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(SubmitHealthRecordResponseModel.fromJson(response.data));

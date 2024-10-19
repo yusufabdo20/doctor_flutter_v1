@@ -98,6 +98,33 @@ class HealthRecordListViewItem extends StatelessWidget {
           Row(
             children: [
               CustomText(
+                text: AppText.notes,
+                style: AppStyle.textStyle14BoldKufram,
+                textAlign: TextAlign.center,
+                maxLines: 100,
+                color: AppColor.blue,
+              ),
+              SizedBox(
+                width: 10.r,
+              ),
+              SizedBox(
+                width: 150.r,
+                child: CustomText(
+                  text: "${healthRecordModel.notes}",
+                  style: AppStyle.textStyle16RegularKufram,
+                  textAlign: TextAlign.center,
+                  maxLines: 100,
+                  color: AppColor.blue,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10.r,
+          ),
+          Row(
+            children: [
+              CustomText(
                 text: AppText.bearthRate,
                 style: AppStyle.textStyle14BoldKufram,
                 textAlign: TextAlign.center,

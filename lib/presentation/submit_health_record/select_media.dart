@@ -52,10 +52,19 @@ class _SelectMediaState extends State<SelectMedia> {
             body: Column(
               children: [
                 ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
                   onPressed: () {
                     SubmitHealthRecordCubit.get(context).addFile();
                   },
-                  child:  CustomText(text: 'AddMedia', style:  TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                  child: CustomText(
+                      color: Colors.white,
+                      text: 'AddMedia',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -86,12 +95,21 @@ class _SelectMediaState extends State<SelectMedia> {
                         child: const CircularProgressIndicator(),
                       )
                     : ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.blue),
+                        ),
                         onPressed: () {
                           SubmitHealthRecordCubit.get(context).uploadFile(
                             widget.id,
                           );
                         },
-                        child:  CustomText(text: 'submit', style:  TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                        child: CustomText(
+                            text: 'submit',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
                       ),
               ],
             ),

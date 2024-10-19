@@ -164,6 +164,17 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                         return null;
                       },
                     ),
+                    CustomTextFormFeild(
+                      text: AppText.walk_plan,
+                      controller: SubmitHealthRecordCubit.get(context).workPlan,
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'workPlan plan is required';
+                        }
+                        return null;
+                      },
+                    ),
                     if (state is SubmitHealthRecordLoadingState)
                       const Center(
                           child: CustomLoading(
