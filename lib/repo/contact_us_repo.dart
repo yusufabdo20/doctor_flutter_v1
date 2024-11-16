@@ -32,9 +32,9 @@ class ContactUsRepoImpl implements ContactUsRepo {
         token: CacheService.getString(key: AppCacheKey.token),
         url: EndPoint.contactUs,
         data: {
-          "user_id" :  userId,
-          "name": name,
-          "email": email,
+          "user_id": userId,
+          // "name": name,
+          // "email": email,
           "subject": title,
           "message": message,
         },

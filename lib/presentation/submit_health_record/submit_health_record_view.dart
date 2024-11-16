@@ -1,20 +1,16 @@
 import 'package:doctor_flutter_v1/config/localization.dart';
-import 'package:doctor_flutter_v1/core/network/dio_helper.dart';
 import 'package:doctor_flutter_v1/core/utils/app_color.dart';
 import 'package:doctor_flutter_v1/presentation/submit_health_record/select_media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gen_extension/gen_extension.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../../controller/health_record/health_record_cubit.dart';
 import '../../controller/send_appoinment_cubit/submit_health_record_cubit.dart';
 import '../../core/utils/app_style.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_loading.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../core/widgets/custom_text_form_field.dart';
-import '../paient_home_layout/widgets/custom_app_bar.dart';
 
 class SubmitHealthRecordView extends StatefulWidget {
   SubmitHealthRecordView({super.key});
@@ -97,7 +93,7 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
           builder: (context, state) {
             return SafeArea(
               child: Form(
-                key: _formKey, // Attach the form key for validation
+                // key: _formKey, // Attach the form key for validation
                 child: ListView(
                   padding: const EdgeInsets.all(16.0),
                   children: [
@@ -153,17 +149,17 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                       },
                     ),
                     const CustomDatePickerTextField(),
-                    CustomTextFormFeild(
-                      text: AppText.treatmentPlan,
-                      controller: SubmitHealthRecordCubit.get(context)
-                          .treatmentPlanController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Treatment plan is required';
-                        }
-                        return null;
-                      },
-                    ),
+                    // CustomTextFormFeild(
+                    //   text: AppText.treatmentPlan,
+                    //   controller: SubmitHealthRecordCubit.get(context)
+                    //       .treatmentPlanController,
+                    //   validator: (value) {
+                    //     if (value == null || value.isEmpty) {
+                    //       return 'Treatment plan is required';
+                    //     }
+                    //     return null;
+                    //   },
+                    // ),
                     CustomTextFormFeild(
                       text: AppText.walk_plan,
                       controller: SubmitHealthRecordCubit.get(context).workPlan,
@@ -185,23 +181,14 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                         // style: ElevatedButton.styleFrom(),
                         title: AppText.send,
                         onPressed: () {
-                          if (SubmitHealthRecordCubit.get(context)
-                              .validateForm(_formKey)) {
-                            SubmitHealthRecordCubit.get(context)
-                                .submitHealthRecord(
-                              position?.latitude ?? 0.0,
-                              position?.longitude ?? 0.0,
-                            );
-                            // HealthRecordCubit.get(context).getAllRecord();
+                          SubmitHealthRecordCubit.get(context)
+                              .submitHealthRecord(
+                            position?.latitude ?? 0.0,
+                            position?.longitude ?? 0.0,
+                          );
+                          // HealthRecordCubit.get(context).getAllRecord();
 
-                            // SubmitHealthRecordCubit.get(context).clearControllers();
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  backgroundColor: Colors.red,
-                                  content: Text('Please fill out all fields')),
-                            );
-                          }
+                          // SubmitHealthRecordCubit.get(context).clearControllers();
                         },
                       ),
                   ],

@@ -36,32 +36,33 @@ class ContactUsView extends StatelessWidget {
               child: Column(
                 children: [
                   const DoctorNamesDropDown(),
-                  CustomTextFormFeild(
-                    controller: CountactUsCubit.get(context).nameController,
-                    text: AppText.userName,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return context.tr(AppText.pleaseEnterUserName);
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(
-                    height: 15.r,
-                  ),
-                  CustomTextFormFeild(
-                    controller: CountactUsCubit.get(context).emailController,
-                    text: AppText.email,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return context.tr(AppText.pleaseEnterEmail);
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(
-                    height: 15.r,
-                  ),
+                  // CustomTextFormFeild(
+                  //   controller: CountactUsCubit.get(context).nameController,
+                  //   text: AppText.userName,
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return context.tr(AppText.pleaseEnterUserName);
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+
+                  // SizedBox(
+                  //   height: 15.r,
+                  // ),
+                  // CustomTextFormFeild(
+                  //   controller: CountactUsCubit.get(context).emailController,
+                  //   text: AppText.email,
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return context.tr(AppText.pleaseEnterEmail);
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  // SizedBox(
+                  //   height: 15.r,
+                  // ),
                   CustomTextFormFeild(
                     controller: CountactUsCubit.get(context).titleController,
                     text: AppText.title,

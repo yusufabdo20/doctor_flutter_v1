@@ -36,8 +36,8 @@ class SubmitHealthRecordCubit extends Cubit<SubmitHealthRecordState> {
     emit(SubmitHealthRecordLoadingState());
     final result = await _repo.submitHealthRecord(
       bloodPressure: bloodPressureController.text,
-      temperature: double.parse(temperatureController.text),
-      heartRate: double.parse(heartRateController.text),
+      temperature: double.tryParse(temperatureController.text) ?? 0.0,
+      heartRate: double.tryParse(heartRateController.text) ?? 0.0,
       treatmentPlan: treatmentPlanController.text,
       breathRate: breathRate.text,
       note: notesController.text,
