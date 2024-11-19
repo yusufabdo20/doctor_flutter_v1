@@ -87,12 +87,12 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
             if (state is SubmitHealthRecordSuccessState) {
               context.pop();
             }
-            if (state is SubmitHealthRecordErrorState) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                backgroundColor: Colors.red,
-                content: Text(state.errorMessage),
-              ));
-            }
+            // if (state is SubmitHealthRecordErrorState) {
+            //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            //     backgroundColor: Colors.red,
+            //     content: Text(state.errorMessage),
+            //   ));
+            // }
           },
           builder: (context, state) {
             return SafeArea(
@@ -105,40 +105,40 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                       text: AppText.bloodPressure,
                       controller: SubmitHealthRecordCubit.get(context)
                           .bloodPressureController,
-                      // validator: (value) {
-                      //   if (value == null || value.isEmpty) {
-                      //     return 'Blood pressure is required';
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Blood pressure is required';
+                        }
+                        return null;
+                      },
                     ),
                     CustomTextFormFeild(
                       text: AppText.temperature,
                       controller: SubmitHealthRecordCubit.get(context)
                           .temperatureController,
                       keyboardType: TextInputType.number,
-                      // validator: (value) {
-                      //   if (value == null || value.isEmpty) {
-                      //     return 'Temperature is required';
-                      //   }
-                      //   final temp = double.tryParse(value);
-                      //   if (temp == null || temp < 20 || temp > 70) {
-                      //     return 'Please enter a valid temperature';
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Temperature is required';
+                        }
+                        final temp = double.tryParse(value);
+                        if (temp == null || temp < 20 || temp > 70) {
+                          return 'Please enter a valid temperature';
+                        }
+                        return null;
+                      },
                     ),
                     CustomDatePickerTextField(),
                     CustomTextFormFeild(
                       text: AppText.treatmentPlan,
                       controller: SubmitHealthRecordCubit.get(context)
                           .treatmentPlanController,
-                      // validator: (value) {
-                      //   if (value == null || value.isEmpty) {
-                      //     return 'Treatment plan is required';
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Treatment plan is required';
+                        }
+                        return null;
+                      },
                     ),
                     if (state is SubmitHealthRecordLoadingState)
                       const Center(
@@ -147,7 +147,7 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                       ))
                     else
                       CustomElevatedButton(
-                        // style: ElevatedButton.styleFrom(),
+                        style: ElevatedButton.styleFrom(),
                         title: AppText.send,
                         onPressed: () {
                           // if (SubmitHealthRecordCubit.get(context)
@@ -157,9 +157,10 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                             position?.latitude ?? 0.0,
                             position?.longitude ?? 0.0,
                           );
-                          // HealthRecordCubit.get(context).getAllRecord();
+                          HealthRecordCubit.get(context).getAllRecord();
 
-                          // SubmitHealthRecordCubit.get(context).clearControllers();
+                          // SubmitHealthRecordCubit.get(context)
+                          //     .clearControllers();
                           // } else {
                           //   ScaffoldMessenger.of(context).showSnackBar(
                           //     const SnackBar(

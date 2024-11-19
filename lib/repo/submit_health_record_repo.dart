@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -18,8 +19,8 @@ abstract class SubmitHealthRecordRepo {
     required num? temperature,
     required num? heartRate,
     required String? treatmentPlan,
-    required double lat,
-    required double long,
+    required double? lat,
+    required double? long,
     required String? breathRate,
     required String? note,
     required String? walkPlan,
@@ -35,31 +36,46 @@ class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
     required num? temperature,
     required num? heartRate,
     required String? treatmentPlan,
-    required double lat,
-    required double long,
+    required double? lat,
+    required double? long,
     required String? breathRate,
     required String? note,
     required String? walkPlan,
   }) async {
     try {
+      log("---------------------------------------------");
+
       Response response = await DioHelper.postData(
           url:
               "https://health-care-sys.smartleadtech.com/api/patients/health-records",
           data: {
             "blood_pressure": bloodPressure ?? "N/A",
-            "heart_rate": heartRate ?? 0,
-            "temperature": temperature ?? 0,
+            "heart_rate": heartRate ?? "0",
+            "temperature": temperature ?? "0",
             "treatment_plan": treatmentPlan ?? "N/A",
             "lat": lat,
             "long": long,
-            "breath_rate": breathRate ?? "N/A",
-            "note": note,
-            "walk_plan": walkPlan ?? "N/A",
+            // "breath_rate": breathRate ?? "N/A",
+            // "note": note ?? "N/A",
+            // "walk_plan": walkPlan ?? "N/A",
           },
           token: CacheService.getString(key: AppCacheKey.token));
+      print(response.data);
+      log("---------------------------------------------");
       return Right(SubmitHealthRecordResponseModel.fromJson(response.data));
     } on DioException catch (e) {
+      print(e.response!.data);
+      log("---------------------------------------------");
+      print(e.message);
+
+      log("---------------------------------------------");
+
+      print(e.toString());
       return Left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log("---------------------------------------------");
+      print(e.toString());
+      return Left(ServerFailure(errorMessage: e.toString()));
     }
   }
 

@@ -28,8 +28,8 @@ class ServerFailure extends Failures {
         return ServerFailure(errorMessage: "send Timeout");
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioExceptionErrorType.response!.statusCode!,
-            dioExceptionErrorType.response!);
+            dioExceptionErrorType.response?.statusCode ?? 500,
+            dioExceptionErrorType.response?.data);
       case DioExceptionType.cancel:
         return ServerFailure(errorMessage: "Request was cancelled ");
       case DioExceptionType.unknown:
