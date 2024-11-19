@@ -14,15 +14,15 @@ import '../model/submit_health_record_response_model/submit_health_record_respon
 
 abstract class SubmitHealthRecordRepo {
   Future<Either<Failures, SubmitHealthRecordResponseModel>> submitHealthRecord({
-    required String bloodPressure,
-    required num temperature,
-    required num heartRate,
-    required String treatmentPlan,
+    required String? bloodPressure,
+    required num? temperature,
+    required num? heartRate,
+    required String? treatmentPlan,
     required double lat,
     required double long,
-    required String breathRate,
-    required String note,
-    required String walkPlan,
+    required String? breathRate,
+    required String? note,
+    required String? walkPlan,
   });
 
   Future<Either<Failures, String>> uploadFile(List<File> file, int id);
@@ -31,32 +31,30 @@ abstract class SubmitHealthRecordRepo {
 class SubmitHealthRecordRepoImp extends SubmitHealthRecordRepo {
   @override
   Future<Either<Failures, SubmitHealthRecordResponseModel>> submitHealthRecord({
-    required String bloodPressure,
-    required num temperature,
-    required num heartRate,
-    required String treatmentPlan,
+    required String? bloodPressure,
+    required num? temperature,
+    required num? heartRate,
+    required String? treatmentPlan,
     required double lat,
     required double long,
-    required String breathRate,
-    required String note,
-    required String walkPlan,
+    required String? breathRate,
+    required String? note,
+    required String? walkPlan,
   }) async {
     try {
-      Response response = await DioHelper.postData
-      (
+      Response response = await DioHelper.postData(
           url:
               "https://health-care-sys.smartleadtech.com/api/patients/health-records",
-          data: 
-          {
-            "blood_pressure": bloodPressure,
-            "heart_rate": heartRate,
-            "temperature": temperature,
-            "treatment_plan": treatmentPlan,
+          data: {
+            "blood_pressure": bloodPressure ?? "N/A",
+            "heart_rate": heartRate ?? 0,
+            "temperature": temperature ?? 0,
+            "treatment_plan": treatmentPlan ?? "N/A",
             "lat": lat,
             "long": long,
-            "breath_rate": breathRate,
+            "breath_rate": breathRate ?? "N/A",
             "note": note,
-            "walk_plan": walkPlan,
+            "walk_plan": walkPlan ?? "N/A",
           },
           token: CacheService.getString(key: AppCacheKey.token));
       return Right(SubmitHealthRecordResponseModel.fromJson(response.data));
