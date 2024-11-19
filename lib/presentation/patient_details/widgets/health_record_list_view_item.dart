@@ -14,7 +14,6 @@ import '../../show_media_screen.dart';
 class HealthRecordListViewItem extends StatelessWidget {
   final HealthRecordModelData healthRecordModel;
   const HealthRecordListViewItem({super.key, required this.healthRecordModel});
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,208 +26,134 @@ class HealthRecordListViewItem extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.all(16.r),
-        child: Column(children: [
-          Row(
-            children: [
-              Expanded(
-                child: ListTile(
-                  leading: const Icon(Icons.monitor_heart),
-                  title: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: CustomText(
-                      text: healthRecordModel.heart_rate.toString(),
-                      style: AppStyle.textStyle16RegularKufram,
-                      color: AppColor.blue,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    leading: const Icon(Icons.monitor_heart),
+                    title: Text(
+                      healthRecordModel.heart_rate?.toString() ?? "N/A",
+                      style: AppStyle.textStyle16RegularKufram.copyWith(
+                        color: AppColor.blue,
+                      ),
+                      overflow: TextOverflow.ellipsis, // Avoid overflow
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ListTile(
-                  leading: const Icon(Icons.bloodtype_outlined),
-                  title: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: CustomText(
-                      text: healthRecordModel.blood_pressure!,
-                      style: AppStyle.textStyle16RegularKufram,
-                      color: AppColor.blue,
+                Expanded(
+                  child: ListTile(
+                    leading: const Icon(Icons.bloodtype_outlined),
+                    title: Text(
+                      healthRecordModel.blood_pressure ?? "N/A",
+                      style: AppStyle.textStyle16RegularKufram.copyWith(
+                        color: AppColor.blue,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ListTile(
-                  leading: const Icon(Icons.thermostat),
-                  title: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: CustomText(
-                      text: healthRecordModel.temperature.toString(),
-                      style: AppStyle.textStyle16RegularKufram,
-                      color: AppColor.blue,
+                Expanded(
+                  child: ListTile(
+                    leading: const Icon(Icons.thermostat),
+                    title: Text(
+                      healthRecordModel.temperature?.toString() ?? "N/A",
+                      style: AppStyle.textStyle16RegularKufram.copyWith(
+                        color: AppColor.blue,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              CustomText(
-                text: AppText.walk_plan,
-                style: AppStyle.textStyle14BoldKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                width: 10.r,
-              ),
-              CustomText(
-                text: "${healthRecordModel.walkplan}",
+              ],
+            ),
+            // Other rows (use a consistent structure)
+            _buildRow(
+              label: AppText.walk_plan,
+              value: healthRecordModel.walkplan.toString() ?? "N/A",
+            ),
+            _buildRow(
+              label: AppText.notes,
+              value: healthRecordModel.notes ?? "N/A",
+            ),
+            _buildRow(
+              label: AppText.bearthRate,
+              value: healthRecordModel.breath_rate?.toString() ?? "N/A",
+            ),
+            _buildRow(
+              label: AppText.treatmentPlan,
+              value: healthRecordModel.treatment_plan ?? "N/A",
+            ),
+            _buildRow(
+              label: AppText.dateRecorded,
+              value: DateFormat('yyyy-MM-dd').format(DateTime.parse(
+                  healthRecordModel.created_at ?? DateTime.now().toString())),
+            ),
+            // Media buttons
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ShowMediaScreen(
+                          media: healthRecordModel.media ?? [],
+                        )));
+              },
+              child: CustomText(
+                text: "Media",
                 style: AppStyle.textStyle16RegularKufram,
                 textAlign: TextAlign.center,
                 maxLines: 100,
                 color: AppColor.blue,
               ),
-            ],
-          ),
-          SizedBox(
-            height: 10.r,
-          ),
-          Row(
-            children: [
-              CustomText(
-                text: AppText.notes,
-                style: AppStyle.textStyle14BoldKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                width: 10.r,
-              ),
-              SizedBox(
-                width: 150.r,
-                child: CustomText(
-                  text: "${healthRecordModel.notes}",
-                  style: AppStyle.textStyle16RegularKufram,
-                  textAlign: TextAlign.center,
-                  maxLines: 100,
-                  color: AppColor.blue,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10.r,
-          ),
-          Row(
-            children: [
-              CustomText(
-                text: AppText.bearthRate,
-                style: AppStyle.textStyle14BoldKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                width: 10.r,
-              ),
-              CustomText(
-                text: "${healthRecordModel.breath_rate}",
+            ),
+            SizedBox(
+              height: 10.r,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SelectMedia(
+                          id: healthRecordModel.id!.toInt(),
+                        )));
+              },
+              child: CustomText(
+                text: "uploadmedia",
                 style: AppStyle.textStyle16RegularKufram,
                 textAlign: TextAlign.center,
                 maxLines: 100,
                 color: AppColor.blue,
               ),
-            ],
-          ),
-          SizedBox(
-            height: 10.r,
-          ),
-          Row(
-            children: [
-              CustomText(
-                text: AppText.treatmentPlan,
-                style: AppStyle.textStyle14BoldKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                width: 10.r,
-              ),
-              SizedBox(
-                width: 150.r,
-                child: CustomText(
-                  text: "${healthRecordModel.treatment_plan}",
-                  style: AppStyle.textStyle16RegularKufram,
-                  textAlign: TextAlign.center,
-                  maxLines: 100,
-                  color: AppColor.blue,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10.r,
-          ),
-          Row(
-            children: [
-              CustomText(
-                text: AppText.dateRecorded,
-                style: AppStyle.textStyle16RegularKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-              SizedBox(
-                width: 10.r,
-              ),
-              CustomText(
-                text:
-                    "${DateFormat('yyyy-MM-dd').format(DateTime.parse(healthRecordModel.created_at!))}",
-                style: AppStyle.textStyle16RegularKufram,
-                textAlign: TextAlign.center,
-                maxLines: 100,
-                color: AppColor.blue,
-              ),
-            ],
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ShowMediaScreen(
-                        media: healthRecordModel.media ?? [],
-                      )));
-            },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRow({required String label, required String value}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5.r),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
             child: CustomText(
-              text: "Media",
-              style: AppStyle.textStyle16RegularKufram,
-              textAlign: TextAlign.center,
-              maxLines: 100,
-              color: AppColor.blue,
+              text: label,
+              style:
+                  AppStyle.textStyle14BoldKufram.copyWith(color: AppColor.blue),
             ),
           ),
-          SizedBox(
-            height: 10.r,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SelectMedia(
-                        id: healthRecordModel.id!.toInt(),
-                      )));
-            },
+          SizedBox(width: 10.r),
+          Expanded(
+            flex: 2,
             child: CustomText(
-              text: "uploadmedia",
-              style: AppStyle.textStyle16RegularKufram,
-              textAlign: TextAlign.center,
-              maxLines: 100,
-              color: AppColor.blue,
+              text: value,
+              style: AppStyle.textStyle16RegularKufram
+                  .copyWith(color: AppColor.blue),
+              maxLines: 2,
             ),
-          )
-        ]),
+          ),
+        ],
       ),
     );
   }

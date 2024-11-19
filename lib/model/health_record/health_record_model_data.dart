@@ -14,7 +14,7 @@ class HealthRecordModelData extends Equatable {
   String? treatment_plan;
   String? created_at;
   String? updated_at;
-  List<MediaModel> media;
+  List<MediaModel>? media;
   dynamic notes;
   HealthRecordModelData({
     required this.id,

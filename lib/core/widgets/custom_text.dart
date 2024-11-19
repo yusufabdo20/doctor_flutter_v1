@@ -29,6 +29,7 @@ class CustomText extends StatelessWidget {
       ),
       child: Text(
         context.tr(text),
+        overflow: TextOverflow.ellipsis,
         style: style.copyWith(
           color: color,
         ),
