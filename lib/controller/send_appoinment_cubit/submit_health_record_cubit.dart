@@ -41,8 +41,8 @@ class SubmitHealthRecordCubit extends Cubit<SubmitHealthRecordState> {
       treatmentPlan: treatmentPlanController.text ?? "",
       breathRate: breathRate.text ?? "",
       note: notesController.text ?? "",
-      lat: lat < 0 ? lat * -1 : lat,
-      long: long < 0 ? long * -1 : long,
+      lat: lat < 0 ? lat * -1 : lat ?? 0.0,
+      long: long < 0 ? long * -1 : long ?? 0.0,
       walkPlan: workPlan.text ?? "",
     );
 
