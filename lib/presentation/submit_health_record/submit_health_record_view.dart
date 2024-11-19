@@ -87,6 +87,12 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
             if (state is SubmitHealthRecordSuccessState) {
               context.pop();
             }
+            if (state is SubmitHealthRecordErrorState) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                backgroundColor: Colors.red,
+                content: Text(state.errorMessage),
+              ));
+            }
           },
           builder: (context, state) {
             return SafeArea(
