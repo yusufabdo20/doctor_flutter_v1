@@ -147,7 +147,7 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                       ))
                     else
                       CustomElevatedButton(
-                        style: ElevatedButton.styleFrom(),
+                        // style: ElevatedButton.styleFrom(),
                         title: AppText.send,
                         onPressed: () {
                           // if (SubmitHealthRecordCubit.get(context)
@@ -159,8 +159,8 @@ class _SubmitHealthRecordViewState extends State<SubmitHealthRecordView> {
                           );
                           HealthRecordCubit.get(context).getAllRecord();
 
-                          // SubmitHealthRecordCubit.get(context)
-                          //     .clearControllers();
+                          SubmitHealthRecordCubit.get(context)
+                              .clearControllers();
                           // } else {
                           //   ScaffoldMessenger.of(context).showSnackBar(
                           //     const SnackBar(
