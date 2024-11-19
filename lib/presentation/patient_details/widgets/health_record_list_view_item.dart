@@ -199,7 +199,7 @@ class HealthRecordListViewItem extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => ShowMediaScreen(
-                        media: healthRecordModel.media,
+                        media: healthRecordModel.media ?? [],
                       )));
             },
             child: CustomText(

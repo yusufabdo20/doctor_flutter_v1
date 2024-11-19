@@ -40,7 +40,7 @@ class HealthRecordCubit extends Cubit<HealthRecordState> {
       } else {
         final nextPageKey = pageKey + 1;
 
-        pagingController.appendPage(sucess.data!, nextPageKey);
+        pagingController.appendPage(sucess.data ?? [], nextPageKey);
       }
     });
   }
